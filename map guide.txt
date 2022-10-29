@@ -1,0 +1,42 @@
+Only build corners
+Get 8 adjacent items
+If neighbor > tiles
+If neighbor < background
+
+Map goes clockwise from Top Left
+
+1 1 0
+1 - 0
+0 0 0
+
+1 1 0
+0 - 0
+0 0 0
+
+1 0 0
+1 - 0
+0 0 0
+
+0 1 0
+1 - 0
+0 0 0
+
+000 - no sprite
+001 - No Bend Horizontal
+011 - No Bend Horizontal
+010 - Outer Corner
+100 - No Bend Vertical
+110 - No Bend Vertical
+111 - Inner Corner 
+101 - Inner Corner
+
+
+1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1
+
+2 3 4
+1   5
+8 7 6
+
+0 0 1
+0 1 1
+0 1 1

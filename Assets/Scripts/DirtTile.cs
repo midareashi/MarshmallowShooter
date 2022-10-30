@@ -5,28 +5,33 @@ using System.Collections.Generic;
 public class DirtTile : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
-    [SerializeField] public TileBase[] dirt;
     [SerializeField] public TileBase[] ice;
 
-    public static int mapWidth = 10;
-    public static int mapHeight = 200;
+    [SerializeField] public int iceDistribuition;
+
+    public List<TileBase[]> tileBases = new List<TileBase[]>();
+    public static int mapWidth = 12;
+    public static int mapHeight = 120;
+
+    TileBase[] topLayer;
 
     float magnification = 4.0f;
     int offsetX;
     int offsetY;
 
-    int numberOfTileMaps = 2;
-
     List<List<int>> noiseGrid = new List<List<int>>();
 
     void Awake()
     {
-        offsetX = 0; //Random.Range(1, 10000);
-        offsetY = 0; //Random.Range(1, 10000);
+        offsetX = Random.Range(1, 10000);
+        offsetY = Random.Range(1, 10000);
+        topLayer = ice;
     }
 
     void Start()
     {
+        tileBases.Add(ice);
+
         GenerateNoiseGrid();
         GenerateMap();
     }
@@ -50,10 +55,10 @@ public class DirtTile : MonoBehaviour
             (y - offsetY) / magnification
         );
         float clampPerlin = Mathf.Clamp(rawPerlin, 0.0f, 1.0f);
-        float scalePerlin = clampPerlin * 4;
-        if (scalePerlin > 3)
+        float scalePerlin = clampPerlin * (tileBases.Count + 2);
+        if (scalePerlin > tileBases.Count)
         {
-            scalePerlin = 2;
+            scalePerlin = tileBases.Count;
         }
         return Mathf.FloorToInt(scalePerlin);
     }
@@ -62,12 +67,11 @@ public class DirtTile : MonoBehaviour
     {
         for (int x = 0; x < mapWidth; x++)
         {
-            noiseGrid.Add(new List<int>());
             for (int y = 0; y < mapHeight; y++)
             {
-                int tileID = getIdUsingPerlin(x, y);
+                int tileID = noiseGrid[x][y];
 
-                if (tileID == numberOfTileMaps)
+                if (tileID == tileBases.Count)
                 {
                     SetTopLayer(x, y);
                 }
@@ -80,17 +84,82 @@ public class DirtTile : MonoBehaviour
         }
     }
 
-    string GetNeighbors(int self, int x, int y)
+    string GetNeighbors(int tileID, int x, int y)
     {
         string neighbors = "";
-        neighbors += getIdUsingPerlin(x - 1, y) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x - 1, y + 1) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x, y + 1) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x + 1, y + 1) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x + 1, y) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x + 1, y - 1) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x, y - 1) > self ? "1" : "0";
-        neighbors += getIdUsingPerlin(x - 1, y - 1) > self ? "1" : "0";
+
+        if (x > 0)
+        {
+            neighbors += noiseGrid[x - 1][y] > tileID ? "1" : "0"; // Left Center
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (x > 0 && y < mapHeight - 1)
+        {
+            neighbors += noiseGrid[x - 1][y + 1] > tileID ? "1" : "0"; // Top Left
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (y < mapHeight - 1)
+        {
+            neighbors += noiseGrid[x][y + 1] > tileID ? "1" : "0"; // Top Center
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (x < mapWidth - 1 && y < mapHeight - 1)
+        {
+            neighbors += noiseGrid[x + 1][y + 1] > tileID ? "1" : "0"; // Top Right
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (x < mapWidth - 1)
+        {
+            neighbors += noiseGrid[x + 1][y] > tileID ? "1" : "0"; // Right Center
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (x < mapWidth - 1 && y > 0)
+        {
+            neighbors += noiseGrid[x + 1][y - 1] > tileID ? "1" : "0"; // Right Bottom
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (y > 0)
+        {
+            neighbors += noiseGrid[x][y - 1] > tileID ? "1" : "0"; // Bottom Center
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
+        if (x > 0 && y > 0)
+        {
+            neighbors += noiseGrid[x - 1][y - 1] > tileID ? "1" : "0"; // Bottom Left
+        }
+        else
+        {
+            neighbors += 0;
+        }
+
         return neighbors;
     }
 
@@ -98,17 +167,17 @@ public class DirtTile : MonoBehaviour
     {
         x = x * 3;
         y = y * 3;
-        SetTile(new Vector3Int(x, y, 0), dirt[13]);
-        SetTile(new Vector3Int(x, y + 1, 0), dirt[13]);
-        SetTile(new Vector3Int(x, y + 2, 0), dirt[13]);
+        SetTile(new Vector3Int(x, y, 0), topLayer[13]);
+        SetTile(new Vector3Int(x, y + 1, 0), topLayer[13]);
+        SetTile(new Vector3Int(x, y + 2, 0), topLayer[13]);
 
-        SetTile(new Vector3Int(x + 1, y, 0), dirt[13]);
-        SetTile(new Vector3Int(x + 1, y + 1, 0), dirt[13]);
-        SetTile(new Vector3Int(x + 1, y + 2, 0), dirt[13]);
+        SetTile(new Vector3Int(x + 1, y, 0), topLayer[13]);
+        SetTile(new Vector3Int(x + 1, y + 1, 0), topLayer[13]);
+        SetTile(new Vector3Int(x + 1, y + 2, 0), topLayer[13]);
 
-        SetTile(new Vector3Int(x + 2, y, 0), dirt[13]);
-        SetTile(new Vector3Int(x + 2, y + 1, 0), dirt[13]);
-        SetTile(new Vector3Int(x + 2, y + 2, 0), dirt[13]);
+        SetTile(new Vector3Int(x + 2, y, 0), topLayer[13]);
+        SetTile(new Vector3Int(x + 2, y + 1, 0), topLayer[13]);
+        SetTile(new Vector3Int(x + 2, y + 2, 0), topLayer[13]);
     }
 
     void SetIntermediateLayer(int x, int y, string neighbors, int tileID)
@@ -117,14 +186,7 @@ public class DirtTile : MonoBehaviour
         y = y * 3;
         TileBase[] tileBase;
 
-        if (tileID == 1)
-        {
-            tileBase = dirt;
-        }
-        else
-        {
-            tileBase = ice;
-        }
+        tileBase = tileBases[tileID];
         
         SetTile(new Vector3Int(x, y + 2, 0), GetTile(1, neighbors,tileBase)); // Top Left
         SetTile(new Vector3Int(x + 1, y + 2, 0), GetTile(2, neighbors,tileBase)); // Top Center

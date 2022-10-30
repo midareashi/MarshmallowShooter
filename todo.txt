@@ -1,0 +1,10 @@
+map cleaner - diagonal delta 1 int
+map tile distribution ratio
+
+ice = 0
+
+
+
+100
+100
+210

@@ -144,11 +144,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 48
-        height: 64
+        y: 74
+        width: 32
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,13 +164,13 @@ TextureImporter:
       name: Santa-001-light_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 192
-        width: 48
-        height: 64
+        x: 44
+        y: 74
+        width: 40
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 0, z: 4, w: 6}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -186,11 +186,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 192
-        width: 48
-        height: 64
+        y: 74
+        width: 32
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,11 +207,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 48
-        height: 64
+        y: 0
+        width: 32
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,12 +227,12 @@ TextureImporter:
       name: Santa-001-light_4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 128
-        width: 48
-        height: 64
+        x: 44
+        y: 0
+        width: 40
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,11 +249,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 128
-        width: 48
-        height: 64
+        y: 0
+        width: 32
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,132 +261,6 @@ TextureImporter:
       bones: []
       spriteID: 33add48ae49e26948a1fefb9b968073a
       internalID: 1481291218
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77042b914477aed478dd6dbc7c5b2402
-      internalID: -938482573
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2eddf65a52f74a45b6f10366352751e
-      internalID: 1302205801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b3345d7502cc464084fcd3cc2095fef
-      internalID: -242742945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2538078ef5d9ce4080ffc3a4f727649
-      internalID: -392375215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_10
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3d5882cde2f6a449a2e7899f00088a0
-      internalID: 1051486845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Santa-001-light_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 161f0d30b772a7c4d982ee17315b8b3f
-      internalID: -1444506572
       vertices: []
       indices: 
       edges: []
@@ -403,15 +277,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Santa-001-light_4: -1902640535
-      Santa-001-light_6: -938482573
-      Santa-001-light_9: -392375215
       Santa-001-light_0: -1386016904
-      Santa-001-light_8: -242742945
-      Santa-001-light_10: 1051486845
       Santa-001-light_2: 9210720
-      Santa-001-light_7: 1302205801
       Santa-001-light_1: -1140465944
-      Santa-001-light_11: -1444506572
       Santa-001-light_5: 1481291218
       Santa-001-light_3: -1265863668
   spritePackingTag: 

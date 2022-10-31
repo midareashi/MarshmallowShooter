@@ -18,7 +18,7 @@ public class DeployEnemies : MonoBehaviour
     private void SpawnEnemy()
     {
         GameObject a = Instantiate(enemiesPrefab);
-        a.transform.position = new Vector2(Random.Range(-GameManager.CameraPosition.x, GameManager.CameraPosition.x), GameManager.CameraPosition.y * 2);
+        a.transform.position = new Vector2(Random.Range(-GameManager.CameraPosition.x + 6, GameManager.CameraPosition.x - 6), GameManager.CameraPosition.y * 1.5f);
     }
 
     IEnumerator EnemyWave()

@@ -4,9 +4,9 @@ using UnityEngine;
 public class DeployEnemies : MonoBehaviour
 {
     public GameObject enemiesPrefab;
-    public float respawnTime = 1.0f;
+    public float respawnTime = 1.5f;
     public int enemiesLeft;
-    public static int totalEnemies = 5;
+    public static int totalEnemies = 10;
 
     void Start()
     {

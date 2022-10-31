@@ -140,7 +140,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: normal
+      name: white
       rect:
         serializedVersion: 2
         x: 0
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63e27eae4e2238740ac0154e56d72470
-      internalID: -92006673
+      spriteID: 1d9ed4fafa017a04f8b5fd0cd829ecdc
+      internalID: 465234636
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 722ce2bb32d0db8408cf43a0c749b486
+      spriteID: 219bc7f2b5d238c4880d69a66cca5499
       internalID: -649180188
       vertices: []
       indices: 
@@ -196,7 +196,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1474067a7e4f95c44982ea87bcd88ebf
+      spriteID: debe54a819d4e0f418d3f4c499c095dd
       internalID: -1235927051
       vertices: []
       indices: 
@@ -217,8 +217,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ab6178d731445b47a64eaf14a4ed37d
+      spriteID: 9bfd9bfd57b3fc9499c7a04aab9aa22c
       internalID: -2087244512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d99aa6baee346449a56c866e52959f3
+      internalID: 1591241079
       vertices: []
       indices: 
       edges: []
@@ -235,9 +256,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       pink: -1235927051
+      white: 465234636
+      shadow: 1591241079
       toasted: -649180188
       burnt: -2087244512
-      normal: -92006673
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

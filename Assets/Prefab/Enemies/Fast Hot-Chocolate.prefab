@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9116493390035052973}
+  m_Father: {fileID: 8462173654867035678}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9116493388717092870
@@ -92,20 +92,21 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9116493390035052973}
+  - component: {fileID: 8462173654867035678}
   - component: {fileID: 9116493390035052974}
   - component: {fileID: 9116493390035052975}
   - component: {fileID: 9116493390035052960}
   - component: {fileID: 1596010103626919942}
+  - component: {fileID: -796113015136969406}
   m_Layer: 0
-  m_Name: Hot-Chocolate 2
+  m_Name: Fast Hot-Chocolate
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9116493390035052973
-Transform:
+--- !u!224 &8462173654867035678
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,6 +121,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2.625, y: 2.6875}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &9116493390035052974
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,7 +168,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3acfc595ef6315f4c975991460b5d797, type: 3}
-  m_Color: {r: 0.41176474, g: 0.25490198, b: 0.054901965, a: 1}
+  m_Color: {r: 1, g: 0.12549019, b: 0.32120898, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -231,5 +237,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  frequency: 2
+  amplitude: 5
+  cycleSpeed: 15
+  points: 0
+  spawnTime: 0
   maxHealth: 2
+  spawnGroup: 2
+  spawnSpeed: 0.2
+  currentHealth: 0
+--- !u!114 &-796113015136969406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116493390035052961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825067b2722e73c4aafd56038280e270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

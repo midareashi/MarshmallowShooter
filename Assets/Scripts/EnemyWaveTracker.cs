@@ -11,6 +11,5 @@ public class EnemyWaveTracker : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<WaveSpawner>().spawnedEnemies.Remove(gameObject);
         }
-
     }
 }

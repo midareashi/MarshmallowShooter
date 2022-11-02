@@ -14,19 +14,13 @@ public class Enemy : MonoBehaviour
     public float spawnTime;
 
     private Vector2 screenBounds;
-    [SerializeField] public float maxHealth;
     [SerializeField] public int spawnGroup; // How many enemies spawn per wave
     [SerializeField] public float spawnSpeed; // Delay between enemies spawning 0.5f
-    public float currentHealth;
-
-    //public static event Action<Enemy> OnEnemyKilled;
 
     void Start()
     {
         pos = transform.position;
         axis = transform.right;
-        screenBounds = GameManager.CameraPosition;
-        currentHealth = maxHealth;
     }
 
     void ZigZagMovement()
@@ -38,20 +32,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         ZigZagMovement();
-        if (transform.position.y < -screenBounds.y * 2)
+        if (transform.position.y < -GameManager.CameraPosition.y * 2)
         {
             Destroy(gameObject);
-        }
-    }
-
-    public void TakeDamage(float damageAmount)
-    {
-        currentHealth -= damageAmount;
-
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-            //OnEnemyKilled?.Invoke(this);
         }
     }
 }

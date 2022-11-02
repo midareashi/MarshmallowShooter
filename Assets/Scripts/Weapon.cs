@@ -1,11 +1,16 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float fireForce = 20f;
-    public float rof = 0.1f;
+    public Vector2 speed; // 0, 20
+    public int damage; // 1
+    public int avoid;
+
+    public float fireForce;
+    public float rof;
     private float lastShot = 0.0f;
 
     private void Update()
@@ -18,7 +23,9 @@ public class Weapon : MonoBehaviour
         if (Time.time > rof + lastShot)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+            bullet.GetComponent<Bullet>().speed = speed;
+            bullet.GetComponent<Bullet>().damage = damage;
+            bullet.GetComponent<Bullet>().avoid = avoid;
             lastShot = Time.time;
         }
     }

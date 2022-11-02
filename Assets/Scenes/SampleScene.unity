@@ -390,7 +390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250990909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalPosition: {x: 59.8, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 1578239426}
     - target: {fileID: 8542024542711051756, guid: d4ca9e11c36275842a5caef5666055ed, type: 3}
       propertyPath: m_Name
-      value: Joystick Outer
+      value: JoystickOuter
       objectReference: {fileID: 0}
     - target: {fileID: 8542024542846058777, guid: d4ca9e11c36275842a5caef5666055ed, type: 3}
       propertyPath: m_Color.b
@@ -845,6 +845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2784716047743838626, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: m_Name
+      value: SantaShadow
+      objectReference: {fileID: 0}
     - target: {fileID: 6788270341238595866, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.7
@@ -856,6 +860,14 @@ PrefabInstance:
     - target: {fileID: 6788270341855350021, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
       propertyPath: m_Name
       value: Santa
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788270341855350021, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788270341855350021, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788270341855350024, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
       propertyPath: m_RootOrder
@@ -918,9 +930,25 @@ PrefabInstance:
       value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: avoid
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: speed.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 742619906}
+    - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+      propertyPath: direction.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6788270341855350031, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
       propertyPath: bulletPrefab
       value: 
@@ -1369,6 +1397,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09199202dbb5f5640950b270c49eb5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1578239433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578239413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1993963926

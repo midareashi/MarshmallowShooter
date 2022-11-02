@@ -129,9 +129,10 @@ GameObject:
   - component: {fileID: 6788270341855350027}
   - component: {fileID: 6788270341855350020}
   - component: {fileID: 6788270341855350031}
+  - component: {fileID: 5411493076096891220}
   m_Layer: 0
   m_Name: Santa
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,7 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d27122ce9776f408a5c54acb22d5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 6788270341855350027}
 --- !u!114 &6788270341855350031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,5 +279,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  speed: {x: 0, y: 0}
+  damage: 0
+  avoid: 0
   fireForce: 20
   rof: 0.1
+--- !u!114 &5411493076096891220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788270341855350021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0

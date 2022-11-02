@@ -279,10 +279,11 @@ MonoBehaviour:
   frequency: 2
   amplitude: 5
   cycleSpeed: 15
-  points: 0
+  points: 15
+  gold: 10
   spawnTime: 0
   spawnGroup: 2
-  spawnSpeed: 0.2
+  spawnSpeed: 0.7
 --- !u!114 &-796113015136969406
 MonoBehaviour:
   m_ObjectHideFlags: 0

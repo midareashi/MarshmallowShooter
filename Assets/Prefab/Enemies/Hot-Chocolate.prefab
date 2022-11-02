@@ -279,7 +279,8 @@ MonoBehaviour:
   frequency: 1
   amplitude: 5
   cycleSpeed: 10
-  points: 0
+  points: 10
+  gold: 5
   spawnTime: 0
   spawnGroup: 3
   spawnSpeed: 0.5

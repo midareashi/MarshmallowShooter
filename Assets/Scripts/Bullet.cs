@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
             if (vitals.gameObject.layer != avoid)
             {
                 vitals.TakeDamage(damage);
-                //Destroy(collision.gameObject);
+                Destroy(gameObject);
             }
         }
     }

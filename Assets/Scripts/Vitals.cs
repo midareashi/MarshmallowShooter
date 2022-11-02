@@ -17,6 +17,11 @@ public class Vitals : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if (gameObject.tag == "Enemy")
+            {
+                MainManager.Instance.currentPoints += gameObject.GetComponent<Enemy>().points;
+                MainManager.Instance.currentGold += gameObject.GetComponent<Enemy>().gold;
+            }
             Destroy(gameObject);
         }
     }

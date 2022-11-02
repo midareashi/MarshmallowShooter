@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5542945105309780642}
   - component: {fileID: 327664681231304140}
   - component: {fileID: -2259271031784245403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Marshmallow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5993f1518511c44b9d4c09957237bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
   damage: 1
-  santa: {fileID: 6788270341855350027, guid: b0542999154203d4b932b1a8c05fecd8, type: 3}
+  speed: {x: 0, y: 0}
+  avoid: 0
 --- !u!50 &327664681231304140
 Rigidbody2D:
   serializedVersion: 4
@@ -117,12 +117,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!61 &-2259271031784245403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

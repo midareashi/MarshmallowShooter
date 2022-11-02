@@ -6,16 +6,16 @@ using UnityEngine;
 public class Joystick : MonoBehaviour
 {
     public Transform player;
-    public float speed = 5.0f;
+    public float speed;
     private bool touchStart = false;
     private Vector2 pointA;
     private Vector2 pointB;
     public Transform circle;
     public Transform outerCircle;
 
-    void Start()
+    private void Start()
     {
-        
+        speed = MainManager.Instance.currentJetpack.GetComponent<Jetpack>().speed;
     }
 
     void Update()

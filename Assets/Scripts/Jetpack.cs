@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class Jetpack : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float cost;
+    [SerializeField] public float speed;
+    [SerializeField] public float cost;
 }

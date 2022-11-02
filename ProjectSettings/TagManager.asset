@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - WaveSpawner
+  - Jetpack
+  - Points
+  - Gold
   layers:
   - Default
   - TransparentFX

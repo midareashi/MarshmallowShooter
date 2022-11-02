@@ -13,6 +13,11 @@ public class Weapon : MonoBehaviour
     public float rof;
     private float lastShot = 0.0f;
 
+    private void Start()
+    {
+        bulletPrefab = MainManager.Instance.currentBullet;
+    }
+
     private void Update()
     {
         Fire();

@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float frequency; // Cycles per Second 1
     [SerializeField] public float amplitude; // Horizontal Distance 5
     [SerializeField] public float cycleSpeed; // ??? 10
-    [SerializeField] public float points;
+    [SerializeField] public int points;
+    [SerializeField] public int gold;
 
     private Vector3 pos;
     private Vector3 axis;

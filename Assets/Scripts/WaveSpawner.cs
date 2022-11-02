@@ -6,7 +6,6 @@ using static UnityEngine.Rendering.DebugUI.Table;
 public class WaveSpawner : MonoBehaviour
 {
     public List<EnemyToSpawn> enemies = new List<EnemyToSpawn>();
-    public int currWave;
     private int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
 
@@ -24,7 +23,6 @@ public class WaveSpawner : MonoBehaviour
     public int spawningEnemyCount = 0;
     public float lastSpawn = 0.0f;
     private float spawnPosition;
-
 
     void Start()
     {
@@ -56,6 +54,7 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 waveTimer = 0; // if no enemies remain, end wave
+                EndWave();
             }
         }
         else
@@ -66,7 +65,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
         {
-            currWave++;
+            MainManager.Instance.currentWave++;
             GenerateWave();
         }
 
@@ -75,7 +74,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void GenerateWave()
     {
-        waveValue = (currWave * 5) + 5;
+        waveValue = (MainManager.Instance.currentWave * 5) + 5;
         GenerateEnemies();
 
         spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
@@ -121,11 +120,19 @@ public class WaveSpawner : MonoBehaviour
                 {
                     spawningEnemy = null;
                     spawningEnemyCount = 0;
-
                     lastSpawn = 0;
                 }
             }
         }
+    }
+
+    void EndWave()
+    {
+        /*
+        SantaFlyAway();
+        ShowStoreButton();
+        ShowContinuteButton();
+        */
     }
 }
 

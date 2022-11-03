@@ -15,7 +15,7 @@ public class Joystick : MonoBehaviour
 
     private void Start()
     {
-        speed = MainManager.Instance.currentJetpack.GetComponent<Jetpack>().speed;
+        speed = 10;//MainManager.Instance.currentJetpack.GetComponent<Jetpack>().speed;
     }
 
     void Update()

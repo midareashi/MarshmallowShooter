@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    public Transform[] firePoints;
     public Vector2 speed; // 0, 20
-    public int damage; // 1
+
     public int avoid;
+    public int damage;
+
+    public GameObject bulletInstance;
 
     public float fireForce;
     public float rof;
@@ -15,7 +17,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        bulletPrefab = MainManager.Instance.currentBullet;
+        bulletInstance = Instantiate(MainManager.Instance.currentBullet);
     }
 
     private void Update()
@@ -27,10 +29,13 @@ public class Weapon : MonoBehaviour
     {
         if (Time.time > rof + lastShot)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Bullet>().speed = speed;
-            bullet.GetComponent<Bullet>().damage = damage;
-            bullet.GetComponent<Bullet>().avoid = avoid;
+            foreach (Transform t in firePoints)
+            {
+                GameObject bullet = Instantiate(bulletInstance, t.position, t.rotation);
+                bullet.GetComponent<Bullet>().speed = MainManager.Instance.currentBullet.GetComponent<Bullet>().speed;
+                bullet.GetComponent<Bullet>().damage = MainManager.Instance.currentBullet.GetComponent<Bullet>().damage;
+                bullet.GetComponent<Bullet>().avoid = avoid;
+            }
             lastShot = Time.time;
         }
     }

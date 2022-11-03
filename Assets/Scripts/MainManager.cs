@@ -7,26 +7,26 @@ public class MainManager : MonoBehaviour
 
     public int currentPoints;
     public int currentGold;
+    public int currentHealth;
 
     public int stagePoints;
     public int StageGold;
 
-    public GameObject currentJetpack;
     public GameObject currentWeapon;
+    public GameObject currentJetpack;
     public GameObject currentBullet;
-    public int currentHealth;
-    public List<GameObject> ownedJetpacks;
-    public List<GameObject> ownedWeapons;
-    public List<GameObject> ownedBullets;
+
+    public GameObject[] ownedWeapons;
+    public GameObject[] ownedJetpacks;
+    public GameObject[] ownedBullets;
+
+    public GameObject[] allWeapons;
+    public GameObject[] allJetpacks;
+    public GameObject[] allBullets;
+
     public int currentLives;
     
     public string gameName;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public static MainManager Instance;
 
@@ -34,7 +34,7 @@ public class MainManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
             return;
         }
 

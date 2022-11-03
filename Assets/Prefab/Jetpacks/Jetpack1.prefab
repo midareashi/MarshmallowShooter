@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6861618900289643403}
   - component: {fileID: 8075564424358722562}
   m_Layer: 0
-  m_Name: Jetpack3
+  m_Name: Jetpack1
   m_TagString: Jetpack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a7b65f8e0f72d254ca4120e003329712, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d62e98352b3b4334781488677957e6bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb750b9b095c4a45bb75f0953e8eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  cost: 800
+  speed: 10
+  cost: 100

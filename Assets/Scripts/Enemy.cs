@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         ZigZagMovement();
         if (transform.position.y < -GameManager.CameraPosition.y * 2)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
         }
     }
 }

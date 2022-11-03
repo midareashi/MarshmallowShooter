@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: {x: 0, y: 0}
-  avoid: 0
+  speed: {x: 0, y: 20}
+  avoid: 7
 --- !u!50 &327664681231304140
 Rigidbody2D:
   serializedVersion: 4

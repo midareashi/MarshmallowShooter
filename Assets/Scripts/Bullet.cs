@@ -2,17 +2,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
     public int damage;
     public Vector2 speed;
     public int avoid;
-
-    private void Start()
-    {
-        rb = this.GetComponent<Rigidbody2D>();
-        rb.velocity = speed;
-    }
 
     private void Update()
     {

@@ -19,6 +19,8 @@ public class MainManager : MonoBehaviour
     public List<GameObject> ownedWeapons;
     public List<GameObject> ownedBullets;
     public int currentLives;
+    
+    public string gameName;
 
     // Update is called once per frame
     void Update()

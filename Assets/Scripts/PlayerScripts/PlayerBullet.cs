@@ -4,26 +4,21 @@ public class PlayerBullet : MonoBehaviour
 {
     public int damage;
     public Vector2 speed;
-    public int avoid;
 
     private void Update()
     {
+        if (transform.position.y < GameManager.CameraPosition.y * 2)
+        {
+            Destroy(gameObject); // Destroy off camera
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Vitals>(out Vitals vitals))
         {
-            if (vitals.gameObject.layer != avoid)
-            {
-                vitals.TakeDamage(damage);
-                Destroy(gameObject);
-            }
+            vitals.TakeDamage(damage);
+            Destroy(gameObject);
         }
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 }

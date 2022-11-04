@@ -75,7 +75,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void GenerateWave()
     {
-        waveValue = 1;//(MainManager.Instance.currentWave * 5) + 5; // How many points to give for each wave
+        waveValue = (MainManager.Instance.currentWave * 5) + 5; // How many points to give for each wave
         GenerateEnemies();
 
         spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies

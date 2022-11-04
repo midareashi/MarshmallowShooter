@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float frequency; // Cycles per Second 1
     [SerializeField] public float amplitude; // Horizontal Distance 5
     [SerializeField] public float cycleSpeed; // ??? 10
-    [SerializeField] public int points;
-    [SerializeField] public int gold;
-    [SerializeField] public int cost;
+    [SerializeField] public int points; // Points gained when killed
+    [SerializeField] public int gold; // Gold gained when killed
+    [SerializeField] public int cost; // Cost of wave in spawner
 
     private Vector3 pos;
     private Vector3 axis;
-    public float spawnTime;
+    public float spawnTime; // Time since last spawn to offset wave function
 
     private Vector2 screenBounds;
     [SerializeField] public int spawnGroup; // How many enemies spawn per wave
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         ZigZagMovement();
         if (transform.position.y < -GameManager.CameraPosition.y * 2)
         {
-            Destroy(gameObject, 2f);
+            Destroy(gameObject); // Destroy off camera
         }
     }
 }

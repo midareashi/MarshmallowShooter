@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1918688362}
     m_Modifications:
+    - target: {fileID: -5542945105309780642, guid: 7346c23ea15f6624791931c7b21532dd, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 327664681231304140, guid: 7346c23ea15f6624791931c7b21532dd, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -467,7 +471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -733847497416864687, guid: c905d399a62ea354db43fa78158b0462, type: 3}
       propertyPath: rof
-      value: 20
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -733847497416864687, guid: c905d399a62ea354db43fa78158b0462, type: 3}
       propertyPath: fireForce
@@ -1145,9 +1149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58cd367e62177d14cab1d1ad65b5a1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - enemyPrefab: {fileID: 9116493390035052961, guid: 0cf75804c8ca19b43845c9f31bb3baff, type: 3}
-    cost: 1
   enemiesToSpawn: []
   spawnLocation: {fileID: 1282759124}
   waveDuration: 5
@@ -1396,7 +1397,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -733847497416864687, guid: 9936e37a1bb592d47b926f7c9329fcff, type: 3}
       propertyPath: rof
-      value: 20
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -733847497416864687, guid: 9936e37a1bb592d47b926f7c9329fcff, type: 3}
       propertyPath: damage
@@ -1476,6 +1477,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712290114}
     m_Modifications:
+    - target: {fileID: 50688300393811891, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 353467156133593553, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1520,13 +1525,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4039545778560229708, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7056003313245803854, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
       propertyPath: m_Name
       value: Penguin
       objectReference: {fileID: 0}
     - target: {fileID: 7056003313245803854, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056003313245803854, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056003313245803854, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025621177057580181, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}
+      propertyPath: rof
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e89a1b9ffffe87849a6550cf14a78edf, type: 3}

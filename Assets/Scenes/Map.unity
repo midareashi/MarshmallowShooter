@@ -209,6 +209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marshmallow
       objectReference: {fileID: 0}
+    - target: {fileID: 5539821943480859521, guid: 7346c23ea15f6624791931c7b21532dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7346c23ea15f6624791931c7b21532dd, type: 3}
 --- !u!4 &326688474 stripped
@@ -1503,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1520221555642954955, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1520221555700866169, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
       propertyPath: m_Name
       value: GameHandler
@@ -1550,6 +1558,18 @@ PrefabInstance:
     - target: {fileID: 1520221555700866170, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520221555758412573, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520221555758412573, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520221555758412573, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2851437379f6c194ba90c0df0dd327cd, type: 3}

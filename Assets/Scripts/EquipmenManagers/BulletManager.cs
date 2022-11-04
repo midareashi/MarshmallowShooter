@@ -35,8 +35,6 @@ public class BulletManager : MonoBehaviour
             MainManager.Instance.allBullets[i] = bulletHolder.transform.GetChild(i).gameObject;
             MainManager.Instance.allBullets[i].SetActive(false);
         }
-
-        MainManager.Instance.allBullets[0].SetActive(true);
         MainManager.Instance.currentBullet = Instantiate(MainManager.Instance.allBullets[0]);
     }
 }

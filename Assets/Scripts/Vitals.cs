@@ -22,7 +22,7 @@ public class Vitals : MonoBehaviour
                 MainManager.Instance.currentPoints += gameObject.GetComponent<Enemy>().points;
                 MainManager.Instance.currentGold += gameObject.GetComponent<Enemy>().gold;
             }
-            Destroy(gameObject, 2f);
+            Destroy(gameObject);
         }
     }
 }

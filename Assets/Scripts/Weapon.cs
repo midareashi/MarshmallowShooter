@@ -35,6 +35,7 @@ public class Weapon : MonoBehaviour
                 bullet.GetComponent<Bullet>().speed = MainManager.Instance.currentBullet.GetComponent<Bullet>().speed;
                 bullet.GetComponent<Bullet>().damage = MainManager.Instance.currentBullet.GetComponent<Bullet>().damage;
                 bullet.GetComponent<Bullet>().avoid = avoid;
+                bullet.SetActive(true);
             }
             lastShot = Time.time;
         }

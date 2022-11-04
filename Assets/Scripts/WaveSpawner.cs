@@ -5,12 +5,11 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public List<EnemyToSpawn> enemies = new List<EnemyToSpawn>();
+    public static List<EnemyToSpawn> enemies = new List<EnemyToSpawn>();
     private int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
 
-    public Transform[] spawnLocation;
-    public int spawnIndex;
+    public Transform spawnLocation;
 
     public int waveDuration;
     private float waveTimer;
@@ -24,57 +23,59 @@ public class WaveSpawner : MonoBehaviour
     public float lastSpawn = 0.0f;
     private float spawnPosition;
 
+    public float stageStartPoints;
+
+    private bool stageIsActive;
+    int totalEnemies;
+
+
     void Start()
     {
+        stageStartPoints = MainManager.Instance.currentPoints;
         GenerateWave();
+        stageIsActive = true;
     }
 
     void FixedUpdate()
     {
-        if (spawnTimer <= 0)
+        if (stageIsActive)
         {
-            //spawn an enemy
-            if (enemiesToSpawn.Count > 0)
+            if (spawnTimer <= 0) // Time to Spawn
             {
-                spawningEnemy = enemiesToSpawn[0];
-                spawnPosition = Random.Range(-5.0f,5.0f);
-
-                enemiesToSpawn.RemoveAt(0); // and remove it
-                spawnTimer = spawnInterval;
-
-                if (spawnIndex + 1 <= spawnLocation.Length - 1)
+                //spawn an enemy
+                if (enemiesToSpawn.Count > 0)
                 {
-                    spawnIndex++;
+                    spawningEnemy = enemiesToSpawn[0];
+                    spawnPosition = Random.Range(-5.0f,5.0f);
+
+                    enemiesToSpawn.RemoveAt(0); // and remove it
+                    spawnTimer = spawnInterval;
                 }
                 else
                 {
-                    spawnIndex = 0;
+                    waveTimer = 0; // if no enemies remain, end wave
                 }
             }
             else
             {
-                waveTimer = 0; // if no enemies remain, end wave
-                EndWave();
+                spawnTimer -= Time.fixedDeltaTime;
+                waveTimer -= Time.fixedDeltaTime;
             }
-        }
-        else
-        {
-            spawnTimer -= Time.fixedDeltaTime;
-            waveTimer -= Time.fixedDeltaTime;
-        }
 
-        if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
-        {
-            MainManager.Instance.currentWave++;
-            GenerateWave();
-        }
+            if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
+            {
+                stageIsActive = false;
+                EndWave("win");
+                //GenerateWave();
+            }
 
-        SpawnEnemy();
+            SpawnEnemy();
+        }
     }
 
     public void GenerateWave()
     {
-        waveValue = (MainManager.Instance.currentWave * 5) + 5;
+        waveValue = 1;//(MainManager.Instance.currentWave * 5) + 5; // How many points to give for each wave
         GenerateEnemies();
 
         spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
@@ -102,6 +103,7 @@ public class WaveSpawner : MonoBehaviour
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
     }
+
     public void SpawnEnemy()
     {
         if (spawningEnemy != null) 
@@ -110,8 +112,9 @@ public class WaveSpawner : MonoBehaviour
             {
                 if (spawningEnemyCount < spawningEnemy.GetComponent<Enemy>().spawnGroup)
                 {
-                    GameObject enemy = Instantiate(spawningEnemy, spawnLocation[spawnIndex].position + Vector3.left * spawnPosition, Quaternion.identity);
+                    GameObject enemy = Instantiate(spawningEnemy, spawnLocation.position + Vector3.left * spawnPosition, Quaternion.identity);
                     enemy.GetComponent<Enemy>().spawnTime = Time.time;
+                    enemy.SetActive(true);
                     spawnedEnemies.Add(enemy);
                     spawningEnemyCount ++;
                     lastSpawn = Time.time;
@@ -126,10 +129,21 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void EndWave()
+    public static void EndWave(string outcome)
     {
+        var pc = new PlayerController();
+        if (outcome == "win")
+        {
+            MainManager.Instance.currentWave++;
+            pc.FlyOffScreen();
+        }
+
+        if (outcome == "lose")
+        {
+
+        }
         /*
-        SantaFlyAway();
+        
         ShowStoreButton();
         ShowContinuteButton();
         */

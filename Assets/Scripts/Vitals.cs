@@ -21,8 +21,12 @@ public class Vitals : MonoBehaviour
             {
                 MainManager.Instance.currentPoints += gameObject.GetComponent<Enemy>().points;
                 MainManager.Instance.currentGold += gameObject.GetComponent<Enemy>().gold;
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            if (gameObject.tag == "Player")
+            {
+                WaveSpawner.EndWave("lose");
+            }
         }
     }
 }

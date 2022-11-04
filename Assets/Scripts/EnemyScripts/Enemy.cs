@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int points; // Points gained when killed
     [SerializeField] public int gold; // Gold gained when killed
     [SerializeField] public int cost; // Cost of wave in spawner
+    [SerializeField] public GameObject[] spawnPoints;
+    [SerializeField] public GameObject spawnHolder;
 
     private Vector3 pos;
     private Vector3 axis;

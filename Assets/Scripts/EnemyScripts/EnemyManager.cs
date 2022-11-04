@@ -1,28 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
     public GameObject enemyHolder;
-    public List<EnemyToSpawn> allEnemies;
+    public GameObject[] allEnemies;
 
     private void Awake()
     {
-        WaveSpawner.enemies =  BuildEnemyList();
+
+        WaveSpawner.enemies = BuildEnemyList();
     }
 
-    public List<EnemyToSpawn> BuildEnemyList()
+    public GameObject[] BuildEnemyList()
     {
         int totalEnemies = enemyHolder.transform.childCount;
-        List<EnemyToSpawn> allEnemies = new List<EnemyToSpawn>();
+        GameObject[] allEnemies = new GameObject[totalEnemies];
 
         for (int i = 0; i < totalEnemies; i++)
         {
-            EnemyToSpawn e = new EnemyToSpawn();
-            e.enemyPrefab = enemyHolder.transform.GetChild(i).gameObject;
-            e.cost = enemyHolder.transform.GetChild(i).gameObject.GetComponent<Enemy>().cost;
-            allEnemies.Add(e);
+            allEnemies[i] = enemyHolder.transform.GetChild(i).gameObject;
+        }
+
+        foreach (GameObject enemy in allEnemies)
+        {
+            SpawnManager.BuildSpawnList(enemy);
         }
 
         return allEnemies;

@@ -3,7 +3,6 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     int totalBullets = 1;
-
     public GameObject bulletHolder;
 
     public void Awake()

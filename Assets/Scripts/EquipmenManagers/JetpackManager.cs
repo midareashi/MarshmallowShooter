@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class JetpackManager : MonoBehaviour
 {
-    int totalJetpacks = 1;
-
     public GameObject jetpackHolder;
+    int totalJetpacks = 1;
 
     public void Awake()
     {

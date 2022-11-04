@@ -9,8 +9,8 @@ public class MainManager : MonoBehaviour
     public int currentGold;
     public int currentHealth;
 
-    public int stagePoints;
-    public int StageGold;
+    public float stagePoints;
+    public int stageGold;
 
     public GameObject currentWeapon;
     public GameObject currentJetpack;

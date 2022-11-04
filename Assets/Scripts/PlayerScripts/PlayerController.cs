@@ -14,4 +14,10 @@ public class PlayerController : MonoBehaviour
     public void EquipSanta()
     {
     }
+
+    public void FlyOffScreen()
+    {
+        this.GetComponent<Boundries>().isBound = false;
+        Santa.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 30, 0), 1.0f);
+    }
 }

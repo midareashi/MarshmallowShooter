@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float cycleSpeed; // ??? 10
     [SerializeField] public int points;
     [SerializeField] public int gold;
+    [SerializeField] public int cost;
 
     private Vector3 pos;
     private Vector3 axis;

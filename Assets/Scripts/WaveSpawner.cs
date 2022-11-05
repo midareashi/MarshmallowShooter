@@ -20,33 +20,41 @@ public class WaveSpawner : MonoBehaviour
     public float spawnInterval; // Time Between Spawns
     private float spawnTimer;
 
+    // Start stage after initial wait
+    public float stageStartWaitTime;
+    private float stageStartTime;
+
     public List<GameObject> spawnedEnemies;
 
     public GameObject spawningEnemy;
     public int spawningEnemyCount = 0;
     public float lastSpawn = 0.0f;
 
-    private bool stageIsActive;
+    private bool enemiesAreLoaded;
+    private bool stageIsReady;
 
     void Start()
     {
-        stageIsActive = false;
+        stageStartTime = Time.time;
         if (MainManager.Instance.currentWave == 0)
         {
             MainManager.Instance.currentWave = 1;
         }
         GenerateWave();
-        stageIsActive = true;
     }
 
     public void NextWave()
     {
+        pc.FlyToStart();
+        stageStartTime = Time.time;
+        enemiesAreLoaded = false;
         GenerateWave();
     }
 
     void FixedUpdate()
     {
-        if (stageIsActive)
+        WaitToStart();
+        if (enemiesAreLoaded && stageIsReady)
         {
             if (spawnTimer <= 0) // Time to Spawn
             {
@@ -69,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
 
             if (enemiesToSpawn.Count <= 0 && spawnedEnemies.Count <= 0 && spawningEnemy == null) // No enemies to spawn and no enemies spawned
             {
-                stageIsActive = false;
+                enemiesAreLoaded = false;
                 EndWave("win");
                 return;
             }
@@ -107,6 +115,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         enemiesToSpawn = generatedEnemies;
+        enemiesAreLoaded = true;
     }
 
     public void SpawnEnemy()
@@ -146,5 +155,10 @@ public class WaveSpawner : MonoBehaviour
         {
 
         }
+    }
+
+    private void WaitToStart()
+    {
+        stageIsReady = Time.time >= stageStartTime + stageStartWaitTime;
     }
 }

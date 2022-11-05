@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        CameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        CameraPosition =  GetCameraPosition();
+    }
+
+    public Vector2 GetCameraPosition()
+    {
+        return Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 }

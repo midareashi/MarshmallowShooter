@@ -4,10 +4,16 @@ public class EnemyBullet : MonoBehaviour
 {
     public int damage;
     public Vector2 speed;
+    public Vector2 CameraPosition;
+
+    private void Start()
+    {
+        CameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+    }
 
     private void Update()
     {
-        if (transform.position.y < -GameManager.CameraPosition.y * 2)
+        if (transform.position.y < (-CameraPosition.y / 2) * 2)
         {
             Destroy(gameObject); // Destroy off camera
         }

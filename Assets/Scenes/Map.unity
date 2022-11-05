@@ -1022,16 +1022,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0
-  horizontalDistance: 0
-  verticalSpeed: 0
-  points: 10
-  gold: 10
+  zigzagRate: 5
+  horizontalDistance: 3
+  verticalSpeed: 15
+  points: 15
+  gold: 15
   cost: 2
   spawnPoints:
   - {fileID: 0}
   spawnHolder: {fileID: 789694629}
-  showInWave: 2
+  showInWave: 1
   spawnTime: 0
   spawnGroup: 2
   spawnSpeed: 0.8
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 1638544304}
   enemyBullet: {fileID: 1433777346597258946, guid: 107d9e85ceaa92e41b3765218ffef03e, type: 3}
-  speed: {x: 0, y: 0}
+  speed: {x: 0, y: -15}
   damage: 0
   rof: 0.8
 --- !u!61 &837487262
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zigzagRate: 0
   horizontalDistance: 0
-  verticalSpeed: 0
+  verticalSpeed: 10
   points: 20
   gold: 20
   cost: 2
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 6
   currentHealth: 0
   ws: {fileID: 1282759123}
 --- !u!212 &1047397243
@@ -1956,6 +1956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 1155017000}
   rb: {fileID: 1155016999}
+  dt: {fileID: 1302150966}
 --- !u!50 &1155016999
 Rigidbody2D:
   serializedVersion: 4
@@ -2042,6 +2043,7 @@ MonoBehaviour:
   waveGainedPoints: 0
   spawnLocation: {fileID: 1282759124}
   spawnInterval: 5
+  stageStartWaitTime: 5
   spawnedEnemies: []
   spawningEnemy: {fileID: 0}
   spawningEnemyCount: 0
@@ -2153,6 +2155,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ceef9b07c97d73f49a5206e36fd6a603, type: 2}
   - {fileID: 11400000, guid: 2af3395ea0e24b34293ea4506bcdcd9b, type: 2}
   iceDistribuition: 1
+  mapWidth: 12
+  mapHeight: 300
 --- !u!1 &1357913127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,7 +2651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zigzagRate: 3.5
   horizontalDistance: 5
-  verticalSpeed: 15
+  verticalSpeed: 20
   points: 10
   gold: 10
   cost: 1
@@ -2999,6 +3003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: {x: 0, y: 20}
+  CameraPosition: {x: 0, y: 0}
 --- !u!1 &4039545779509147751
 GameObject:
   m_ObjectHideFlags: 0

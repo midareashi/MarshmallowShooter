@@ -4,6 +4,7 @@ public class BackgroundScroller : MonoBehaviour
 {
     public BoxCollider2D col;
     public Rigidbody2D rb;
+    public DirtTile dt;
 
     private float height;
     private float scrollSpeed = -4f;
@@ -13,7 +14,7 @@ public class BackgroundScroller : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
-        height = DirtTile.mapHeight;
+        height = dt.mapHeight;
         col.enabled = false;
 
         rb.velocity = new Vector2(0, scrollSpeed);

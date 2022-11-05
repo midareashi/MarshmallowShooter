@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6318273596866062502}
   - component: {fileID: 5430862766399886978}
   - component: {fileID: 8030034860661810049}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: {x: 0, y: 0}
+  CameraPosition: {x: 0, y: 0}
 --- !u!61 &5430862766399886978
 BoxCollider2D:
   m_ObjectHideFlags: 0

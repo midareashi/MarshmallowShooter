@@ -10,8 +10,8 @@ public class DirtTile : MonoBehaviour
     [SerializeField] public int iceDistribuition;
 
     public List<TileBase[]> tileBases = new List<TileBase[]>();
-    public static int mapWidth = 12;
-    public static int mapHeight = 120;
+    [SerializeField] public int mapWidth = 12;
+    [SerializeField] public int mapHeight = 120;
 
     TileBase[] topLayer;
 

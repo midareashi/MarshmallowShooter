@@ -13,20 +13,6 @@ public class WeaponManager : MonoBehaviour
         BuildWeaponList();
     }
 
-    void Start()
-    {
-        MainManager.Instance.currentWeapon.SetActive(true);
-    }
-
-    void Update()
-    {
-    }
-
-    public void PurchaseWeapon(GameObject purchaseWeapon)
-    {
-
-    }
-
     private void BuildWeaponList()
     {
         totalWeapons = weaponHolder.transform.childCount;

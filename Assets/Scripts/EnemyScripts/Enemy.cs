@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public GameObject[] spawnPoints;
     [SerializeField] public GameObject spawnHolder;
 
+    [SerializeField] public int showInWave;
     private Vector3 pos;
     private Vector3 axis;
     public float spawnTime; // Time since last spawn to offset wave function

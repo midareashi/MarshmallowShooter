@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    public int currentWave;
+    public int currentWave = 1;
 
     public int currentPoints;
     public int currentGold;

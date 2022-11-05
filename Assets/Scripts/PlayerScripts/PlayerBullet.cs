@@ -7,7 +7,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < GameManager.CameraPosition.y * 2)
+        if (transform.position.y > GameManager.CameraPosition.y * 2)
         {
             Destroy(gameObject); // Destroy off camera
         }

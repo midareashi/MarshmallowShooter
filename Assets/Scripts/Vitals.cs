@@ -5,6 +5,7 @@ public class Vitals : MonoBehaviour
 {
     [SerializeField] public int maxHealth;
     public int currentHealth;
+    public WaveSpawner ws;
 
     public void Start()
     {
@@ -19,13 +20,13 @@ public class Vitals : MonoBehaviour
         {
             if (gameObject.tag == "Enemy")
             {
-                MainManager.Instance.currentPoints += gameObject.GetComponent<Enemy>().points;
-                MainManager.Instance.currentGold += gameObject.GetComponent<Enemy>().gold;
+                ws.waveGainedPoints += gameObject.GetComponent<Enemy>().points;
+                ws.waveGainedGold += gameObject.GetComponent<Enemy>().gold;
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Player")
             {
-                WaveSpawner.EndWave("lose");
+                ws.EndWave("lose");
             }
         }
     }

@@ -7,18 +7,17 @@ public class SpawnManager : MonoBehaviour
     int totalSpawnPoints = 1;
     public GameObject[] spawnPoints;
 
-    public static void BuildSpawnList(GameObject enemy)
+    public void BuildSpawnList(GameObject enemy)
     {
-        SpawnManager sm = new SpawnManager();
-        sm.spawnHolder = enemy.GetComponent<Enemy>().spawnHolder.GetComponent<SpawnManager>().gameObject;
+        spawnHolder = enemy.GetComponent<Enemy>().spawnHolder.GetComponent<SpawnManager>().gameObject;
 
-        sm.totalSpawnPoints = sm.spawnHolder.transform.childCount;
-        sm.spawnPoints = new GameObject[sm.totalSpawnPoints];
+        totalSpawnPoints = spawnHolder.transform.childCount;
+        spawnPoints = new GameObject[totalSpawnPoints];
 
-        for (int i = 0; i < sm.totalSpawnPoints; i++)
+        for (int i = 0; i < totalSpawnPoints; i++)
         {
-            sm.spawnPoints[i] = sm.spawnHolder.transform.GetChild(i).gameObject;
+            spawnPoints[i] = spawnHolder.transform.GetChild(i).gameObject;
         }
-        enemy.GetComponent<Enemy>().spawnPoints = sm.spawnPoints;
+        enemy.GetComponent<Enemy>().spawnPoints = spawnPoints;
     }
 }

@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public PlayerController pc;
     public static GameObject[] enemies;
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
+    public int wavePointsMultiplier;
+    public int wavePointsAdder;
+    public GameObject winScreen;
+
+    public int waveGainedGold;
+    public int waveGainedPoints;
 
     public Transform spawnLocation;
 
@@ -19,13 +26,15 @@ public class WaveSpawner : MonoBehaviour
     public int spawningEnemyCount = 0;
     public float lastSpawn = 0.0f;
 
-    public float stageStartPoints;
-
     private bool stageIsActive;
-    
+
     void Start()
     {
-        stageStartPoints = MainManager.Instance.currentPoints;
+        stageIsActive = false;
+        if (MainManager.Instance.currentWave == 0)
+        {
+            MainManager.Instance.currentWave = 1;
+        }
         GenerateWave();
         stageIsActive = true;
     }
@@ -41,11 +50,10 @@ public class WaveSpawner : MonoBehaviour
                 {
                     spawningEnemy = enemiesToSpawn[0]; // Add enemy to Spawn queue
                     enemiesToSpawn.RemoveAt(0); // Remove it from the list
-                    /*
+                    
                     int spawnPos = spawningEnemy.GetComponent<Enemy>().spawnPoints.Count();
                     int randomSpawn = Random.Range(0,spawnPos);
-                    */
-                    spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[1].transform; // Pick a random spawn point
+                    spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn].transform; // Pick a random spawn point
                     spawnTimer = spawnInterval;
                 }
             }
@@ -54,7 +62,7 @@ public class WaveSpawner : MonoBehaviour
                 spawnTimer -= Time.fixedDeltaTime;
             }
 
-            if (enemiesToSpawn.Count <= 0 && spawnedEnemies.Count <= 0) // No enemies to spawn and no enemies spawned
+            if (enemiesToSpawn.Count <= 0 && spawnedEnemies.Count <= 0 && spawningEnemy == null) // No enemies to spawn and no enemies spawned
             {
                 stageIsActive = false;
                 EndWave("win");
@@ -70,7 +78,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void GenerateWave()
     {
-        waveValue = (MainManager.Instance.currentWave * 5) + 5; // How many points to give for each wave
+        waveValue = (MainManager.Instance.currentWave * wavePointsMultiplier) + wavePointsAdder; // How many points to give for each wave
         GenerateEnemies();
     }
 
@@ -81,8 +89,9 @@ public class WaveSpawner : MonoBehaviour
         {
             int randEnemyId = Random.Range(0, enemies.Length);
             int randEnemyCost = enemies[randEnemyId].GetComponent<Enemy>().cost;
+            int randEnemyStartWave = enemies[randEnemyId].GetComponent<Enemy>().showInWave;
 
-            if (waveValue - randEnemyCost >= 0)
+            if (waveValue - randEnemyCost >= 0 && randEnemyStartWave <= MainManager.Instance.currentWave)
             {
                 generatedEnemies.Add(enemies[randEnemyId].GetComponent<Enemy>().gameObject);
                 waveValue -= randEnemyCost;
@@ -117,13 +126,15 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    public static void EndWave(string outcome)
+    public void EndWave(string outcome)
     {
-        var pc = new PlayerController();
         if (outcome == "win")
         {
             MainManager.Instance.currentWave++;
+            MainManager.Instance.currentGold += waveGainedGold;
+            MainManager.Instance.currentPoints += waveGainedPoints;
             pc.FlyOffScreen();
+            winScreen.SetActive(true);
         }
 
         if (outcome == "lose")

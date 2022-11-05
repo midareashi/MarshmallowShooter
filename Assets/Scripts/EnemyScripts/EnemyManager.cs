@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-
         WaveSpawner.enemies = BuildEnemyList();
     }
 
@@ -15,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     {
         int totalEnemies = enemyHolder.transform.childCount;
         GameObject[] allEnemies = new GameObject[totalEnemies];
+        SpawnManager sm = new SpawnManager();
 
         for (int i = 0; i < totalEnemies; i++)
         {
@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
 
         foreach (GameObject enemy in allEnemies)
         {
-            SpawnManager.BuildSpawnList(enemy);
+            sm.BuildSpawnList(enemy);
         }
 
         return allEnemies;

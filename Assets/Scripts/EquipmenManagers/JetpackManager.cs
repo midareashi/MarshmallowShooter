@@ -10,21 +10,6 @@ public class JetpackManager : MonoBehaviour
         BuildJetpackList();
     }
 
-    void Start()
-    {
-        MainManager.Instance.currentJetpack.SetActive(true);
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void PurchaseJetpack(GameObject purchaseJetpack)
-    {
-
-    }
-
     private void BuildJetpackList()
     {
         totalJetpacks = jetpackHolder.transform.childCount;

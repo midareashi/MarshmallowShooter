@@ -10,20 +10,6 @@ public class BulletManager : MonoBehaviour
         BuildBulletList();
     }
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void PurchaseBullet(GameObject purchaseBullet)
-    {
-
-    }
-
     private void BuildBulletList()
     {
         totalBullets = bulletHolder.transform.childCount;

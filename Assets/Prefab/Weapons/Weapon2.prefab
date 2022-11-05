@@ -143,7 +143,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.62, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -161,11 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd03a82a33902f46b49087e8ebda12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5539821943480859521, guid: 7346c23ea15f6624791931c7b21532dd, type: 3}
   firePoints:
   - {fileID: 2758919634251136306}
   - {fileID: 8977309493089674380}
   speed: {x: 0, y: 20}
-  avoid: 7
-  fireForce: 1
+  damage: 0
   rof: 1

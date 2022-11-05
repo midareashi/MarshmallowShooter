@@ -6,10 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TMP_InputField nameInput;
 
-
     public void PlayGame()
     {
-        
         if (nameInput.text != "")
         {
             MainManager.Instance.gameName = nameInput.text;

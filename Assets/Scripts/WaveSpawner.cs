@@ -39,6 +39,11 @@ public class WaveSpawner : MonoBehaviour
         stageIsActive = true;
     }
 
+    public void NextWave()
+    {
+        GenerateWave();
+    }
+
     void FixedUpdate()
     {
         if (stageIsActive)

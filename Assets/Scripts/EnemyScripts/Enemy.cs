@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float frequency; // Cycles per Second 1
-    [SerializeField] public float amplitude; // Horizontal Distance 5
-    [SerializeField] public float cycleSpeed; // ??? 10
+    [SerializeField] public float zigzagRate; // How many zig-zags per second
+    [SerializeField] public float horizontalDistance; // Horizontal Distance 5
+    [SerializeField] public float verticalSpeed; // Vertical Speed
     [SerializeField] public int points; // Points gained when killed
     [SerializeField] public int gold; // Gold gained when killed
     [SerializeField] public int cost; // Cost of wave in spawner
@@ -30,8 +30,8 @@ public class Enemy : MonoBehaviour
 
     void ZigZagMovement()
     {
-        pos += Vector3.down * Time.deltaTime * cycleSpeed;
-        transform.position = pos + axis * MathF.Sin((Time.time - spawnTime) * frequency) * amplitude;
+        pos += Vector3.down * Time.deltaTime * verticalSpeed;
+        transform.position = pos + axis * MathF.Sin((Time.time - spawnTime) * zigzagRate) * horizontalDistance;
     }
 
     void Update()

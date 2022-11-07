@@ -4,13 +4,22 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField nameInput;
+    [SerializeField] public TMP_InputField nameInput;
+    [SerializeField] public bool debug;
+
+    private void Awake()
+    {
+        if (debug)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 
     public void PlayGame()
     {
         if (nameInput.text != "")
         {
-            MainManager.Instance.gameName = nameInput.text;
+            GameManager.gameName = nameInput.text;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

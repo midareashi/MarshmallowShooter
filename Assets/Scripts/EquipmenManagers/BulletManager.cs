@@ -1,25 +1,30 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    int totalBullets = 1;
     public GameObject bulletHolder;
 
     public void Awake()
     {
-        BuildBulletList();
+        if (GameManager.allBullets == null)
+        {
+            BuildBulletList();
+        }
     }
 
     private void BuildBulletList()
     {
-        totalBullets = bulletHolder.transform.childCount;
-        MainManager.Instance.allBullets = new GameObject[totalBullets];
-
-        for (int i = 0; i < totalBullets; i++)
+        List<GameObject> list = new List<GameObject>();
+        foreach (PlayerBullet item in bulletHolder.GetComponentsInChildren<PlayerBullet>(true))
         {
-            MainManager.Instance.allBullets[i] = bulletHolder.transform.GetChild(i).gameObject;
-            MainManager.Instance.allBullets[i].SetActive(false);
+            list.Add(item.go);
         }
-        MainManager.Instance.currentBullet = Instantiate(MainManager.Instance.allBullets[0]);
+        GameManager.allBullets = list;
+        GameManager.ownedBullets = list;
+        GameManager.currentBullet = list[0];
+
+        Instantiate(GameManager.allBullets[0]);
     }
 }

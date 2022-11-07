@@ -9,6 +9,7 @@ TagManager:
   - Jetpack
   - Points
   - Gold
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - EnemyBullet
   - Player
   - Enemy
-  - 
+  - Boss
   - 
   - 
   - 

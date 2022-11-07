@@ -669,46 +669,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1317215433}
-  - component: {fileID: 1317215432}
+  - component: {fileID: 1317215434}
   m_Layer: 0
-  m_Name: MainManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1317215432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317215431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87778c72924c9844b8467a4bdda1ccb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWave: 0
-  currentPoints: 0
-  currentGold: 0
-  currentHealth: 0
-  stagePoints: 0
-  stageGold: 0
-  currentWeapon: {fileID: 0}
-  currentJetpack: {fileID: 0}
-  currentBullet: {fileID: 0}
-  ownedWeapons:
-  - {fileID: 0}
-  ownedJetpacks:
-  - {fileID: 0}
-  ownedBullets:
-  - {fileID: 0}
-  allWeapons: []
-  allJetpacks: []
-  allBullets: []
-  currentLives: 0
-  gameName: 
 --- !u!4 &1317215433
 Transform:
   m_ObjectHideFlags: 0
@@ -722,8 +690,20 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317215434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317215431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff72711ba8467d44b7e7ccb55d5e424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610907823
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +845,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012237801
 GameObject:
@@ -1098,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInput: {fileID: 8437249539781118996}
+  debug: 0
 --- !u!222 &789304564344206953
 CanvasRenderer:
   m_ObjectHideFlags: 0

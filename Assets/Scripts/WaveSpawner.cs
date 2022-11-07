@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public PlayerController pc;
+    public PlayerController santa;
+    [SerializeField] public MapScreenManager msm;
+
     public static GameObject[] enemies;
+    public static GameObject[] bosses;
+    private GameObject enemy;
+    private GameObject boss;
+    private float bossZR;
+    public GameObject bossManager;
+
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
     public int wavePointsMultiplier;
     public int wavePointsAdder;
-    public GameObject winScreen;
+    [SerializeField] public int bossWaveInterval;
 
     public int waveGainedGold;
     public int waveGainedPoints;
 
-    public Transform spawnLocation;
+    private Transform spawnLocation;
 
     public float spawnInterval; // Time Between Spawns
     private float spawnTimer;
@@ -27,25 +35,26 @@ public class WaveSpawner : MonoBehaviour
     public List<GameObject> spawnedEnemies;
 
     public GameObject spawningEnemy;
-    public int spawningEnemyCount = 0;
-    public float lastSpawn = 0.0f;
+    private int spawningEnemyCount;
+    private float lastSpawn;
 
     private bool enemiesAreLoaded;
     private bool stageIsReady;
+    private bool bossIsReady;
+    private bool moveBossToPosition;
 
     void Start()
     {
-        stageStartTime = Time.time;
-        if (MainManager.Instance.currentWave == 0)
-        {
-            MainManager.Instance.currentWave = 1;
-        }
-        GenerateWave();
+        NextWave();
     }
 
     public void NextWave()
     {
-        pc.FlyToStart();
+        if (GameManager.currentWave == 0)
+        {
+            GameManager.currentWave = 1;
+        }
+        santa.FlyToStart();
         stageStartTime = Time.time;
         enemiesAreLoaded = false;
         GenerateWave();
@@ -87,11 +96,35 @@ public class WaveSpawner : MonoBehaviour
                 SpawnEnemy();
             }
         }
+        if (bossIsReady)
+        {
+            PlayerWeapon.canShoot = false;
+            int bossCount = bosses.Length - 1;
+            int bossSpawn = Random.Range(0,bossCount);
+            boss = Instantiate(bosses[bossSpawn], bosses[bossSpawn].GetComponent<Boss>().spawnLocation.transform.position, Quaternion.identity);
+            boss.SetActive(true);
+            bossZR = boss.GetComponent<Boss>().zigzagRate;
+            boss.GetComponent<Boss>().zigzagRate = 0;
+            moveBossToPosition = true;
+
+            bossIsReady = false;
+        }
+
+        if (moveBossToPosition)
+        {
+            boss.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20, 0), 0.2f);
+            if (boss.transform.position == Vector3.MoveTowards(transform.position, new Vector3(0, 20, 0), 0.2f))
+            {
+                moveBossToPosition = false;
+                PlayerWeapon.canShoot = true;
+                boss.GetComponent<Boss>().zigzagRate = bossZR;
+            }
+        }
     }
 
     public void GenerateWave()
     {
-        waveValue = (MainManager.Instance.currentWave * wavePointsMultiplier) + wavePointsAdder; // How many points to give for each wave
+        waveValue = (GameManager.currentWave * wavePointsMultiplier) + wavePointsAdder; // How many points to give for each wave
         GenerateEnemies();
     }
 
@@ -104,7 +137,7 @@ public class WaveSpawner : MonoBehaviour
             int randEnemyCost = enemies[randEnemyId].GetComponent<Enemy>().cost;
             int randEnemyStartWave = enemies[randEnemyId].GetComponent<Enemy>().showInWave;
 
-            if (waveValue - randEnemyCost >= 0 && randEnemyStartWave <= MainManager.Instance.currentWave)
+            if (waveValue - randEnemyCost >= 0 && randEnemyStartWave <= GameManager.currentWave)
             {
                 generatedEnemies.Add(enemies[randEnemyId].GetComponent<Enemy>().gameObject);
                 waveValue -= randEnemyCost;
@@ -124,7 +157,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (spawningEnemyCount < spawningEnemy.GetComponent<Enemy>().spawnGroup)
             {
-                GameObject enemy = Instantiate(spawningEnemy, spawnLocation.position, Quaternion.identity);
+                enemy = Instantiate(spawningEnemy, spawnLocation.position, Quaternion.identity);
                 enemy.GetComponent<Enemy>().spawnTime = Time.time;
                 enemy.SetActive(true);
                 spawnedEnemies.Add(enemy);
@@ -144,17 +177,30 @@ public class WaveSpawner : MonoBehaviour
     {
         if (outcome == "win")
         {
-            MainManager.Instance.currentWave++;
-            MainManager.Instance.currentGold += waveGainedGold;
-            MainManager.Instance.currentPoints += waveGainedPoints;
-            pc.FlyOffScreen();
-            winScreen.SetActive(true);
+            if (GameManager.currentWave % bossWaveInterval == 0)
+            {
+                SpawnBoss();
+            }
+            else
+            {
+                GameManager.currentWave++;
+                GameManager.currentGold += waveGainedGold;
+                GameManager.currentPoints += waveGainedPoints;
+            }
+            msm.ShowWinScreen();
         }
-
+        if (outcome == "boss")
+        {
+        }
         if (outcome == "lose")
         {
 
         }
+    }
+
+    private void SpawnBoss()
+    {
+        bossIsReady = Time.time >= stageStartTime + stageStartWaitTime;
     }
 
     private void WaitToStart()

@@ -3,42 +3,28 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    public int currentWave = 1;
+    public static int currentWave { get; set; }
 
-    public int currentPoints;
-    public int currentGold;
-    public int currentHealth;
+    public static int currentPoints { get; set; }
+    public static int currentGold { get; set; }
+    public static int currentHealth { get; set; }
 
-    public float stagePoints;
-    public int stageGold;
+    public static float stagePoints { get; set; }
+    public static int stageGold { get; set; }
 
-    public GameObject currentWeapon;
-    public GameObject currentJetpack;
-    public GameObject currentBullet;
+    public static List<GameObject> allWeapons { get; set; }
+    public static List<GameObject> allJetpacks { get; set; }
+    public static List<GameObject> allBullets { get; set; }
 
-    public GameObject[] ownedWeapons;
-    public GameObject[] ownedJetpacks;
-    public GameObject[] ownedBullets;
+    public static List<GameObject> ownedWeapons { get; set; }
+    public static List<GameObject> ownedJetpacks { get; set; }
+    public static List<GameObject> ownedBullets { get; set; }
 
-    public GameObject[] allWeapons;
-    public GameObject[] allJetpacks;
-    public GameObject[] allBullets;
+    public static GameObject currentWeapon { get; set; }
+    public static GameObject currentJetpack { get; set; }
+    public static GameObject currentBullet { get; set; }
 
-    public int currentLives;
+    public static int playerLives { get; set; }
     
-    public string gameName;
-
-    public static MainManager Instance;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject, 2f);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+    public static string playerName { get; set; }
 }

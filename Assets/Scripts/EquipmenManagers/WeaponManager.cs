@@ -1,30 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    int totalWeapons = 1;
-
     public GameObject weaponHolder;
 
     public void Awake()
     {
-        BuildWeaponList();
+        if (GameManager.allWeapons == null)
+        {
+            BuildWeaponList();
+        }
     }
 
     private void BuildWeaponList()
     {
-        totalWeapons = weaponHolder.transform.childCount;
-        MainManager.Instance.allWeapons = new GameObject[totalWeapons];
-
-        for (int i = 0; i < totalWeapons; i++)
+        List<GameObject> list = new List<GameObject>();
+        foreach (PlayerWeaponItem item in weaponHolder.GetComponentsInChildren<PlayerWeaponItem>(true))
         {
-            MainManager.Instance.allWeapons[i] = weaponHolder.transform.GetChild(i).gameObject;
-            MainManager.Instance.allWeapons[i].SetActive(false);
+            list.Add(item.weaponItem);
         }
-
-        MainManager.Instance.allWeapons[0].SetActive(true);
-        MainManager.Instance.currentWeapon = MainManager.Instance.allWeapons[0];
+        GameManager.allWeapons = list;
+        GameManager.ownedWeapons = list;
+        GameManager.currentWeapon = list[0];
+        GameManager.allWeapons[0].SetActive(true);
     }
 }

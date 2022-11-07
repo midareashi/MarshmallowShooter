@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    public Transform[] firePoints;
+    public GameObject firePoint;
     public Vector2 speed;
-
-    public int damage;
+    public static bool canShoot;
 
     public float rof;
     private float lastShot = 0.0f;
+
+    private void Awake()
+    {
+        canShoot = true;
+    }
 
     private void Update()
     {
@@ -17,15 +21,12 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot)
+        if (Time.time > rof + lastShot && canShoot)
         {
-            foreach (Transform t in MainManager.Instance.currentWeapon.GetComponent<PlayerWeapon>().firePoints)
-            {
-                GameObject bullet = Instantiate(MainManager.Instance.currentBullet, t.position, t.rotation);
-                bullet.SetActive(true);
-                bullet.GetComponent<PlayerBullet>().GetComponent<Rigidbody2D>().velocity = MainManager.Instance.currentBullet.GetComponent<PlayerBullet>().speed;
-                bullet.GetComponent<PlayerBullet>().damage = MainManager.Instance.currentBullet.GetComponent<PlayerBullet>().damage;
-            }
+            GameObject bullet = Instantiate(GameManager.currentBullet, firePoint.transform.position, firePoint.transform.rotation);
+            bullet.SetActive(true);
+            bullet.GetComponent<PlayerBullet>().GetComponent<Rigidbody2D>().velocity = GameManager.currentBullet.GetComponent<PlayerBullet>().speed;
+            bullet.GetComponent<PlayerBullet>().damage = GameManager.currentBullet.GetComponent<PlayerBullet>().damage;
             lastShot = Time.time;
         }
     }

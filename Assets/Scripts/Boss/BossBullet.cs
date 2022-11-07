@@ -1,20 +1,19 @@
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class BossBullet : MonoBehaviour
 {
     public int damage;
     public Vector2 speed;
     public Vector2 CameraPosition;
-    public GameObject go;
 
-    public void Start()
+    private void Start()
     {
         CameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     private void Update()
     {
-        if (transform.position.y > CameraPosition.y)
+        if (transform.position.y < (-CameraPosition.y / 2) * 2)
         {
             Destroy(gameObject); // Destroy off camera
         }

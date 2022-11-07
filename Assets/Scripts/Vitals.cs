@@ -24,6 +24,13 @@ public class Vitals : MonoBehaviour
                 ws.waveGainedGold += gameObject.GetComponent<Enemy>().gold;
                 Destroy(gameObject);
             }
+            if (gameObject.tag == "Boss")
+            {
+                ws.waveGainedPoints += gameObject.GetComponent<Boss>().points;
+                ws.waveGainedGold += gameObject.GetComponent<Boss>().gold;
+                Destroy(gameObject);
+                ws.EndWave("boss");
+            }
             if (gameObject.tag == "Player")
             {
                 ws.EndWave("lose");

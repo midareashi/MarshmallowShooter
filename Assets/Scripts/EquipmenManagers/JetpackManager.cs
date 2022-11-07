@@ -1,27 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class JetpackManager : MonoBehaviour
 {
     public GameObject jetpackHolder;
-    int totalJetpacks = 1;
 
     public void Awake()
     {
-        BuildJetpackList();
+        if (GameManager.allJetpacks == null)
+        {
+            BuildJetpackList();
+        }
     }
 
     private void BuildJetpackList()
     {
-        totalJetpacks = jetpackHolder.transform.childCount;
-        MainManager.Instance.allJetpacks = new GameObject[totalJetpacks];
-
-        for (int i = 0; i < totalJetpacks; i++)
+        List<GameObject> list = new List<GameObject>();
+        foreach (Jetpack item in jetpackHolder.GetComponentsInChildren<Jetpack>(true))
         {
-            MainManager.Instance.allJetpacks[i] = jetpackHolder.transform.GetChild(i).gameObject;
-            MainManager.Instance.allJetpacks[i].SetActive(false);
+            list.Add(item.go);
         }
-
-        MainManager.Instance.allJetpacks[0].SetActive(true);
-        MainManager.Instance.currentJetpack = MainManager.Instance.allJetpacks[0];
+        GameManager.allJetpacks = list;
+        GameManager.ownedJetpacks = list;
+        GameManager.currentJetpack = list[0];
+        GameManager.allJetpacks[0].SetActive(true);
     }
 }

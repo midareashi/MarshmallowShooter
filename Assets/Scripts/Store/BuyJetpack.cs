@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
-    [SerializeField] public GameObject jetpackHolder;
+    public GameObject jetpackHolder;
+
     private void Awake()
     {
         var a = GameManager.allJetpacks;

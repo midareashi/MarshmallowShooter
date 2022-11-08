@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float zigzagRate; // How many zig-zags per second
-    [SerializeField] public float horizontalDistance; // Horizontal Distance 5
-    [SerializeField] public float verticalSpeed; // Vertical Speed
-    [SerializeField] public int points; // Points gained when killed
-    [SerializeField] public int gold; // Gold gained when killed
-    [SerializeField] public int cost; // Cost of wave in spawner
-    [SerializeField] public GameObject[] spawnPoints;
-    [SerializeField] public GameObject spawnHolder;
+    public float zigzagRate; // How many zig-zags per second
+    public float horizontalDistance; // Horizontal Distance 5
+    public float verticalSpeed; // Vertical Speed
+    public int points; // Points gained when killed
+    public int gold; // Gold gained when killed
+    public int cost; // Cost of wave in spawner
+    public GameObject[] spawnPoints;
+    public GameObject spawnHolder;
 
-    [SerializeField] public int showInWave;
+    public int showInWave;
     private Vector3 pos;
     private Vector3 axis;
     public float spawnTime; // Time since last spawn to offset wave function
 
     private Vector2 screenBounds;
-    [SerializeField] public int spawnGroup; // How many enemies spawn per wave
-    [SerializeField] public float spawnSpeed; // Delay between enemies spawning 0.5f
+    public int spawnGroup; // How many enemies spawn per wave
+    public float spawnSpeed; // Delay between enemies spawning 0.5f
 
     void Start()
     {

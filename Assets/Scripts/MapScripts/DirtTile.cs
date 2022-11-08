@@ -5,17 +5,17 @@ using System.Collections.Generic;
 public class DirtTile : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
-    [SerializeField] public TileBase[] ice;
+    public TileBase[] ice;
 
-    [SerializeField] public int iceDistribuition;
+    public int iceDistribuition;
 
     public List<TileBase[]> tileBases = new List<TileBase[]>();
-    [SerializeField] public int mapWidth = 12;
-    [SerializeField] public int mapHeight = 120;
+    public int mapWidth = 12;
+    public int mapHeight = 120;
 
     TileBase[] topLayer;
 
-    float magnification = 4.0f;
+    public float magnification;
     int offsetX;
     int offsetY;
 

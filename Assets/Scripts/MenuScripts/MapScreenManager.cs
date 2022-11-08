@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class MapScreenManager : MonoBehaviour
 {
-    [SerializeField] public GameObject managerScreen;
-    [SerializeField] public GameObject gameScreen;
-    [SerializeField] public GameObject winScreen;
-    [SerializeField] public GameObject storeScreen;
-    [SerializeField] public WaveSpawner waveSpawner;
-
-    private void Awake()
-    {
-    }
+    public GameObject gameScreen;
+    public GameObject winScreen;
+    public GameObject storeScreen;
+    public GameObject waveSpawner;
 
     public void ShowWinScreen()
     {
@@ -32,6 +27,6 @@ public class MapScreenManager : MonoBehaviour
         winScreen.SetActive(false);
         storeScreen.SetActive(false);
 
-        waveSpawner.NextWave();
+        waveSpawner.GetComponent<WaveSpawner>().NextWave();
     }
 }

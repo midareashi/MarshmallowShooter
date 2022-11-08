@@ -6,6 +6,8 @@ public class BackgroundScroller : MonoBehaviour
     public Rigidbody2D rb;
     public DirtTile dt;
 
+    public GameObject waveSpawner;
+
     private float height;
     private float scrollSpeed = -4f;
 
@@ -22,12 +24,9 @@ public class BackgroundScroller : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -height - (GameManager.CameraPosition.y - 1))
+        if (transform.position.y < -height - (GameManager.CameraPosition.y - 1) || waveSpawner.GetComponent<WaveSpawner>().bossIsReady)
         {
             rb.velocity = new Vector2(0, 0);
-        }
-        else
-        {
         }
     }
 }

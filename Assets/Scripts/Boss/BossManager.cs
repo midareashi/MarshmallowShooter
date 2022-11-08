@@ -5,10 +5,11 @@ public class BossManager : MonoBehaviour
     public GameObject bossHolder;
     public GameObject[] allBosses;
     [SerializeField] int bossSpawnInteger;
+    public GameObject waveSpawner;
 
     private void Awake()
     {
-        WaveSpawner.bosses = BuildBossList();
+        waveSpawner.GetComponent<WaveSpawner>().bosses = BuildBossList();
     }
 
     public GameObject[] BuildBossList()

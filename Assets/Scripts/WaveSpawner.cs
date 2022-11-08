@@ -8,8 +8,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] public MapScreenManager msm;
 
     public static GameObject[] enemies;
-    public static GameObject[] bosses;
     private GameObject enemy;
+    public GameObject[] bosses;
     private GameObject boss;
     private float bossZR;
     public GameObject bossManager;
@@ -40,8 +40,8 @@ public class WaveSpawner : MonoBehaviour
 
     private bool enemiesAreLoaded;
     private bool stageIsReady;
-    private bool bossIsReady;
-    private bool moveBossToPosition;
+    public bool bossIsReady;
+    private bool moveBossToStart;
 
     void Start()
     {
@@ -96,26 +96,14 @@ public class WaveSpawner : MonoBehaviour
                 SpawnEnemy();
             }
         }
-        if (bossIsReady)
-        {
-            PlayerWeapon.canShoot = false;
-            int bossCount = bosses.Length - 1;
-            int bossSpawn = Random.Range(0,bossCount);
-            boss = Instantiate(bosses[bossSpawn], bosses[bossSpawn].GetComponent<Boss>().spawnLocation.transform.position, Quaternion.identity);
-            boss.SetActive(true);
-            bossZR = boss.GetComponent<Boss>().zigzagRate;
-            boss.GetComponent<Boss>().zigzagRate = 0;
-            moveBossToPosition = true;
 
-            bossIsReady = false;
-        }
-
-        if (moveBossToPosition)
+        if (moveBossToStart)
         {
-            boss.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 20, 0), 0.2f);
-            if (boss.transform.position == Vector3.MoveTowards(transform.position, new Vector3(0, 20, 0), 0.2f))
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.GetComponent<Boss>().moveToLocation.transform.position, 5f * Time.fixedDeltaTime);
+            if (boss.transform.position == boss.GetComponent<Boss>().moveToLocation.transform.position)
             {
-                moveBossToPosition = false;
+                moveBossToStart = false;
+                Boss.beginFight = true;
                 PlayerWeapon.canShoot = true;
                 boss.GetComponent<Boss>().zigzagRate = bossZR;
             }
@@ -173,6 +161,22 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    private void SpawnBoss()
+    {
+        PlayerWeapon.canShoot = false;
+        int bossCount = bosses.Length - 1;
+        int bossSpawn = Random.Range(0, bossCount);
+
+        var spawnBoss = bosses[bossSpawn];
+        var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
+        var spawnBossLocation = spawnBoss.GetComponent<Boss>().spawnLocation.transform;
+        boss = Instantiate(spawnBoss, loc, Quaternion.identity);
+        boss.SetActive(true);
+        bossZR = boss.GetComponent<Boss>().zigzagRate;
+        boss.GetComponent<Boss>().zigzagRate = 0; 
+        moveBossToStart = true;
+    }
+
     public void EndWave(string outcome)
     {
         if (outcome == "win")
@@ -186,8 +190,8 @@ public class WaveSpawner : MonoBehaviour
                 GameManager.currentWave++;
                 GameManager.currentGold += waveGainedGold;
                 GameManager.currentPoints += waveGainedPoints;
+                msm.ShowWinScreen();
             }
-            msm.ShowWinScreen();
         }
         if (outcome == "boss")
         {
@@ -196,11 +200,6 @@ public class WaveSpawner : MonoBehaviour
         {
 
         }
-    }
-
-    private void SpawnBoss()
-    {
-        bossIsReady = Time.time >= stageStartTime + stageStartWaitTime;
     }
 
     private void WaitToStart()

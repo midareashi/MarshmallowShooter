@@ -6,6 +6,7 @@ public class MapScreenManager : MonoBehaviour
     public GameObject winScreen;
     public GameObject storeScreen;
     public GameObject waveSpawner;
+    public GameObject santa;
 
     public void ShowWinScreen()
     {

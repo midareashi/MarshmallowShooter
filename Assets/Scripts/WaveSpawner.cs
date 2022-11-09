@@ -190,23 +190,30 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                congrats.text = String.Format(@"Congratulations, you have completed stage {0}. You can continute to stage {1} if you are ready, or you can visit the store to get stronger!", (GameManager.currentWave).ToString(), (GameManager.currentWave + 1).ToString());
-
-                GameManager.currentWave++;
-                GameManager.currentGold += waveGainedGold;
-                GameManager.currentPoints += waveGainedPoints;
-
-
-                mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
+                WinScreen();
             }
         }
+
         if (outcome == "boss")
         {
+            WinScreen();
         }
+
         if (outcome == "lose")
         {
 
         }
+    }
+
+    private void WinScreen()
+    {
+        congrats.text = String.Format(@"Congratulations, you have completed stage {0}. You can continute to stage {1} if you are ready, or you can visit the store to get stronger!", (GameManager.currentWave).ToString(), (GameManager.currentWave + 1).ToString());
+
+        GameManager.currentWave++;
+        GameManager.currentGold += waveGainedGold;
+        GameManager.currentPoints += waveGainedPoints;
+
+        mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
     }
 
     private void WaitToStart()

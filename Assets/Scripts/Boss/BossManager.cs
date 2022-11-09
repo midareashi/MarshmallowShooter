@@ -4,7 +4,7 @@ public class BossManager : MonoBehaviour
 {
     public GameObject bossHolder;
     public GameObject[] allBosses;
-    [SerializeField] int bossSpawnInteger;
+    public int bossSpawnInteger;
     public GameObject waveSpawner;
 
     private void Awake()

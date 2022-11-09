@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] public GameObject Santa;
+    public GameObject Santa;
     private bool moveSantaToStart = false;
     private bool moveSantaOffScreen = false;
     

@@ -1,11 +1,14 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
     public PlayerController santa;
-    [SerializeField] public MapScreenManager msm;
+    public GameObject mapScreenManager;
+    [SerializeField] private TMP_Text congrats;
 
     public static GameObject[] enemies;
     private GameObject enemy;
@@ -18,7 +21,7 @@ public class WaveSpawner : MonoBehaviour
     public List<GameObject> enemiesToSpawn;
     public int wavePointsMultiplier;
     public int wavePointsAdder;
-    [SerializeField] public int bossWaveInterval;
+    public int bossWaveInterval;
 
     public int waveGainedGold;
     public int waveGainedPoints;
@@ -74,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
                     enemiesToSpawn.RemoveAt(0); // Remove it from the list
                     
                     int spawnPos = spawningEnemy.GetComponent<Enemy>().spawnPoints.Count();
-                    int randomSpawn = Random.Range(0,spawnPos);
+                    int randomSpawn = UnityEngine.Random.Range(0,spawnPos);
                     spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn].transform; // Pick a random spawn point
                     spawnTimer = spawnInterval;
                 }
@@ -121,7 +124,7 @@ public class WaveSpawner : MonoBehaviour
         List<GameObject> generatedEnemies = new List<GameObject>();
         while (waveValue > 0 || generatedEnemies.Count < 50)
         {
-            int randEnemyId = Random.Range(0, enemies.Length);
+            int randEnemyId = UnityEngine.Random.Range(0, enemies.Length);
             int randEnemyCost = enemies[randEnemyId].GetComponent<Enemy>().cost;
             int randEnemyStartWave = enemies[randEnemyId].GetComponent<Enemy>().showInWave;
 
@@ -165,7 +168,7 @@ public class WaveSpawner : MonoBehaviour
     {
         PlayerWeapon.canShoot = false;
         int bossCount = bosses.Length - 1;
-        int bossSpawn = Random.Range(0, bossCount);
+        int bossSpawn = UnityEngine.Random.Range(0, bossCount);
 
         var spawnBoss = bosses[bossSpawn];
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
@@ -187,10 +190,14 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
+                congrats.text = String.Format(@"Congratulations, you have completed stage {0}. You can continute to stage {1} if you are ready, or you can visit the store to get stronger!", (GameManager.currentWave).ToString(), (GameManager.currentWave + 1).ToString());
+
                 GameManager.currentWave++;
                 GameManager.currentGold += waveGainedGold;
                 GameManager.currentPoints += waveGainedPoints;
-                msm.ShowWinScreen();
+
+
+                mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
             }
         }
         if (outcome == "boss")

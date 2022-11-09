@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Vitals : MonoBehaviour
 {
-    [SerializeField] public int maxHealth;
+    public int maxHealth;
     public int currentHealth;
-    public WaveSpawner ws;
+    public GameObject waveSpawner;
 
     public void Start()
     {
@@ -20,20 +20,20 @@ public class Vitals : MonoBehaviour
         {
             if (gameObject.tag == "Enemy")
             {
-                ws.waveGainedPoints += gameObject.GetComponent<Enemy>().points;
-                ws.waveGainedGold += gameObject.GetComponent<Enemy>().gold;
+                waveSpawner.GetComponent<WaveSpawner>().waveGainedPoints += gameObject.GetComponent<Enemy>().points;
+                waveSpawner.GetComponent<WaveSpawner>().waveGainedGold += gameObject.GetComponent<Enemy>().gold;
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Boss")
             {
-                ws.waveGainedPoints += gameObject.GetComponent<Boss>().points;
-                ws.waveGainedGold += gameObject.GetComponent<Boss>().gold;
+                waveSpawner.GetComponent<WaveSpawner>().waveGainedPoints += gameObject.GetComponent<Boss>().points;
+                waveSpawner.GetComponent<WaveSpawner>().waveGainedGold += gameObject.GetComponent<Boss>().gold;
                 Destroy(gameObject);
-                ws.EndWave("boss");
+                waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
             }
             if (gameObject.tag == "Player")
             {
-                ws.EndWave("lose");
+                waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
             }
         }
     }

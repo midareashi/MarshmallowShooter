@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public GameObject weaponHolder;
+    public GameObject weaponsHolder;
 
     public void Awake()
     {
@@ -16,9 +17,9 @@ public class WeaponManager : MonoBehaviour
     private void BuildWeaponList()
     {
         List<GameObject> list = new List<GameObject>();
-        foreach (PlayerWeaponItem item in weaponHolder.GetComponentsInChildren<PlayerWeaponItem>(true))
+        foreach (PlayerWeapon item in weaponsHolder.GetComponentsInChildren<PlayerWeapon>(true))
         {
-            list.Add(item.weaponItem);
+            list.Add(item.playerWpn);
         }
         GameManager.allWeapons = list;
         GameManager.ownedWeapons = list;

@@ -322,11 +322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 46909734}
-  enemyBullet: {fileID: 1433777346597258946, guid: 107d9e85ceaa92e41b3765218ffef03e, type: 3}
+  enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -20}
   damage: 2
-  delay: 0
-  rof: 1
+  rof: 0.5
 --- !u!1 &77392321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,9 +1320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd03a82a33902f46b49087e8ebda12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 632138508606257429}
-  speed: {x: 0, y: 20}
-  rof: 0.2
+  playerWpn: {fileID: 3444694748110544014}
+  baseSpeed: {x: 0, y: 20}
+  baseDamage: 1
+  ROF: 0.2
 --- !u!1 &541297762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,6 +2025,7 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!212 &837487265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2647,6 +2648,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!212 &1047397243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2778,7 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdc289e6881f0b41948fbe34c4e4bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponHolder: {fileID: 1073537136}
+  weaponsHolder: {fileID: 1073537136}
 --- !u!1 &1104432540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,7 +3280,6 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: -2, y: -20}
   damage: 2
-  delay: 0
   rof: 1
 --- !u!1 &1216495102
 GameObject:
@@ -3375,11 +3376,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1234082996}
-  enemyBullet: {fileID: 1433777346597258946, guid: fb27bdc600440f94396994262e4c8e51, type: 3}
+  enemyBullet: {fileID: 6336173207458135917, guid: 76d693c76399c3b4db3e297f398f512d, type: 3}
   speed: {x: 0, y: -15}
-  damage: 2
-  delay: 0
-  rof: 2
+  damage: 4
+  rof: 1
 --- !u!1 &1282759122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,7 +3416,7 @@ MonoBehaviour:
   bossManager: {fileID: 1216495102}
   enemiesToSpawn: []
   wavePointsMultiplier: 5
-  wavePointsAdder: 25
+  wavePointsAdder: 15
   bossWaveInterval: 5
   waveGainedGold: 20
   waveGainedPoints: 20
@@ -3453,9 +3453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd03a82a33902f46b49087e8ebda12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 1663539544729231098}
-  speed: {x: 0, y: 20}
-  rof: 0.2
+  playerWpn: {fileID: 3444694748110544014}
+  baseSpeed: {x: 0, y: 20}
+  baseDamage: 1
+  ROF: 0.2
 --- !u!1 &1302150963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,12 +3696,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonusItem: {fileID: 1936077852}
   bonusSpawnPoints: {fileID: 968082224}
-  bonusSpawnRate: 5
+  bonusSpawnRate: 15
   lastBonusSpawn: 0
   bonusSpeed: {x: 0, y: -20}
-  healthBonus: 10
+  healthBonus: 0
   speedBonus: 10
-  damageBonus: 2
+  damageBonus: 0
   rofBonus: 0.2
 --- !u!1 &1402778249
 GameObject:
@@ -3860,11 +3861,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1445318375}
-  enemyBullet: {fileID: 1433777346597258946, guid: 107d9e85ceaa92e41b3765218ffef03e, type: 3}
+  enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -20}
   damage: 2
-  delay: 0
-  rof: 1
+  rof: 0.5
 --- !u!1 &1470116719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,7 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3944c83b1c5fbb942ba331bca81c25d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6788270340717838669}
+  santa: {fileID: 6788270340717838656}
   speed: 25
   circle: {fileID: 770197008}
   outerCircle: {fileID: 1701298153}
@@ -4603,7 +4603,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: OuterCircle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8542024542711051755, guid: d4ca9e11c36275842a5caef5666055ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d4ca9e11c36275842a5caef5666055ed, type: 3}
 --- !u!4 &1701298153 stripped
 Transform:
@@ -4622,9 +4623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd03a82a33902f46b49087e8ebda12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 632138507710318884}
-  speed: {x: 0, y: 20}
-  rof: 0.2
+  playerWpn: {fileID: 3444694746729098431}
+  baseSpeed: {x: 0, y: 20}
+  baseDamage: 1
+  ROF: 0.2
 --- !u!1 &1742126771
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,7 +4675,6 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: 76d693c76399c3b4db3e297f398f512d, type: 3}
   speed: {x: 0, y: -20}
   damage: 2
-  delay: 0
   rof: 4
 --- !u!1 &1747481396
 GameObject:
@@ -4814,6 +4815,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!61 &1794362701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5074,7 +5076,6 @@ MonoBehaviour:
   verticalSpeed: 0
   points: 100
   gold: 100
-  cost: 0
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
 --- !u!114 &1881077265
@@ -5092,6 +5093,7 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!61 &1881077266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5396,8 +5398,8 @@ MonoBehaviour:
   healthBonus: 0
   speedBonus: 0
   damageBonus: 0
-  rofBonus: 0
   santa: {fileID: 6788270340717838656}
+  cameraPosition: {x: 0, y: 0}
 --- !u!50 &1936077858
 Rigidbody2D:
   serializedVersion: 4
@@ -5724,6 +5726,7 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!114 &2059701037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5741,7 +5744,6 @@ MonoBehaviour:
   verticalSpeed: 0
   points: 100
   gold: 100
-  cost: 0
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
 --- !u!1 &2095307453
@@ -5792,7 +5794,6 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 2, y: -20}
   damage: 2
-  delay: 0
   rof: 1
 --- !u!1 &2109727066
 GameObject:
@@ -5840,6 +5841,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!114 &265378749550673785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6163,9 +6165,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632138508606257429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.166, y: 0.336, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.166, y: 0.3359997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4217581127795864335}
@@ -6285,7 +6287,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4217581128557560638}
   - component: {fileID: 3340727927962139555}
-  - component: {fileID: 4217581128557560639}
   m_Layer: 8
   m_Name: Weapon1
   m_TagString: Untagged
@@ -6303,7 +6304,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4217581127795864335}
   - component: {fileID: 3340727928203873170}
-  - component: {fileID: 4217581127795864336}
   m_Layer: 8
   m_Name: Weapon2
   m_TagString: Untagged
@@ -6345,19 +6345,6 @@ Transform:
   m_Father: {fileID: 1073537137}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4217581127795864336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3444694748110544014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edd6acffd5b7d04eabe2c0f44eea7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponItem: {fileID: 3444694748110544014}
 --- !u!4 &4217581128557560638
 Transform:
   m_ObjectHideFlags: 0
@@ -6374,19 +6361,6 @@ Transform:
   m_Father: {fileID: 1073537137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4217581128557560639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3444694746729098431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edd6acffd5b7d04eabe2c0f44eea7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponItem: {fileID: 3444694746729098431}
 --- !u!4 &4800540112028919780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3338333392454389764, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
@@ -6456,9 +6430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  santa: {fileID: 0}
 --- !u!4 &6328805316179574073
 Transform:
   m_ObjectHideFlags: 0
@@ -6582,6 +6557,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Santa: {fileID: 6788270340717838656}
+  speedBonusTemp: 0
+  damageBonusTemp: 0
+  rofBonusTemp: 0
+  bonusTimeDuration: 10
+  bonusStartTime: 0
 --- !u!212 &6788270340717838668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6884,13 +6864,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1918688362}
     m_Modifications:
+    - target: {fileID: 896112642051890780, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 896112642051890780, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.625
+      objectReference: {fileID: 0}
     - target: {fileID: 1395686024111485494, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -649180188, guid: 4b8ac83a2f29a0047bd364242a87704b, type: 3}
+      objectReference: {fileID: 21300000, guid: c64ea10b93671bf4abc7745bc9de1864, type: 3}
     - target: {fileID: 2318144279052096184, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
       propertyPath: m_Name
-      value: Marshmallow
+      value: SantaSnowball
       objectReference: {fileID: 0}
     - target: {fileID: 2318144279052096184, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
       propertyPath: m_Layer
@@ -6952,6 +6940,18 @@ PrefabInstance:
       propertyPath: go
       value: 
       objectReference: {fileID: 7839312590842820577}
+    - target: {fileID: 6906645576814894183, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 7839312590842820577}
+    - target: {fileID: 6906645576814894183, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906645576814894183, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: speed.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
 --- !u!1 &7839312590842820577 stripped
@@ -7032,9 +7032,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663539544729231098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.163, y: 0.336, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.16300002, y: 0.3359997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4217581127795864335}

@@ -6,6 +6,7 @@ public class Vitals : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public GameObject waveSpawner;
+    public GameObject santa;
 
     public void Start()
     {
@@ -20,14 +21,14 @@ public class Vitals : MonoBehaviour
         {
             if (gameObject.tag == "Enemy")
             {
-                waveSpawner.GetComponent<WaveSpawner>().waveGainedPoints += gameObject.GetComponent<Enemy>().points;
-                waveSpawner.GetComponent<WaveSpawner>().waveGainedGold += gameObject.GetComponent<Enemy>().gold;
+                GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
+                GameManager.currentGold += gameObject.GetComponent<Enemy>().gold;
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Boss")
             {
-                waveSpawner.GetComponent<WaveSpawner>().waveGainedPoints += gameObject.GetComponent<Boss>().points;
-                waveSpawner.GetComponent<WaveSpawner>().waveGainedGold += gameObject.GetComponent<Boss>().gold;
+                GameManager.currentPoints += gameObject.GetComponent<Boss>().points;
+                GameManager.currentGold += gameObject.GetComponent<Boss>().gold;
                 Destroy(gameObject);
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
             }

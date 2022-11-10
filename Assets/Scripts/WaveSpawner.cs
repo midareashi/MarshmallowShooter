@@ -172,7 +172,6 @@ public class WaveSpawner : MonoBehaviour
 
         var spawnBoss = bosses[bossSpawn];
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
-        var spawnBossLocation = spawnBoss.GetComponent<Boss>().spawnLocation.transform;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
         boss.SetActive(true);
         bossZR = boss.GetComponent<Boss>().zigzagRate;

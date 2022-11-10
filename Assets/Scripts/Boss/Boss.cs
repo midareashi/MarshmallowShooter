@@ -8,7 +8,6 @@ public class Boss : MonoBehaviour
     public float verticalSpeed; // Vertical Speed
     public int points; // Points gained when killed
     public int gold; // Gold gained when killed
-    public int cost; // Cost of wave in spawner
     public GameObject spawnLocation;
     public GameObject moveToLocation;
 

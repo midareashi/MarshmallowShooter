@@ -6,7 +6,6 @@ public class BossWeapon : MonoBehaviour
     public GameObject enemyBullet;
     public Vector2 speed;
     public int damage;
-    public float delay;
     public float rof;
     private float lastShot;
 

@@ -8,9 +8,9 @@ public class BonusSpawner : MonoBehaviour
     public float lastBonusSpawn;
     public Vector2 bonusSpeed;
 
-    public float healthBonus;
+    public int healthBonus;
     public float speedBonus;
-    public float damageBonus;
+    public int damageBonus;
     public float rofBonus;
     private GameObject[] bonusSpawns;
     private int rndBonus;
@@ -43,9 +43,6 @@ public class BonusSpawner : MonoBehaviour
                     break;
                 case 3:
                     bonus.GetComponent<BonusItem>().damageBonus = damageBonus;
-                    break;
-                case 4:
-                    bonus.GetComponent<BonusItem>().rofBonus = rofBonus;
                     break;
             }
             lastBonusSpawn = Time.time;

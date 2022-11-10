@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
@@ -19,7 +18,7 @@ public class BulletManager : MonoBehaviour
         List<GameObject> list = new List<GameObject>();
         foreach (PlayerBullet item in bulletHolder.GetComponentsInChildren<PlayerBullet>(true))
         {
-            list.Add(item.go);
+            list.Add(item.bullet);
         }
         GameManager.allBullets = list;
         GameManager.ownedBullets = list;

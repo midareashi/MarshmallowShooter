@@ -5,7 +5,7 @@ public class PlayerBullet : MonoBehaviour
     public int damage;
     public Vector2 speed;
     public Vector2 CameraPosition;
-    public GameObject go;
+    public GameObject bullet;
 
     public void Start()
     {

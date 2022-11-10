@@ -9,6 +9,7 @@ public class EnemyBullet : MonoBehaviour
     private void Start()
     {
         CameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        damage += GameManager.gameDifficulty;
     }
 
     private void Update()
@@ -21,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Vitals>(out Vitals vitals))
+        if (collision.gameObject.TryGetComponent(out Vitals vitals))
         {
             vitals.TakeDamage(damage);
             Destroy(gameObject);

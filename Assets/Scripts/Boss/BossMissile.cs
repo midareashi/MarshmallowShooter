@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossWeapon : MonoBehaviour
+public class BossMissile : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject enemyBullet;
@@ -9,6 +9,11 @@ public class BossWeapon : MonoBehaviour
     public float delay;
     public float rof;
     private float lastShot;
+
+    private void Start()
+    {
+        lastShot = delay;
+    }
 
     private void Update()
     {

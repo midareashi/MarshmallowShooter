@@ -10,6 +10,7 @@ TagManager:
   - Points
   - Gold
   - Boss
+  - HealthUp
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Player
   - Enemy
   - Boss
-  - 
+  - Bonus
   - 
   - 
   - 

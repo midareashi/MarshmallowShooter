@@ -196,6 +196,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "boss")
         {
+            GameManager.gameDifficulty ++;
             WinScreen();
         }
 

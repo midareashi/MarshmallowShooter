@@ -10,6 +10,7 @@ public class BackgroundScroller : MonoBehaviour
 
     private float height;
     private float scrollSpeed = -4f;
+    private Vector2 cameraPosition;
 
     void Start()
     {
@@ -20,11 +21,13 @@ public class BackgroundScroller : MonoBehaviour
         col.enabled = false;
 
         rb.velocity = new Vector2(0, scrollSpeed);
+
+        cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     void Update()
     {
-        if (transform.position.y < -height - (GameManager.CameraPosition.y - 1) || waveSpawner.GetComponent<WaveSpawner>().bossIsReady)
+        if (transform.position.y < -height - (cameraPosition.y - 1) || waveSpawner.GetComponent<WaveSpawner>().bossIsReady)
         {
             rb.velocity = new Vector2(0, 0);
         }

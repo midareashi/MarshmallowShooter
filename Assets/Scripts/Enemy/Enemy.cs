@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -18,7 +17,7 @@ public class Enemy : MonoBehaviour
     private Vector3 axis;
     public float spawnTime; // Time since last spawn to offset wave function
 
-    private Vector2 screenBounds;
+    private Vector2 cameraPosition;
     public int spawnGroup; // How many enemies spawn per wave
     public float spawnSpeed; // Delay between enemies spawning 0.5f
 
@@ -26,6 +25,8 @@ public class Enemy : MonoBehaviour
     {
         pos = transform.position;
         axis = transform.right;
+        cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        verticalSpeed += GameManager.gameDifficulty;
     }
 
     void ZigZagMovement()
@@ -37,9 +38,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         ZigZagMovement();
-        if (transform.position.y < -GameManager.CameraPosition.y * 2)
+        if (transform.position.y < -cameraPosition.y * 2)
         {
-            Destroy(gameObject); // Destroy off camera
+            Destroy(gameObject);
         }
     }
 }

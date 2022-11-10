@@ -10,6 +10,12 @@ public class EnemyWeapon : MonoBehaviour
     public float rof;
     private float lastShot = 0.0f;
 
+    private void Start()
+    {
+        rof += GameManager.gameDifficulty;
+        damage += GameManager.gameDifficulty;
+    }
+
     private void Update()
     {
         Fire();

@@ -3,39 +3,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int currentWave { get; set; }
-
-    public static int currentPoints { get; set; }
-    public static int currentGold { get; set; }
-    public static int currentHealth { get; set; }
-
-    public static float stagePoints { get; set; }
-    public static int stageGold { get; set; }
-
-    public static List<GameObject> allWeapons { get; set; }
-    public static List<GameObject> allJetpacks { get; set; }
-    public static List<GameObject> allBullets { get; set; }
-
-    public static List<GameObject> ownedWeapons { get; set; }
-    public static List<GameObject> ownedJetpacks { get; set; }
-    public static List<GameObject> ownedBullets { get; set; }
-
-    public static GameObject currentWeapon { get; set; }
-    public static GameObject currentJetpack { get; set; }
-    public static GameObject currentBullet { get; set; }
-
-    public static int currentLives { get; set; }
-
-    public static string gameName { get; set; }
-    public static Vector2 CameraPosition;
-
-    void Awake()
-    {
-        CameraPosition =  GetCameraPosition();
-    }
-
-    public Vector2 GetCameraPosition()
-    {
-        return Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-    }
+    public static int currentWave;
+    public static int currentPoints;
+    public static int currentGold;
+    public static int currentHealth;
+    public static float stagePoints;
+    public static int stageGold;
+    public static List<GameObject> allWeapons;
+    public static List<GameObject> allJetpacks;
+    public static List<GameObject> allBullets;
+    public static List<GameObject> ownedWeapons;
+    public static List<GameObject> ownedJetpacks;
+    public static List<GameObject> ownedBullets;
+    public static GameObject currentWeapon;
+    public static GameObject currentJetpack;
+    public static GameObject currentBullet;
+    public static int currentLives;
+    public static string gameName;
+    public static int gameDifficulty;
 }

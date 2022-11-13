@@ -74,3 +74,4 @@ crashlytics-build.properties
 
 # MacOS
 .DS_Store
+/Assets/Scripts/SQLConnection.cs

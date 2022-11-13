@@ -6,7 +6,7 @@ public class BonusItem : MonoBehaviour
     public float speedBonus;
     public int damageBonus;
     public GameObject santa;
-    public Vector2 cameraPosition;
+    private Vector2 cameraPosition;
 
     private void Start()
     {
@@ -25,6 +25,7 @@ public class BonusItem : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Vitals vitals))
         {
+            var ga = this;
             if (healthBonus > 0)
             {
                 santa.GetComponent<Vitals>().currentHealth += healthBonus;
@@ -33,9 +34,13 @@ public class BonusItem : MonoBehaviour
                     santa.GetComponent<Vitals>().currentHealth = santa.GetComponent<Vitals>().maxHealth;
                 }
             }
-            santa.GetComponent<PlayerController>().speedBonusTemp = speedBonus;
-            santa.GetComponent<PlayerController>().damageBonusTemp = damageBonus;
-            santa.GetComponent<PlayerController>().bonusStartTime = Time.time;
+            else
+            {
+                santa.GetComponent<PlayerController>().speedBonusTemp = speedBonus;
+                santa.GetComponent<PlayerController>().damageBonusTemp = damageBonus;
+                santa.GetComponent<PlayerController>().bonusStartTime = Time.time;
+                santa.GetComponent<PlayerController>().hasBonus = true;
+            }
             Destroy(gameObject);
         }
     }

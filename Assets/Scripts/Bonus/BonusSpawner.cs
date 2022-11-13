@@ -11,7 +11,6 @@ public class BonusSpawner : MonoBehaviour
     public int healthBonus;
     public float speedBonus;
     public int damageBonus;
-    public float rofBonus;
     private GameObject[] bonusSpawns;
     private int rndBonus;
     private int rndSpawn;
@@ -27,7 +26,7 @@ public class BonusSpawner : MonoBehaviour
         if (Time.time >= lastBonusSpawn + bonusSpawnRate)
         {
             rndSpawn = Random.Range(0, bonusSpawns.Length - 1);
-            rndBonus = Random.Range(1, 3);
+            rndBonus = Random.Range(1, 4);
 
             bonus = Instantiate(bonusItem, bonusSpawns[rndSpawn].transform.position, bonusSpawns[rndSpawn].transform.rotation);
             bonus.SetActive(true);

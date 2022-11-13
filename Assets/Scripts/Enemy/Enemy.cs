@@ -9,8 +9,12 @@ public class Enemy : MonoBehaviour
     public int points; // Points gained when killed
     public int gold; // Gold gained when killed
     public int cost; // Cost of wave in spawner
+
+    public int collisionDamage;
     public GameObject[] spawnPoints;
     public GameObject spawnHolder;
+
+    public GameObject santa;
 
     public int showInWave;
     private Vector3 pos;
@@ -40,6 +44,15 @@ public class Enemy : MonoBehaviour
         ZigZagMovement();
         if (transform.position.y < -cameraPosition.y * 2)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerController santa))
+        {
+            santa.GetComponent<Vitals>().TakeDamage(collisionDamage);
             Destroy(gameObject);
         }
     }

@@ -8,11 +8,10 @@ public class PlayerController : MonoBehaviour
 
     public float speedBonusTemp;
     public int damageBonusTemp;
-    public float rofBonusTemp;
 
     public float bonusTimeDuration;
     public float bonusStartTime;
-    private bool hasBonus;
+    public bool hasBonus;
 
     private void Awake()
     {
@@ -65,7 +64,6 @@ public class PlayerController : MonoBehaviour
             hasBonus = false;
             speedBonusTemp = 0;
             damageBonusTemp = 0;
-            rofBonusTemp = 0;
         }
     }
 }

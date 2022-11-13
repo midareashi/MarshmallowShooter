@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using Unity.VisualScripting;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        NextWave();
+        //NextWave();
     }
 
     public void NextWave()
@@ -201,7 +202,11 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "lose")
         {
-
+            enemiesToSpawn = null;
+            spawnedEnemies = null;
+            mapScreenManager.GetComponent<WebPost>().UpdateScore();
+            mapScreenManager.GetComponent<MapScreenManager>().ShowStartScreen();
+            mapScreenManager.GetComponent<ResetGame>().Reset();
         }
     }
 

@@ -23,18 +23,18 @@ public class DirtTile : MonoBehaviour
 
     void Awake()
     {
-        offsetX = Random.Range(1, 10000);
-        offsetY = Random.Range(1, 10000);
         topLayer = ice;
+        tileBases.Add(ice);
     }
 
-    void Start()
+    public void MakeNewMap()
     {
-        tileBases.Add(ice);
-
+        offsetX = Random.Range(1, 10000);
+        offsetY = Random.Range(1, 10000);
         GenerateNoiseGrid();
         GenerateMap();
     }
+
 
     void GenerateNoiseGrid()
     {

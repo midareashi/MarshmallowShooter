@@ -31,5 +31,9 @@ public class BackgroundScroller : MonoBehaviour
         {
             rb.velocity = new Vector2(0, 0);
         }
+        else
+        {
+            rb.velocity = new Vector2(0, scrollSpeed);
+        }
     }
 }

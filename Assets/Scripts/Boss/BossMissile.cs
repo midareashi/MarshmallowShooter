@@ -22,7 +22,7 @@ public class BossMissile : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot && PlayerWeapon.canShoot)
+        if (Time.time > rof + lastShot)
         {
             GameObject bullet = Instantiate(enemyBullet, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);

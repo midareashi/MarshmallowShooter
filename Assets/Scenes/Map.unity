@@ -1998,6 +1998,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff72711ba8467d44b7e7ccb55d5e424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponsHolder: {fileID: 1073537136}
+  bulletsHolder: {fileID: 1918688361}
+  jetpacksHolder: {fileID: 510217731}
+  enemiesHolder: {fileID: 1971302459}
 --- !u!4 &629041524
 Transform:
   m_ObjectHideFlags: 0
@@ -2820,6 +2824,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   spawnHolder: {fileID: 789694629}
+  enemy: {fileID: 0}
   santa: {fileID: 6788270340717838656}
   showInWave: 1
   spawnTime: 0
@@ -3932,6 +3937,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   spawnHolder: {fileID: 1010939926}
+  enemy: {fileID: 0}
   santa: {fileID: 6788270340717838656}
   showInWave: 1
   spawnTime: 0
@@ -6428,6 +6434,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   spawnHolder: {fileID: 124207330}
+  enemy: {fileID: 0}
   santa: {fileID: 6788270340717838656}
   showInWave: 1
   spawnTime: 0
@@ -8118,6 +8125,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   spawnHolder: {fileID: 836416970}
+  enemy: {fileID: 0}
   santa: {fileID: 6788270340717838656}
   showInWave: 1
   spawnTime: 0
@@ -8640,6 +8648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4217581128557560638}
   - component: {fileID: 3340727927962139555}
+  - component: {fileID: 4217581128557560639}
   m_Layer: 8
   m_Name: Weapon1
   m_TagString: Untagged
@@ -8657,6 +8666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4217581127795864335}
   - component: {fileID: 3340727928203873170}
+  - component: {fileID: 4217581127795864336}
   m_Layer: 8
   m_Name: Weapon2
   m_TagString: Untagged
@@ -8701,6 +8711,19 @@ Transform:
   m_Father: {fileID: 1073537137}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4217581127795864336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444694748110544014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f953cf39b932ba42a25ce4a9a840103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 3444694748110544014}
 --- !u!4 &4217581128557560638
 Transform:
   m_ObjectHideFlags: 0
@@ -8717,6 +8740,19 @@ Transform:
   m_Father: {fileID: 1073537137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4217581128557560639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444694746729098431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f953cf39b932ba42a25ce4a9a840103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 3444694746729098431}
 --- !u!4 &4800540112028919780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3338333392454389764, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
@@ -9546,7 +9582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   cost: 800
-  go: {fileID: 6628182863481101551}
+  jetpack: {fileID: 6628182863481101551}
 --- !u!114 &8075564423225375994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9561,7 +9597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   cost: 200
-  go: {fileID: 6628182863482695948}
+  jetpack: {fileID: 6628182863482695948}
 --- !u!114 &8075564424567302210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9576,7 +9612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   cost: 0
-  go: {fileID: 6628182862137615796}
+  jetpack: {fileID: 6628182862137615796}
 --- !u!114 &8437249539781118996
 MonoBehaviour:
   m_ObjectHideFlags: 0

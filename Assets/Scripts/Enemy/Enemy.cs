@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public int collisionDamage;
     public GameObject[] spawnPoints;
     public GameObject spawnHolder;
+    public GameObject enemy;
 
     public GameObject santa;
 

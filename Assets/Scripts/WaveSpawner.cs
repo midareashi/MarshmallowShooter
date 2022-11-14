@@ -107,7 +107,6 @@ public class WaveSpawner : MonoBehaviour
             {
                 moveBossToStart = false;
                 Boss.beginFight = true;
-                PlayerWeapon.canShoot = true;
                 boss.GetComponent<Boss>().zigzagRate = bossZR;
             }
         }
@@ -166,7 +165,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
-        PlayerWeapon.canShoot = false;
         int bossCount = bosses.Length - 1;
         int bossSpawn = UnityEngine.Random.Range(0, bossCount);
 

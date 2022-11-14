@@ -404,6 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd5d177315893e468d91111a324cf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  santa: {fileID: 6788270340717838656}
+  waveSpawner: {fileID: 1282759122}
 --- !u!1001 &110700162
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,15 +45,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void FlyOffScreen()
-    {
-        Santa.GetComponent<Boundries>().isBound = false;
-        moveSantaOffScreen = true;
-    }
-
     public void FlyToStart()
     {
-        Santa.GetComponent<Boundries>().isBound = false;
         moveSantaToStart = true;
     }
 

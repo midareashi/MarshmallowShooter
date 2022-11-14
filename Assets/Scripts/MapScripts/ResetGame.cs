@@ -3,6 +3,7 @@ using UnityEngine;
 public class ResetGame : MonoBehaviour
 {
     public GameObject santa;
+    public GameObject waveSpawner;
 
     public void Reset()
     {
@@ -11,20 +12,18 @@ public class ResetGame : MonoBehaviour
         GameManager.currentGold = 0;
         GameManager.gameDifficulty = 1;
 
-        GameManager.allWeapons = null;
-        GameManager.allJetpacks = null;
-        GameManager.allBullets = null;
         GameManager.ownedWeapons = null;
         GameManager.ownedJetpacks = null;
         GameManager.ownedBullets = null;
 
-        GameManager.currentWeapon = null;
-        GameManager.currentJetpack = null;
-        GameManager.currentBullet = null;
+        GameManager.currentWeapon = GameManager.allWeapons[0];
+        GameManager.currentJetpack = GameManager.allJetpacks[0];
+        GameManager.currentBullet = GameManager.allBullets[0];
 
         santa.GetComponent<Vitals>().currentHealth = santa.GetComponent<Vitals>().maxHealth;
         santa.GetComponent<PlayerController>().speedBonusTemp = 0;
         santa.GetComponent<PlayerController>().damageBonusTemp = 0;
         santa.GetComponent<PlayerController>().hasBonus = false;
+        santa.GetComponent<PlayerController>().FlyToStart();
     }
 }

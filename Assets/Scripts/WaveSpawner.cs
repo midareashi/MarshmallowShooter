@@ -58,7 +58,6 @@ public class WaveSpawner : MonoBehaviour
         {
             GameManager.currentWave = 1;
         }
-        santa.FlyToStart();
         stageStartTime = Time.time;
         enemiesAreLoaded = false;
         GenerateWave();

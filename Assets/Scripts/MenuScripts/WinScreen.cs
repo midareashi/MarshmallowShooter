@@ -9,7 +9,7 @@ public class WinScreen : MonoBehaviour
 
     private void Start()
     {
-        congrats.text = String.Format(@"Congratulations, you have completed stage {0}. Continue to the next stage.", (GameManager.currentWave).ToString());
+        congrats.text = String.Format(@"Congratulations, you completed stage {0}. Continue to the next stage.", (GameManager.currentWave).ToString());
     }
 
     public void NextWave()

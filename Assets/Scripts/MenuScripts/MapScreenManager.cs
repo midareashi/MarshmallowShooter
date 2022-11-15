@@ -4,6 +4,7 @@ public class MapScreenManager : MonoBehaviour
 {
     public GameObject gameScreen;
     public GameObject winScreen;
+    public GameObject loseScreen;
     public GameObject storeScreen;
     public GameObject mainScreen;
     public GameObject scoreScreen;
@@ -23,6 +24,13 @@ public class MapScreenManager : MonoBehaviour
         winScreen.SetActive(true);
         scoreScreen.SetActive(true);
         santa.GetComponent<PlayerController>().hasBonus = false;
+    }
+
+    public void ShowLoseScreen()
+    {
+        HideAllScreen();
+        loseScreen.SetActive(true);
+        scoreScreen.SetActive(true);
     }
 
     public void ShowStoreScreen()

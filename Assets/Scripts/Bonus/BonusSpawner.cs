@@ -9,6 +9,11 @@ public class BonusSpawner : MonoBehaviour
     private int rndBonus;
     private float rndPosition;
 
+    private void Start()
+    {
+        lastBonusSpawn = Time.time;
+    }
+
     private void Update()
     {
         if (Time.time >= lastBonusSpawn + bonusSpawnRate)

@@ -33,11 +33,6 @@ public class Vitals : MonoBehaviour
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
             }
 
-            if (GameManager.currentPoints > GameManager.highScore)
-            {
-                GameManager.highScore = GameManager.currentPoints;
-            }
-
             if (gameObject.tag == "Player")
             {
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");

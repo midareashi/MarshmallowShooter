@@ -36,7 +36,6 @@ public class WaveSpawner : MonoBehaviour
 
     private bool enemiesAreLoaded;
     private bool stageIsReady;
-    private bool bossIsReady;
     private bool moveBossToStart;
 
     void Awake()
@@ -52,7 +51,6 @@ public class WaveSpawner : MonoBehaviour
         stageStartTime = Time.time;
         enemiesAreLoaded = false;
         stageIsReady = false;
-        bossIsReady = false;
         GenerateWave();
     }
 
@@ -189,21 +187,18 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "lose")
         {
-            enemiesToSpawn = null;
-            spawnedEnemies = null;
             mapScreenManager.GetComponent<WebPost>().UpdateScore();
-            mapScreenManager.GetComponent<MapScreenManager>().ShowStartScreen();
-            mapScreenManager.GetComponent<ResetGame>().Reset();
+            mapScreenManager.GetComponent<MapScreenManager>().ShowLoseScreen();
         }
     }
 
     private void WinScreen()
     {
+        mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
+
         GameManager.currentWave++;
         GameManager.currentGold += waveGainedGold;
         GameManager.currentPoints += waveGainedPoints;
-
-        mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
     }
 
     private void WaitToStart()

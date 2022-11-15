@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -53,26 +52,6 @@ public class GameManager : MonoBehaviour
         BuildBonusList();
 
         highScore = PlayerPrefs.GetInt("highScore");
-    }
-
-    public void Reset()
-    {
-        gameName = "";
-        currentWave = 0;
-        currentPoints = 0;
-        currentGold = 0;
-        gameDifficulty = 0;
-
-        allWeapons = null;
-        allJetpacks = null;
-        allBullets = null;
-        ownedWeapons = null;
-        ownedJetpacks = null;
-        ownedBullets = null;
-
-        currentWeapon = null;
-        currentJetpack = null;
-        currentBullet = null;
     }
 
     private void BuildWeaponList()

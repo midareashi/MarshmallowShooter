@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     public int gold; // Gold gained when killed
     public GameObject spawnLocation;
     public GameObject moveToLocation;
+    public GameObject boss;
 
     public static bool beginFight;
 

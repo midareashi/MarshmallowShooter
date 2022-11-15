@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -33,12 +34,25 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemiesHolder;
 
+    // Boss Manager
+    public static List<GameObject> allBosses;
+
+    public GameObject bossHolder;
+
+    // Bonus Items
+    public static List<GameObject> allBonuses;
+    public GameObject bonusHolder;
+
     private void Awake()
     {
         BuildWeaponList();
         BuildJetpackList();
         BuildBulletList();
         BuildEnemyList();
+        BuildBossList();
+        BuildBonusList();
+
+        highScore = PlayerPrefs.GetInt("highScore");
     }
 
     public void Reset()
@@ -108,5 +122,41 @@ public class GameManager : MonoBehaviour
         {
             list.Add(item.enemy);
         }
+        allEnemies = list;
+
+        foreach (GameObject enemy in allEnemies)
+        {
+            BuildSpawnList(enemy);
+        }
+    }
+
+    public void BuildSpawnList(GameObject enemy)
+    {
+        List<Transform> list = new List<Transform>();
+        foreach (Transform child in enemy.GetComponent<Enemy>().spawnHolder.transform)
+        {
+            list.Add(child);
+        }
+        enemy.GetComponent<Enemy>().spawnPoints = list;
+    }
+
+    public void BuildBossList()
+    {
+        List<GameObject> list = new List<GameObject>();
+        foreach (Boss item in bossHolder.GetComponentsInChildren<Boss>(true))
+        {
+            list.Add(item.boss);
+        }
+        allBosses = list;
+    }
+
+    public void BuildBonusList()
+    {
+        List<GameObject> list = new List<GameObject>();
+        foreach (Bonus item in bonusHolder.GetComponentsInChildren<Bonus>(true))
+        {
+            list.Add(item.bonus);
+        }
+        allBonuses = list;
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine.XR;
 public class ScoreBoard : MonoBehaviour
 {
     public TMP_Text score;
+    public TMP_Text highScore;
     public TMP_Text gold;
     public TMP_Text bonus;
     public GameObject santa;
     private PlayerController santaPC;
-
 
     private void Awake()
     {
@@ -18,8 +18,13 @@ public class ScoreBoard : MonoBehaviour
 
     private void Update()
     {
-        score.text = GameManager.currentPoints.ToString() + " Points";
-        gold.text = GameManager.currentGold.ToString() + " Gold";
+        if (GameManager.currentPoints > GameManager.highScore)
+        {
+            GameManager.highScore = GameManager.currentPoints;
+        }
+        score.text = "Score: " + GameManager.currentPoints.ToString();
+        highScore.text = "High Score: " + GameManager.highScore.ToString();
+        //gold.text = GameManager.currentGold.ToString() + " Gold";
         bonus.text =  GetSantaBonus();
     }
 

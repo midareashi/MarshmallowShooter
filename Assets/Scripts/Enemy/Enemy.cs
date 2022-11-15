@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     public int cost; // Cost of wave in spawner
 
     public int collisionDamage;
-    public GameObject[] spawnPoints;
+    public List<Transform> spawnPoints;
     public GameObject spawnHolder;
     public GameObject enemy;
 

@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class BonusItem : MonoBehaviour
+public class Bonus : MonoBehaviour
 {
     public int healthBonus;
     public float speedBonus;
     public int damageBonus;
     public GameObject santa;
+    public GameObject bonus;
     private Vector2 cameraPosition;
+    public Vector2 bonusSpeed;
 
     private void Start()
     {

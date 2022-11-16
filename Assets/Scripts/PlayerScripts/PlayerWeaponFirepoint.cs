@@ -8,12 +8,6 @@ public class PlayerWeaponFirepoint : MonoBehaviour
     public int baseDamage;
     public float ROF;
     private float lastShot;
-    public static bool canShoot;
-
-    private void Awake()
-    {
-        canShoot = true;
-    }
 
     private void Update()
     {
@@ -22,7 +16,7 @@ public class PlayerWeaponFirepoint : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > ROF + lastShot && canShoot)
+        if (Time.time > ROF + lastShot)
         {
             GameObject bullet = Instantiate(GameManager.currentBullet, transform.position, transform.rotation);
             bullet.SetActive(true);

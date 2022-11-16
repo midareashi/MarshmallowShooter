@@ -6,7 +6,6 @@ public class ScoreBoard : MonoBehaviour
 {
     public TMP_Text score;
     public TMP_Text highScore;
-    public TMP_Text gold;
     public TMP_Text bonus;
     public GameObject santa;
     private PlayerController santaPC;
@@ -24,7 +23,6 @@ public class ScoreBoard : MonoBehaviour
         }
         score.text = "Score: " + GameManager.currentPoints.ToString();
         highScore.text = "High Score: " + GameManager.highScore.ToString();
-        //gold.text = GameManager.currentGold.ToString() + " Gold";
         bonus.text =  GetSantaBonus();
     }
 

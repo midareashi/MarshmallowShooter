@@ -7,7 +7,6 @@ public class Boss : MonoBehaviour
     public float horizontalDistance; // Horizontal Distance 5
     public float verticalSpeed; // Vertical Speed
     public int points; // Points gained when killed
-    public int gold; // Gold gained when killed
     public GameObject spawnLocation;
     public GameObject moveToLocation;
     public GameObject boss;

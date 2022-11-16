@@ -17,9 +17,7 @@ public class LoseScreen : MonoBehaviour
 
         GameManager.currentPoints = 0;
         GameManager.currentWave = 0;
-        GameManager.currentWeapon = GameManager.allWeapons[0];
         GameManager.currentBullet = GameManager.allBullets[0];
-        GameManager.currentJetpack = GameManager.allJetpacks[0];
     }
 
     public void RestartGame()

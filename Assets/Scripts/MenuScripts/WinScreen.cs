@@ -16,9 +16,4 @@ public class WinScreen : MonoBehaviour
     {
         mapScreenManager.GetComponent<MapScreenManager>().StartNextWave();
     }
-
-    public void GoToStore()
-    {
-        mapScreenManager.GetComponent<MapScreenManager>().ShowStoreScreen();
-    }
 }

@@ -22,13 +22,11 @@ public class Vitals : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
-                GameManager.currentGold += gameObject.GetComponent<Enemy>().gold;
                 Destroy(gameObject);
             }
             if (gameObject.tag == "Boss")
             {
                 GameManager.currentPoints += gameObject.GetComponent<Boss>().points;
-                GameManager.currentGold += gameObject.GetComponent<Boss>().gold;
                 Destroy(gameObject);
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
             }

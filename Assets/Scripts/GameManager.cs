@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static int currentWave;
     public static int currentPoints;
     public static int highScore;
-    public static int currentGold;
     public static int gameDifficulty;
 
     // Equipment Manager
@@ -16,12 +15,6 @@ public class GameManager : MonoBehaviour
     public static List<GameObject> allJetpacks;
     public static List<GameObject> allBullets;
 
-    public static List<GameObject> ownedWeapons;
-    public static List<GameObject> ownedJetpacks;
-    public static List<GameObject> ownedBullets;
-
-    public static GameObject currentWeapon;
-    public static GameObject currentJetpack;
     public static GameObject currentBullet;
 
     public GameObject weaponsHolder;
@@ -62,8 +55,6 @@ public class GameManager : MonoBehaviour
             list.Add(item.weapon);
         }
         allWeapons = list;
-        ownedWeapons = list;
-        currentWeapon = list[0];
         allWeapons[0].SetActive(true);
     }
 
@@ -75,8 +66,6 @@ public class GameManager : MonoBehaviour
             list.Add(item.jetpack);
         }
         allJetpacks = list;
-        ownedJetpacks = list;
-        currentJetpack = list[0];
         allJetpacks[0].SetActive(true);
     }
 
@@ -88,7 +77,6 @@ public class GameManager : MonoBehaviour
             list.Add(item.bullet);
         }
         allBullets = list;
-        ownedBullets = list;
         currentBullet = list[0];
 
         Instantiate(allBullets[0]);

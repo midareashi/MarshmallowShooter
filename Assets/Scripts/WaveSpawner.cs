@@ -9,6 +9,7 @@ public class WaveSpawner : MonoBehaviour
     private GameObject enemy;
     private GameObject boss;
     private float bossZR;
+    public GameObject santa;
 
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
@@ -16,7 +17,6 @@ public class WaveSpawner : MonoBehaviour
     public int wavePointsAdder;
     public int bossWaveInterval;
 
-    public int waveGainedGold;
     public int waveGainedPoints;
 
     private Transform spawnLocation;
@@ -166,7 +166,6 @@ public class WaveSpawner : MonoBehaviour
 
     public void EndWave(string outcome)
     {
-
         if (outcome == "win")
         {
             if (GameManager.currentWave % bossWaveInterval == 0)
@@ -182,6 +181,7 @@ public class WaveSpawner : MonoBehaviour
         if (outcome == "boss")
         {
             GameManager.gameDifficulty ++;
+            
             WinScreen();
         }
 
@@ -195,10 +195,9 @@ public class WaveSpawner : MonoBehaviour
     private void WinScreen()
     {
         mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
-
         GameManager.currentWave++;
-        GameManager.currentGold += waveGainedGold;
         GameManager.currentPoints += waveGainedPoints;
+        santa.GetComponent<PlayerController>().UpgradeEquipment();
     }
 
     private void WaitToStart()

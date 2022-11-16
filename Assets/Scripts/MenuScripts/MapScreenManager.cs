@@ -5,7 +5,6 @@ public class MapScreenManager : MonoBehaviour
     public GameObject gameScreen;
     public GameObject winScreen;
     public GameObject loseScreen;
-    public GameObject storeScreen;
     public GameObject mainScreen;
     public GameObject scoreScreen;
     public GameObject waveSpawner;
@@ -33,13 +32,6 @@ public class MapScreenManager : MonoBehaviour
         scoreScreen.SetActive(true);
     }
 
-    public void ShowStoreScreen()
-    {
-        HideAllScreen();
-        storeScreen.SetActive(true);
-        scoreScreen.SetActive(true);
-    }
-
     public void StartNextWave()
     {
         HideAllScreen();
@@ -60,7 +52,6 @@ public class MapScreenManager : MonoBehaviour
     {
         gameScreen.SetActive(false);
         winScreen.SetActive(false);
-        storeScreen.SetActive(false);
         mainScreen.SetActive(false);
         scoreScreen.SetActive(false);
     }

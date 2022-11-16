@@ -11,6 +11,12 @@ public class BackgroundScroller : MonoBehaviour
     private float height;
     private float scrollSpeed = -4f;
     private Vector2 cameraPosition;
+    private Vector2 initialPosition;
+
+    private void Awake()
+    {
+        initialPosition = transform.position;
+    }
 
     void Start()
     {
@@ -22,7 +28,12 @@ public class BackgroundScroller : MonoBehaviour
 
         rb.velocity = new Vector2(0, scrollSpeed);
 
-        cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        cameraPosition = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+    }
+
+    private void OnEnable()
+    {
+        transform.position = initialPosition;
     }
 
     void Update()

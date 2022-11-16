@@ -22,6 +22,7 @@ public class WinScreen : MonoBehaviour
 
     public void UpgradeEquipment()
     {
+        upgradeMessage = "";
         foreach (GameObject item in GameManager.allWeapons)
         {
             if (item.GetComponent<PlayerWeapon>().upgradeWave == GameManager.currentWave)

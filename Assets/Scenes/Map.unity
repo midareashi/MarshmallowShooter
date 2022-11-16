@@ -338,7 +338,6 @@ GameObject:
   - component: {fileID: 77392323}
   - component: {fileID: 77392322}
   - component: {fileID: 77392324}
-  - component: {fileID: 77392325}
   m_Layer: 0
   m_Name: MapScreenManager
   m_TagString: Untagged
@@ -391,18 +390,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aab6a63976154e948b9457f50cdd027c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &77392325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77392321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd5d177315893e468d91111a324cf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &124207330
@@ -839,7 +826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: -96}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &367557671
@@ -3839,7 +3826,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4007,7 +3994,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4646,8 +4633,8 @@ RectTransform:
   m_Father: {fileID: 21396158}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6306,7 +6293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812735511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8389,7 +8376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3444694748110544014}
-  upgradeWave: 2
+  upgradeWave: 10
 --- !u!4 &4217581128557560638
 Transform:
   m_ObjectHideFlags: 0
@@ -9389,7 +9376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  cost: 800
   jetpack: {fileID: 6628182863481101551}
   upgradeWave: 15
 --- !u!114 &8075564423225375994
@@ -9405,7 +9391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  cost: 200
   jetpack: {fileID: 6628182863482695948}
   upgradeWave: 5
 --- !u!114 &8075564424567302210
@@ -9421,7 +9406,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  cost: 0
   jetpack: {fileID: 6628182862137615796}
   upgradeWave: 0
 --- !u!114 &8437249539781118996

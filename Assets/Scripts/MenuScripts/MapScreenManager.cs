@@ -37,7 +37,6 @@ public class MapScreenManager : MonoBehaviour
         HideAllScreen();
         gameScreen.SetActive(true);
         scoreScreen.SetActive(true);
-        dirtTile.GetComponent<DirtTile>().MakeNewMap();
         santa.GetComponent<PlayerController>().hasBonus = false;
         waveSpawner.GetComponent<WaveSpawner>().NextWave();
     }

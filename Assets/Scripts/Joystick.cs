@@ -1,22 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Joystick : MonoBehaviour
 {
-    public Transform player;
+    public GameObject santa;
     public float speed;
     private bool touchStart = false;
     private Vector2 pointA;
     private Vector2 pointB;
     public Transform circle;
     public Transform outerCircle;
-
-    private void Start()
-    {
-        speed = 10;//GameManager.Instance.currentJetpack.GetComponent<Jetpack>().speed;
-    }
 
     void Update()
     {
@@ -57,6 +49,6 @@ public class Joystick : MonoBehaviour
 
     void MovePlayer(Vector2 direction)
     {
-        player.Translate(direction * speed * Time.deltaTime);
+        santa.transform.Translate(direction * (speed + santa.GetComponent<PlayerController>().speedBonusTemp) * Time.deltaTime);
     }
 }

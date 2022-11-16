@@ -1,11 +1,26 @@
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject Santa;
+    public GameObject winScreen;
     private bool moveSantaToStart = false;
     private bool moveSantaOffScreen = false;
-    
+
+    public float speedBonusTemp;
+    public int damageBonusTemp;
+
+    public float bonusTimeDuration;
+    public float bonusStartTime;
+    public bool hasBonus;
+
+    private void Awake()
+    {
+        hasBonus = false;
+    }
+
     private void Update()
     {
         if (moveSantaOffScreen)
@@ -16,6 +31,7 @@ public class PlayerController : MonoBehaviour
                 moveSantaOffScreen = false;
             }
         }
+
         if (moveSantaToStart)
         {
             Santa.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, -15, 0), 0.3f);
@@ -25,17 +41,25 @@ public class PlayerController : MonoBehaviour
                 Santa.GetComponent<Boundries>().isBound = true;
             }
         }
-    }
 
-    public void FlyOffScreen()
-    {
-        Santa.GetComponent<Boundries>().isBound = false;
-        moveSantaOffScreen = true;
+        if (hasBonus)
+        {
+            ApplyBonus();
+        }
     }
 
     public void FlyToStart()
     {
-        Santa.GetComponent<Boundries>().isBound = false;
         moveSantaToStart = true;
+    }
+
+    private void ApplyBonus()
+    {
+        if (Time.time > bonusStartTime + bonusTimeDuration)
+        {
+            hasBonus = false;
+            speedBonusTemp = 0;
+            damageBonusTemp = 0;
+        }
     }
 }

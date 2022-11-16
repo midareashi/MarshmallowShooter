@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -7,10 +8,14 @@ public class Enemy : MonoBehaviour
     public float horizontalDistance; // Horizontal Distance 5
     public float verticalSpeed; // Vertical Speed
     public int points; // Points gained when killed
-    public int gold; // Gold gained when killed
     public int cost; // Cost of wave in spawner
-    public GameObject[] spawnPoints;
+
+    public int collisionDamage;
+    public List<Transform> spawnPoints;
     public GameObject spawnHolder;
+    public GameObject enemy;
+
+    public GameObject santa;
 
     public int showInWave;
     private Vector3 pos;
@@ -40,6 +45,15 @@ public class Enemy : MonoBehaviour
         ZigZagMovement();
         if (transform.position.y < -cameraPosition.y * 2)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerController santa))
+        {
+            santa.GetComponent<Vitals>().TakeDamage(collisionDamage);
             Destroy(gameObject);
         }
     }

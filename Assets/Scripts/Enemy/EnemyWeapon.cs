@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
-    public Transform[] firePoints;
     public GameObject enemyBullet;
     public Vector2 speed;
     public int damage;
@@ -23,15 +22,12 @@ public class EnemyWeapon : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot)
+        if (Time.time > rof + lastShot && GameManager.canFire)
         {
-            foreach (Transform t in firePoints)
-            {
-                GameObject bullet = Instantiate(enemyBullet, t.position, t.rotation);
-                bullet.SetActive(true);
-                bullet.GetComponent<EnemyBullet>().GetComponent<Rigidbody2D>().velocity = speed;
-                bullet.GetComponent<EnemyBullet>().damage = damage;
-            }
+            GameObject bullet = Instantiate(enemyBullet, transform.position, transform.rotation);
+            bullet.SetActive(true);
+            bullet.GetComponent<EnemyBullet>().GetComponent<Rigidbody2D>().velocity = speed;
+            bullet.GetComponent<EnemyBullet>().damage = damage;
             lastShot = Time.time;
         }
     }

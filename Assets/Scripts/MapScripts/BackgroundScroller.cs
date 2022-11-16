@@ -27,9 +27,13 @@ public class BackgroundScroller : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -height - (cameraPosition.y - 1) || waveSpawner.GetComponent<WaveSpawner>().bossIsReady)
+        if (transform.position.y < -height - (cameraPosition.y - 1))
         {
             rb.velocity = new Vector2(0, 0);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, scrollSpeed);
         }
     }
 }

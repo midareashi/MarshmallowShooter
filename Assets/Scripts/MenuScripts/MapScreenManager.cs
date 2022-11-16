@@ -4,30 +4,55 @@ public class MapScreenManager : MonoBehaviour
 {
     public GameObject gameScreen;
     public GameObject winScreen;
-    public GameObject storeScreen;
+    public GameObject loseScreen;
+    public GameObject mainScreen;
+    public GameObject scoreScreen;
     public GameObject waveSpawner;
     public GameObject santa;
+    public GameObject dirtTile;
+
+    private void Awake()
+    {
+        HideAllScreen();
+        mainScreen.SetActive(true);
+    }
 
     public void ShowWinScreen()
     {
-        gameScreen.SetActive(false);
+        HideAllScreen();
         winScreen.SetActive(true);
-        storeScreen.SetActive(false);
+        scoreScreen.SetActive(true);
+        santa.GetComponent<PlayerController>().hasBonus = false;
     }
 
-    public void ShowStoreScreen()
+    public void ShowLoseScreen()
     {
-        gameScreen.SetActive(false);
-        winScreen.SetActive(false);
-        storeScreen.SetActive(true);
+        HideAllScreen();
+        loseScreen.SetActive(true);
+        scoreScreen.SetActive(true);
     }
 
     public void StartNextWave()
     {
+        HideAllScreen();
         gameScreen.SetActive(true);
-        winScreen.SetActive(false);
-        storeScreen.SetActive(false);
-
+        scoreScreen.SetActive(true);
+        dirtTile.GetComponent<DirtTile>().MakeNewMap();
+        santa.GetComponent<PlayerController>().hasBonus = false;
         waveSpawner.GetComponent<WaveSpawner>().NextWave();
+    }
+
+    public void ShowStartScreen()
+    {
+        HideAllScreen();
+        mainScreen.SetActive(true);
+    }
+
+    private void HideAllScreen()
+    {
+        gameScreen.SetActive(false);
+        winScreen.SetActive(false);
+        mainScreen.SetActive(false);
+        scoreScreen.SetActive(false);
     }
 }

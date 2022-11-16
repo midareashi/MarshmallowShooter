@@ -9,20 +9,26 @@ public class BossMissile : MonoBehaviour
     public float delay;
     public float rof;
     private float lastShot;
+    private bool battleStarted;
 
     private void Start()
     {
-        lastShot = delay;
+        battleStarted = false;
     }
 
     private void Update()
     {
+        if (GameManager.canFire && !battleStarted)
+        {
+            lastShot = Time.time + delay;
+            battleStarted = true;
+        }
         Fire();
     }
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot && PlayerWeapon.canShoot)
+        if (Time.time > rof + lastShot && GameManager.canFire)
         {
             GameObject bullet = Instantiate(enemyBullet, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);

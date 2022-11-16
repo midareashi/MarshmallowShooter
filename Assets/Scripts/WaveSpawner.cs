@@ -1,21 +1,14 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public PlayerController santa;
     public GameObject mapScreenManager;
-    [SerializeField] private TMP_Text congrats;
 
-    public static GameObject[] enemies;
     private GameObject enemy;
-    public GameObject[] bosses;
     private GameObject boss;
     private float bossZR;
-    public GameObject bossManager;
 
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
@@ -23,7 +16,6 @@ public class WaveSpawner : MonoBehaviour
     public int wavePointsAdder;
     public int bossWaveInterval;
 
-    public int waveGainedGold;
     public int waveGainedPoints;
 
     private Transform spawnLocation;
@@ -37,29 +29,28 @@ public class WaveSpawner : MonoBehaviour
 
     public List<GameObject> spawnedEnemies;
 
-    public GameObject spawningEnemy;
+    private GameObject spawningEnemy;
     private int spawningEnemyCount;
     private float lastSpawn;
 
     private bool enemiesAreLoaded;
     private bool stageIsReady;
-    public bool bossIsReady;
     private bool moveBossToStart;
 
-    void Start()
-    {
-        NextWave();
-    }
-
-    public void NextWave()
+    void Awake()
     {
         if (GameManager.currentWave == 0)
         {
             GameManager.currentWave = 1;
         }
-        santa.FlyToStart();
+    }
+
+    public void NextWave()
+    {
+        GameManager.canFire = false;
         stageStartTime = Time.time;
         enemiesAreLoaded = false;
+        stageIsReady = false;
         GenerateWave();
     }
 
@@ -68,6 +59,7 @@ public class WaveSpawner : MonoBehaviour
         WaitToStart();
         if (enemiesAreLoaded && stageIsReady)
         {
+            GameManager.canFire = true;
             if (spawnTimer <= 0) // Time to Spawn
             {
                 // Spawn an enemy
@@ -78,7 +70,7 @@ public class WaveSpawner : MonoBehaviour
                     
                     int spawnPos = spawningEnemy.GetComponent<Enemy>().spawnPoints.Count();
                     int randomSpawn = UnityEngine.Random.Range(0,spawnPos);
-                    spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn].transform; // Pick a random spawn point
+                    spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn]; // Pick a random spawn point
                     spawnTimer = spawnInterval;
                 }
             }
@@ -106,8 +98,8 @@ public class WaveSpawner : MonoBehaviour
             if (boss.transform.position == boss.GetComponent<Boss>().moveToLocation.transform.position)
             {
                 moveBossToStart = false;
+                GameManager.canFire = true;
                 Boss.beginFight = true;
-                PlayerWeapon.canShoot = true;
                 boss.GetComponent<Boss>().zigzagRate = bossZR;
             }
         }
@@ -116,21 +108,17 @@ public class WaveSpawner : MonoBehaviour
     public void GenerateWave()
     {
         waveValue = (GameManager.currentWave * wavePointsMultiplier) + wavePointsAdder; // How many points to give for each wave
-        GenerateEnemies();
-    }
 
-    public void GenerateEnemies()
-    {
         List<GameObject> generatedEnemies = new List<GameObject>();
         while (waveValue > 0 || generatedEnemies.Count < 50)
         {
-            int randEnemyId = UnityEngine.Random.Range(0, enemies.Length);
-            int randEnemyCost = enemies[randEnemyId].GetComponent<Enemy>().cost;
-            int randEnemyStartWave = enemies[randEnemyId].GetComponent<Enemy>().showInWave;
+            int randEnemyId = UnityEngine.Random.Range(0, GameManager.allEnemies.Count);
+            int randEnemyCost = GameManager.allEnemies[randEnemyId].GetComponent<Enemy>().cost;
+            int randEnemyStartWave = GameManager.allEnemies[randEnemyId].GetComponent<Enemy>().showInWave;
 
             if (waveValue - randEnemyCost >= 0 && randEnemyStartWave <= GameManager.currentWave)
             {
-                generatedEnemies.Add(enemies[randEnemyId].GetComponent<Enemy>().gameObject);
+                generatedEnemies.Add(GameManager.allEnemies[randEnemyId].GetComponent<Enemy>().gameObject);
                 waveValue -= randEnemyCost;
             }
             else if (waveValue <= 0)
@@ -166,18 +154,17 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
-        PlayerWeapon.canShoot = false;
-        int bossCount = bosses.Length - 1;
+        int bossCount = GameManager.allBosses.Count;
         int bossSpawn = UnityEngine.Random.Range(0, bossCount);
 
-        var spawnBoss = bosses[bossSpawn];
+        var spawnBoss = GameManager.allBosses[bossSpawn];
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
-        var spawnBossLocation = spawnBoss.GetComponent<Boss>().spawnLocation.transform;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
         boss.SetActive(true);
         bossZR = boss.GetComponent<Boss>().zigzagRate;
         boss.GetComponent<Boss>().zigzagRate = 0; 
         moveBossToStart = true;
+        GameManager.canFire = false;
     }
 
     public void EndWave(string outcome)
@@ -196,25 +183,22 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "boss")
         {
-            GameManager.gameDifficulty ++;
+            GameManager.gameDifficulty ++;            
             WinScreen();
         }
 
         if (outcome == "lose")
         {
-
+            mapScreenManager.GetComponent<WebPost>().UpdateScore();
+            mapScreenManager.GetComponent<MapScreenManager>().ShowLoseScreen();
         }
     }
 
     private void WinScreen()
     {
-        congrats.text = String.Format(@"Congratulations, you have completed stage {0}. You can continute to stage {1} if you are ready, or you can visit the store to get stronger!", (GameManager.currentWave).ToString(), (GameManager.currentWave + 1).ToString());
-
-        GameManager.currentWave++;
-        GameManager.currentGold += waveGainedGold;
-        GameManager.currentPoints += waveGainedPoints;
-
         mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
+        GameManager.currentWave++;
+        GameManager.currentPoints += waveGainedPoints;
     }
 
     private void WaitToStart()

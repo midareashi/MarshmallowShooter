@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     public void Update()
     {
-        SetMaxHealth(GameManager.currentHealth);
+        SetMaxHealth(santa.GetComponent<Vitals>().currentHealth);
     }
     public void SetMaxHealth(float health)
     {

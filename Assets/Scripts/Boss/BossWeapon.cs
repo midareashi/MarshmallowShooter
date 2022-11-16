@@ -6,7 +6,6 @@ public class BossWeapon : MonoBehaviour
     public GameObject enemyBullet;
     public Vector2 speed;
     public int damage;
-    public float delay;
     public float rof;
     private float lastShot;
 
@@ -17,7 +16,7 @@ public class BossWeapon : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot && PlayerWeapon.canShoot)
+        if (Time.time > rof + lastShot && GameManager.canFire)
         {
             GameObject bullet = Instantiate(enemyBullet, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);

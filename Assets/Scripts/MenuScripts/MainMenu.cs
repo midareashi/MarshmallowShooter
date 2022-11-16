@@ -1,18 +1,28 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public TMP_InputField nameInput;
-    public bool debug;
+    public TMP_Text textCharacterLimit;
+    public GameObject mapScreenManager;
+    public int nameCharacterLimit;
 
-    public void PlayGame()
+    private void Awake()
     {
-        if (nameInput.text != "")
+        textCharacterLimit.text = "Limit " + nameCharacterLimit.ToString() + " Characters";
+        if (PlayerPrefs.GetString("Name") != "")
         {
-            GameManager.gameName = nameInput.text;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            nameInput.text = PlayerPrefs.GetString("Name");
+        }
+    }
+
+    public void NextWave()
+    {
+        if (nameInput.text != "" && nameInput.text.Length <= nameCharacterLimit)
+        {
+            mapScreenManager.GetComponent<MapScreenManager>().StartNextWave();
+            PlayerPrefs.SetString("Name", nameInput.text);
         }
     }
 }

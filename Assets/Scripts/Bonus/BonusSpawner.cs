@@ -2,52 +2,29 @@ using UnityEngine;
 
 public class BonusSpawner : MonoBehaviour
 {
-    public GameObject bonusItem;
-    public GameObject bonusSpawnPoints;
-    public float bonusSpawnRate;
-    public float lastBonusSpawn;
-    public Vector2 bonusSpeed;
-
-    public float healthBonus;
-    public float speedBonus;
-    public float damageBonus;
-    public float rofBonus;
-    private GameObject[] bonusSpawns;
-    private int rndBonus;
-    private int rndSpawn;
     private GameObject bonus;
+    public GameObject bonusSpawnPoint;
+    public float bonusSpawnRate;
+    private float lastBonusSpawn;
+    private int rndBonus;
+    private float rndPosition;
 
-    void Start()
+    private void Start()
     {
-        bonusSpawns = bonusSpawnPoints.GetComponent<BonusSpawnHolder>().BuildBonusSpawnList();
+        lastBonusSpawn = Time.time;
     }
 
     private void Update()
     {
         if (Time.time >= lastBonusSpawn + bonusSpawnRate)
         {
-            rndSpawn = Random.Range(0, bonusSpawns.Length - 1);
-            rndBonus = Random.Range(1, 3);
-
-            bonus = Instantiate(bonusItem, bonusSpawns[rndSpawn].transform.position, bonusSpawns[rndSpawn].transform.rotation);
+            rndBonus = Random.Range(0, GameManager.allBonuses.Count);
+            rndPosition = Random.Range(-10f,10f);
+            
+            bonus = Instantiate(GameManager.allBonuses[rndBonus], bonusSpawnPoint.transform.position + new Vector3(rndPosition, 0, 0), GameManager.allBonuses[rndBonus].transform.rotation);
             bonus.SetActive(true);
-            bonus.GetComponent<BonusItem>().GetComponent<Rigidbody2D>().velocity = bonusSpeed;
+            bonus.GetComponent<Bonus>().GetComponent<Rigidbody2D>().velocity = bonus.GetComponent<Bonus>().bonusSpeed;
 
-            switch (rndBonus)
-            {
-                case 1:
-                    bonus.GetComponent<BonusItem>().healthBonus = healthBonus;
-                    break;
-                case 2:
-                    bonus.GetComponent<BonusItem>().speedBonus = speedBonus;
-                    break;
-                case 3:
-                    bonus.GetComponent<BonusItem>().damageBonus = damageBonus;
-                    break;
-                case 4:
-                    bonus.GetComponent<BonusItem>().rofBonus = rofBonus;
-                    break;
-            }
             lastBonusSpawn = Time.time;
         }
     }

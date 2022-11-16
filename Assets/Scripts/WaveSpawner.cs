@@ -32,6 +32,7 @@ public class WaveSpawner : MonoBehaviour
     private GameObject spawningEnemy;
     private int spawningEnemyCount;
     private float lastSpawn;
+    private float rndPosition;
 
     private bool enemiesAreLoaded;
     private bool stageIsReady;
@@ -69,6 +70,7 @@ public class WaveSpawner : MonoBehaviour
                     enemiesToSpawn.RemoveAt(0); // Remove it from the list
                     
                     int spawnPos = spawningEnemy.GetComponent<Enemy>().spawnPoints.Count();
+                    rndPosition = Random.Range(-5f, 5f);
                     int randomSpawn = UnityEngine.Random.Range(0,spawnPos);
                     spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn]; // Pick a random spawn point
                     spawnTimer = spawnInterval;
@@ -136,7 +138,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (spawningEnemyCount < spawningEnemy.GetComponent<Enemy>().spawnGroup)
             {
-                enemy = Instantiate(spawningEnemy, spawnLocation.position, Quaternion.identity);
+                enemy = Instantiate(spawningEnemy, spawnLocation.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
                 enemy.GetComponent<Enemy>().spawnTime = Time.time;
                 enemy.SetActive(true);
                 spawnedEnemies.Add(enemy);

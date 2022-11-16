@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Vitals : MonoBehaviour
@@ -6,9 +5,15 @@ public class Vitals : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public GameObject waveSpawner;
+    public GameObject enemy;
+    private float dieTime;
+    public bool isDie;
+    private float startDieTime;
 
     public void Start()
     {
+        dieTime = 1.5f;
+        isDie = false;
         if (gameObject.tag == "Enemy")
         {
             SetEnemyHealth();
@@ -23,6 +28,17 @@ public class Vitals : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (isDie)
+        {
+            if (startDieTime + dieTime > Time.time)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -32,7 +48,7 @@ public class Vitals : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
-                Destroy(gameObject);
+                EnemyDie();
             }
             if (gameObject.tag == "Boss")
             {
@@ -56,5 +72,11 @@ public class Vitals : MonoBehaviour
     private void SetBossHealth()
     {
         currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
+    }
+
+    private void EnemyDie()
+    {
+        startDieTime= Time.time;
+        Destroy(gameObject);
     }
 }

@@ -19,7 +19,7 @@ public class Bonus : MonoBehaviour
     {
         if (transform.position.y < (-cameraPosition.y / 2) * 2)
         {
-            Destroy(gameObject); // Destroy off camera
+            Destroy(gameObject);
         }
     }
 

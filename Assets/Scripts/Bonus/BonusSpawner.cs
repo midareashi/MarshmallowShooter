@@ -9,7 +9,7 @@ public class BonusSpawner : MonoBehaviour
     private int rndBonus;
     private float rndPosition;
 
-    private void Start()
+    private void OnEnable()
     {
         lastBonusSpawn = Time.time;
     }

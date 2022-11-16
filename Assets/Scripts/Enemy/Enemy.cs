@@ -34,15 +34,21 @@ public class Enemy : MonoBehaviour
         verticalSpeed += GameManager.gameDifficulty;
     }
 
-    void ZigZagMovement()
+    void EnemyMovement()
     {
-        pos += Vector3.down * Time.deltaTime * verticalSpeed;
-        transform.position = pos + axis * MathF.Sin((Time.time - spawnTime) * zigzagRate) * horizontalDistance;
+        if (!GetComponent<Vitals>().isDie)
+        {    
+            pos += Vector3.down * Time.deltaTime * verticalSpeed;
+            transform.position = pos + axis * MathF.Sin((Time.time - spawnTime) * zigzagRate) * horizontalDistance;
+        }
+        else
+        {
+        }
     }
 
     void Update()
     {
-        ZigZagMovement();
+        EnemyMovement();
         if (transform.position.y < -cameraPosition.y * 2)
         {
             Destroy(gameObject);

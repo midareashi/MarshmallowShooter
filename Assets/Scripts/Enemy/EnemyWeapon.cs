@@ -22,7 +22,7 @@ public class EnemyWeapon : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot)
+        if (Time.time > rof + lastShot && GameManager.canFire)
         {
             GameObject bullet = Instantiate(enemyBullet, transform.position, transform.rotation);
             bullet.SetActive(true);

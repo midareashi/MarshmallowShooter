@@ -326,7 +326,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -20}
   damage: 2
-  rof: 0.5
+  rof: 0.7
 --- !u!1 &77392321
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -18}
   damage: 4
-  rof: 2
+  rof: 2.5
 --- !u!1 &315411617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -18}
   damage: 4
-  rof: 2
+  rof: 2.5
 --- !u!1 &393767086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,7 +2479,6 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 6788270340717838656}
 --- !u!212 &837487265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3467,7 +3466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zigzagRate: 0.25
-  horizontalDistance: 1
+  horizontalDistance: 2
   verticalSpeed: 5
   points: 20
   cost: 4
@@ -3543,7 +3542,6 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 6788270340717838656}
 --- !u!212 &1047397243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4414,10 +4412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapScreenManager: {fileID: 77392321}
-  santa: {fileID: 6788270340717838656}
   enemiesToSpawn: []
   wavePointsMultiplier: 5
-  wavePointsAdder: 0
+  wavePointsAdder: 10
   bossWaveInterval: 5
   waveGainedPoints: 20
   spawnInterval: 3
@@ -4615,7 +4612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusSpawnPoint: {fileID: 1614975131}
-  bonusSpawnRate: 15
+  bonusSpawnRate: 30
 --- !u!1 &1402778249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,7 +4774,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -20}
   damage: 2
-  rof: 0.5
+  rof: 0.7
 --- !u!1 &1470116719
 GameObject:
   m_ObjectHideFlags: 0
@@ -6191,7 +6188,6 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 6788270340717838656}
 --- !u!61 &1794362701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6625,6 +6621,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
   boss: {fileID: 1881077262}
+  defeatedCount: 0
 --- !u!114 &1881077265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6640,7 +6637,6 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 0}
 --- !u!61 &1881077266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7488,7 +7484,6 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 0}
 --- !u!114 &2059701037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7508,6 +7503,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
   boss: {fileID: 2059701030}
+  defeatedCount: 0
 --- !u!1 &2095307453
 GameObject:
   m_ObjectHideFlags: 0
@@ -7641,7 +7637,6 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 6788270340717838656}
 --- !u!114 &265378749550673785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8394,7 +8389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3444694748110544014}
-  upgradeWave: 10
+  upgradeWave: 2
 --- !u!4 &4217581128557560638
 Transform:
   m_ObjectHideFlags: 0
@@ -8626,7 +8621,6 @@ MonoBehaviour:
   maxHealth: 40
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  santa: {fileID: 6788270340717838656}
 --- !u!222 &6460466470890218322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8725,6 +8719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Santa: {fileID: 6788270340717838656}
+  winScreen: {fileID: 44014006}
   speedBonusTemp: 0
   damageBonusTemp: 0
   bonusTimeDuration: 10

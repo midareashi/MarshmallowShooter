@@ -16,7 +16,7 @@ public class PlayerWeaponFirepoint : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > ROF + lastShot)
+        if (Time.time > ROF + lastShot && GameManager.canFire)
         {
             GameObject bullet = Instantiate(GameManager.currentBullet, transform.position, transform.rotation);
             bullet.SetActive(true);

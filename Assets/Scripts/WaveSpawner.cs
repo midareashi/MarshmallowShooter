@@ -9,7 +9,6 @@ public class WaveSpawner : MonoBehaviour
     private GameObject enemy;
     private GameObject boss;
     private float bossZR;
-    public GameObject santa;
 
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
@@ -48,6 +47,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void NextWave()
     {
+        GameManager.canFire = false;
         stageStartTime = Time.time;
         enemiesAreLoaded = false;
         stageIsReady = false;
@@ -59,6 +59,7 @@ public class WaveSpawner : MonoBehaviour
         WaitToStart();
         if (enemiesAreLoaded && stageIsReady)
         {
+            GameManager.canFire = true;
             if (spawnTimer <= 0) // Time to Spawn
             {
                 // Spawn an enemy
@@ -97,6 +98,7 @@ public class WaveSpawner : MonoBehaviour
             if (boss.transform.position == boss.GetComponent<Boss>().moveToLocation.transform.position)
             {
                 moveBossToStart = false;
+                GameManager.canFire = true;
                 Boss.beginFight = true;
                 boss.GetComponent<Boss>().zigzagRate = bossZR;
             }
@@ -162,6 +164,7 @@ public class WaveSpawner : MonoBehaviour
         bossZR = boss.GetComponent<Boss>().zigzagRate;
         boss.GetComponent<Boss>().zigzagRate = 0; 
         moveBossToStart = true;
+        GameManager.canFire = false;
     }
 
     public void EndWave(string outcome)
@@ -180,8 +183,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "boss")
         {
-            GameManager.gameDifficulty ++;
-            
+            GameManager.gameDifficulty ++;            
             WinScreen();
         }
 
@@ -197,7 +199,6 @@ public class WaveSpawner : MonoBehaviour
         mapScreenManager.GetComponent<MapScreenManager>().ShowWinScreen();
         GameManager.currentWave++;
         GameManager.currentPoints += waveGainedPoints;
-        santa.GetComponent<PlayerController>().UpgradeEquipment();
     }
 
     private void WaitToStart()

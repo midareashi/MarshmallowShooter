@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static int highScore;
     public static int gameDifficulty;
 
+    public static bool canFire;
+
     // Equipment Manager
     public static List<GameObject> allWeapons;
     public static List<GameObject> allJetpacks;

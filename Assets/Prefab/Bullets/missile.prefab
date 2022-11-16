@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: {x: 0, y: 0}
-  CameraPosition: {x: 0, y: 0}
+  cameraPosition: {x: 0, y: 0}
 --- !u!61 &171858630091017212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c763d5d0793d4695dcef0dd70dc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
-  trackTime: 1
+  speed: 20
+  trackTime: 0.7
   rotateSpeed: 2000

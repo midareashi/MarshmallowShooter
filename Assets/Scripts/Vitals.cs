@@ -6,11 +6,21 @@ public class Vitals : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public GameObject waveSpawner;
-    public GameObject santa;
 
     public void Start()
     {
-        currentHealth = maxHealth;
+        if (gameObject.tag == "Enemy")
+        {
+            SetEnemyHealth();
+        }
+        if (gameObject.tag == "Boss")
+        {
+            SetBossHealth();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -36,5 +46,15 @@ public class Vitals : MonoBehaviour
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
             }
         }
+    }
+
+    private void SetEnemyHealth()
+    {
+        currentHealth = maxHealth + GameManager.gameDifficulty;
+    }
+
+    private void SetBossHealth()
+    {
+        currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
     }
 }

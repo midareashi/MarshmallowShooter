@@ -27,7 +27,6 @@ public class Bonus : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Vitals vitals))
         {
-            var ga = this;
             if (healthBonus > 0)
             {
                 santa.GetComponent<Vitals>().currentHealth += healthBonus;
@@ -36,13 +35,10 @@ public class Bonus : MonoBehaviour
                     santa.GetComponent<Vitals>().currentHealth = santa.GetComponent<Vitals>().maxHealth;
                 }
             }
-            else
-            {
-                santa.GetComponent<PlayerController>().speedBonusTemp = speedBonus;
-                santa.GetComponent<PlayerController>().damageBonusTemp = damageBonus;
-                santa.GetComponent<PlayerController>().bonusStartTime = Time.time;
-                santa.GetComponent<PlayerController>().hasBonus = true;
-            }
+            santa.GetComponent<PlayerController>().speedBonusTemp = speedBonus;
+            santa.GetComponent<PlayerController>().damageBonusTemp = damageBonus;
+            santa.GetComponent<PlayerController>().bonusStartTime = Time.time;
+            santa.GetComponent<PlayerController>().hasBonus = true;
             Destroy(gameObject);
         }
     }

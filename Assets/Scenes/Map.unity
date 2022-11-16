@@ -2466,6 +2466,8 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!212 &837487265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2931,7 +2933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922922608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.7, y: 48, z: 0}
+  m_LocalPosition: {x: -11.4, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3097,7 +3099,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988477493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 39.9, z: 0}
+  m_LocalPosition: {x: -10.1, y: 39.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3529,6 +3531,8 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!212 &1047397243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3709,7 +3713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143234470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.9, y: 39.9, z: 0}
+  m_LocalPosition: {x: 10, y: 39.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4543,7 +4547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357913127}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 41.2, z: 0}
+  m_LocalPosition: {x: -9, y: 41.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5706,7 +5710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630149051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.2, y: 40.1, z: 0}
+  m_LocalPosition: {x: -9.9, y: 40.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5785,7 +5789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640009511}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 41.2, z: 0}
+  m_LocalPosition: {x: 7.4, y: 41.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6175,6 +6179,8 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!61 &1794362701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6624,6 +6630,8 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!61 &1881077266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6747,7 +6755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903423585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.4, y: 40.4, z: 0}
+  m_LocalPosition: {x: 4.9, y: 40.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7471,6 +7479,8 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!114 &2059701037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7564,7 +7574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109727066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.3, y: 48, z: 0}
+  m_LocalPosition: {x: 7.8, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7624,6 +7634,8 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!114 &265378749550673785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8608,6 +8620,8 @@ MonoBehaviour:
   maxHealth: 40
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
+  enemy: {fileID: 0}
+  isDie: 0
 --- !u!222 &6460466470890218322
 CanvasRenderer:
   m_ObjectHideFlags: 0

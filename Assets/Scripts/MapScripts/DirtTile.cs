@@ -27,14 +27,13 @@ public class DirtTile : MonoBehaviour
         tileBases.Add(ice);
     }
 
-    public void MakeNewMap()
+    private void OnEnable()
     {
         offsetX = Random.Range(1, 10000);
         offsetY = Random.Range(1, 10000);
         GenerateNoiseGrid();
         GenerateMap();
     }
-
 
     void GenerateNoiseGrid()
     {

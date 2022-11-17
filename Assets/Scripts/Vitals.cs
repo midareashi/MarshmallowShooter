@@ -12,7 +12,7 @@ public class Vitals : MonoBehaviour
 
     public void Start()
     {
-        dieTime = 1.5f;
+        dieTime = 1f;
         isDie = false;
         if (gameObject.tag == "Enemy")
         {
@@ -32,7 +32,7 @@ public class Vitals : MonoBehaviour
     {
         if (isDie)
         {
-            if (startDieTime + dieTime > Time.time)
+            if (startDieTime + dieTime < Time.time)
             {
                 Destroy(gameObject);
             }
@@ -48,7 +48,8 @@ public class Vitals : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
-                EnemyDie();
+                startDieTime = Time.time;
+                isDie = true;
             }
             if (gameObject.tag == "Boss")
             {
@@ -72,11 +73,5 @@ public class Vitals : MonoBehaviour
     private void SetBossHealth()
     {
         currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
-    }
-
-    private void EnemyDie()
-    {
-        startDieTime= Time.time;
-        Destroy(gameObject);
     }
 }

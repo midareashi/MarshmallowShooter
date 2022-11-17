@@ -705,7 +705,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: -2, y: -18}
   damage: 4
-  rof: 1
+  rof: 0.5
 --- !u!1 &255337710
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -18}
   damage: 4
-  rof: 2.5
+  rof: 1.5
 --- !u!1 &315411617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -18}
   damage: 4
-  rof: 2.5
+  rof: 1.5
 --- !u!1 &393767086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,10 +1096,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBonus: 0
   speedBonus: 0
-  damageBonus: 2
+  damageBonus: 1
   santa: {fileID: 6788270340717838656}
   bonus: {fileID: 404452151}
-  bonusSpeed: {x: 0, y: -15}
+  bonusSpeed: {x: 0, y: -10}
 --- !u!50 &404452154
 Rigidbody2D:
   serializedVersion: 4
@@ -2389,9 +2389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0.25
-  horizontalDistance: 4
-  verticalSpeed: 8
   points: 10
   cost: 2
   collisionDamage: 5
@@ -2399,7 +2396,9 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 789694629}
   enemy: {fileID: 837487257}
-  santa: {fileID: 6788270340717838656}
+  speed: 15
+  trackSanta: 1
+  santaPosition: {x: 0, y: 0}
   showInWave: 1
   spawnTime: 0
   spawnGroup: 2
@@ -2466,7 +2465,7 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  enemy: {fileID: 0}
+  enemy: {fileID: 837487257}
   isDie: 0
 --- !u!212 &837487265
 SpriteRenderer:
@@ -3454,9 +3453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0.25
-  horizontalDistance: 2
-  verticalSpeed: 5
   points: 20
   cost: 4
   collisionDamage: 8
@@ -3464,7 +3460,9 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 1010939926}
   enemy: {fileID: 1047397235}
-  santa: {fileID: 6788270340717838656}
+  speed: 15
+  trackSanta: 1
+  santaPosition: {x: 0, y: 0}
   showInWave: 1
   spawnTime: 0
   spawnGroup: 1
@@ -3531,7 +3529,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  enemy: {fileID: 0}
+  enemy: {fileID: 1047397235}
   isDie: 0
 --- !u!212 &1047397243
 SpriteRenderer:
@@ -4268,12 +4266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707f4bf7fe1677d44bce77558c33429d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBonus: 10
+  healthBonus: 5
   speedBonus: 5
-  damageBonus: 2
+  damageBonus: 1
   santa: {fileID: 6788270340717838656}
   bonus: {fileID: 1254434002}
-  bonusSpeed: {x: 0, y: -20}
+  bonusSpeed: {x: 0, y: -15}
 --- !u!50 &1254434005
 Rigidbody2D:
   serializedVersion: 4
@@ -4603,7 +4601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusSpawnPoint: {fileID: 1614975131}
-  bonusSpawnRate: 45
+  bonusSpawnRate: 50
 --- !u!1 &1402778249
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5683,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 2, y: -18}
   damage: 4
-  rof: 1
+  rof: 0.5
 --- !u!1 &1630149051
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,7 +5762,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 0, y: -15}
   damage: 1
-  rof: 1
+  rof: 0.6
 --- !u!1 &1640009511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,9 +6147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0
-  horizontalDistance: 2
-  verticalSpeed: 5
   points: 15
   cost: 3
   collisionDamage: 8
@@ -6159,7 +6154,9 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 124207330}
   enemy: {fileID: 1794362696}
-  santa: {fileID: 6788270340717838656}
+  speed: 15
+  trackSanta: 1
+  santaPosition: {x: 0, y: 0}
   showInWave: 1
   spawnTime: 0
   spawnGroup: 1
@@ -6179,7 +6176,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  enemy: {fileID: 0}
+  enemy: {fileID: 1794362696}
   isDie: 0
 --- !u!61 &1794362701
 BoxCollider2D:
@@ -6454,7 +6451,7 @@ MonoBehaviour:
   damageBonus: 0
   santa: {fileID: 6788270340717838656}
   bonus: {fileID: 1855698315}
-  bonusSpeed: {x: 0, y: -15}
+  bonusSpeed: {x: 0, y: -10}
 --- !u!50 &1855698318
 Rigidbody2D:
   serializedVersion: 4
@@ -6607,14 +6604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b94e5dd7d74245a8c4e27d80dc6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0.2
-  horizontalDistance: 2
+  zigzagRate: 0
+  horizontalDistance: 0
   verticalSpeed: 0
   points: 100
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
   boss: {fileID: 1881077262}
-  defeatedCount: 0
 --- !u!114 &1881077265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6919,12 +6915,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707f4bf7fe1677d44bce77558c33429d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBonus: 10
+  healthBonus: 5
   speedBonus: 0
   damageBonus: 0
   santa: {fileID: 6788270340717838656}
   bonus: {fileID: 1936077852}
-  bonusSpeed: {x: 0, y: -15}
+  bonusSpeed: {x: 0, y: -10}
 --- !u!50 &1936077858
 Rigidbody2D:
   serializedVersion: 4
@@ -7500,7 +7496,6 @@ MonoBehaviour:
   spawnLocation: {fileID: 143932334}
   moveToLocation: {fileID: 679548637}
   boss: {fileID: 2059701030}
-  defeatedCount: 0
 --- !u!1 &2095307453
 GameObject:
   m_ObjectHideFlags: 0
@@ -7631,10 +7626,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
-  enemy: {fileID: 0}
+  enemy: {fileID: 7056003314444274789}
   isDie: 0
 --- !u!114 &265378749550673785
 MonoBehaviour:
@@ -7648,9 +7643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54bdb44afe901e4eb9d772463370417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0.5
-  horizontalDistance: 3
-  verticalSpeed: 12
   points: 5
   cost: 1
   collisionDamage: 5
@@ -7658,7 +7650,9 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 836416970}
   enemy: {fileID: 7056003314444274789}
-  santa: {fileID: 6788270340717838656}
+  speed: 20
+  trackSanta: 1
+  santaPosition: {x: 0, y: 0}
   showInWave: 1
   spawnTime: 0
   spawnGroup: 3
@@ -7672,7 +7666,7 @@ Transform:
   m_GameObject: {fileID: 7056003314444274789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 836416971}
@@ -8617,7 +8611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 20
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   enemy: {fileID: 0}

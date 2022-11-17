@@ -1,12 +1,10 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class Enemy : MonoBehaviour
 {
-    public float zigzagRate; // How many zig-zags per second
-    public float horizontalDistance; // Horizontal Distance 5
-    public float verticalSpeed; // Vertical Speed
     public int points; // Points gained when killed
     public int cost; // Cost of wave in spawner
 
@@ -15,12 +13,22 @@ public class Enemy : MonoBehaviour
     public GameObject spawnHolder;
     public GameObject enemy;
 
-    public GameObject santa;
+    private GameObject santa;
 
+    // Movement
+    public float speed;
+    public bool trackSanta;
+    public Vector2 santaPosition;
+
+    // Spawn
     public int showInWave;
-    private Vector3 pos;
-    private Vector3 axis;
-    public float spawnTime; // Time since last spawn to offset wave function
+    public float spawnTime;
+
+    // Death
+    private Vector3 dieDirection = new Vector3(-1, 1, 0);
+    private float dieSpeed = 1f;
+    private Vector3 dieRotate = new Vector3(0, 0, 150);
+    private Vector3 dieScale = new Vector3(-0.2f, -0.2f, 0);
 
     private Vector2 cameraPosition;
     public int spawnGroup; // How many enemies spawn per wave
@@ -28,28 +36,25 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        pos = transform.position;
-        axis = transform.right;
+        santa = GameObject.FindGameObjectWithTag("Player");
+        santaPosition = santa.transform.position;
         cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        verticalSpeed += GameManager.gameDifficulty;
-    }
-
-    void EnemyMovement()
-    {
-        if (!GetComponent<Vitals>().isDie)
-        {    
-            pos += Vector3.down * Time.deltaTime * verticalSpeed;
-            transform.position = pos + axis * MathF.Sin((Time.time - spawnTime) * zigzagRate) * horizontalDistance;
-        }
-        else
-        {
-        }
     }
 
     void Update()
     {
-        EnemyMovement();
-        if (transform.position.y < -cameraPosition.y * 2)
+        if (GetComponent<Vitals>().isDie)
+        {
+            transform.position += dieDirection * dieSpeed * Time.deltaTime;
+            transform.Rotate(dieRotate * Time.deltaTime);
+            transform.localScale += dieScale * Time.deltaTime;
+        }
+        else if (trackSanta)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, santaPosition * new Vector2(0, 10f), speed * Time.deltaTime);
+        }
+
+        if (transform.position.y < -cameraPosition.y * 2 || transform.position.x < -cameraPosition.x * 2 || transform.position.x > cameraPosition.x * 2 || transform.localScale.x <= 0)
         {
             Destroy(gameObject);
         }

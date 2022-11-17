@@ -10,7 +10,6 @@ public class Boss : MonoBehaviour
     public GameObject spawnLocation;
     public GameObject moveToLocation;
     public GameObject boss;
-    public int defeatedCount;
 
     public static bool beginFight;
 

@@ -25,8 +25,11 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Vitals>(out Vitals vitals))
         {
-            vitals.TakeDamage(damage);
-            Destroy(gameObject);
+            if (!vitals.isDie)
+            {
+                vitals.TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

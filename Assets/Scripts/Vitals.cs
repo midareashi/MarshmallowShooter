@@ -61,6 +61,8 @@ public class Vitals : MonoBehaviour
             if (gameObject.tag == "Player")
             {
                 waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
+                Handheld.Vibrate();
+
             }
         }
     }

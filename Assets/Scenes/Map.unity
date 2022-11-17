@@ -705,7 +705,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: -2, y: -18}
   damage: 4
-  rof: 0.5
+  rof: 0.8
 --- !u!1 &255337710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 404452153}
   m_Layer: 11
   m_Name: Damage
-  m_TagString: Untagged
+  m_TagString: HealthUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2396,7 +2396,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 789694629}
   enemy: {fileID: 837487257}
-  speed: 15
+  speed: 10
   trackSanta: 1
   santaPosition: {x: 0, y: 0}
   showInWave: 1
@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
+  maxHealth: 4
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   enemy: {fileID: 837487257}
@@ -3460,7 +3460,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 1010939926}
   enemy: {fileID: 1047397235}
-  speed: 15
+  speed: 10
   trackSanta: 1
   santaPosition: {x: 0, y: 0}
   showInWave: 1
@@ -3526,7 +3526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   enemy: {fileID: 1047397235}
@@ -4234,7 +4234,7 @@ GameObject:
   - component: {fileID: 1254434004}
   m_Layer: 11
   m_Name: Super
-  m_TagString: Untagged
+  m_TagString: HealthUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5683,7 +5683,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 6336173207458135917, guid: d973e8e5b9cafcf409e816635b6ff257, type: 3}
   speed: {x: 2, y: -18}
   damage: 4
-  rof: 0.5
+  rof: 0.8
 --- !u!1 &1630149051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6154,7 +6154,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawnHolder: {fileID: 124207330}
   enemy: {fileID: 1794362696}
-  speed: 15
+  speed: 10
   trackSanta: 1
   santaPosition: {x: 0, y: 0}
   showInWave: 1
@@ -6173,7 +6173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 6
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   enemy: {fileID: 1794362696}
@@ -6414,7 +6414,7 @@ GameObject:
   - component: {fileID: 1855698317}
   m_Layer: 11
   m_Name: Speed
-  m_TagString: Untagged
+  m_TagString: HealthUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6805,7 +6805,7 @@ GameObject:
   - component: {fileID: 1936077857}
   m_Layer: 11
   m_Name: Health
-  m_TagString: Untagged
+  m_TagString: HealthUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9076,6 +9076,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2318144279052096184, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBullet
+      objectReference: {fileID: 0}
     - target: {fileID: 3338333392454389764, guid: ebefb426ac6d65a4ca0ad83fa874f07c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -9161,7 +9165,7 @@ GameObject:
   - component: {fileID: 7839312590842820578}
   m_Layer: 6
   m_Name: SantaSnowball
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

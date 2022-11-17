@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     private Vector3 dieDirection = new Vector3(-1, 1, 0);
     private float dieSpeed = 1f;
     private Vector3 dieRotate = new Vector3(0, 0, 150);
-    private Vector3 dieScale = new Vector3(-0.2f, -0.2f, 0);
+    private Vector3 dieScale = new Vector3(-0.3f, -0.3f, 0);
 
     private Vector2 cameraPosition;
     public int spawnGroup; // How many enemies spawn per wave
@@ -51,10 +51,10 @@ public class Enemy : MonoBehaviour
         }
         else if (trackSanta)
         {
-            transform.position = Vector3.MoveTowards(transform.position, santaPosition * new Vector2(0, 10f), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, santaPosition * new Vector2(0, 20f), speed * Time.deltaTime);
         }
 
-        if (transform.position.y < -cameraPosition.y * 2 || transform.position.x < -cameraPosition.x * 2 || transform.position.x > cameraPosition.x * 2 || transform.localScale.x <= 0)
+        if (transform.position.y < -cameraPosition.y * 1.2f || transform.position.y > cameraPosition.y * 3 || transform.localScale.x <= 0)
         {
             Destroy(gameObject);
         }

@@ -13,6 +13,10 @@ public class WinScreen : MonoBehaviour
     {
         UpgradeEquipment();
         congrats.text = String.Format(@"Congratulations, you completed stage {0}. Continue to the next stage.{1}", (GameManager.currentWave).ToString(), upgradeMessage);
+        Destroy(GameObject.FindGameObjectsWithTag("HealthUp").Where(x => x.activeSelf).FirstOrDefault());
+        Destroy(GameObject.FindGameObjectsWithTag("PlayerBullet").Where(x => x.activeSelf).FirstOrDefault());
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().FlyToStart();
+
     }
 
     public void NextWave()

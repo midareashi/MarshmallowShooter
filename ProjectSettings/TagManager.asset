@@ -7,10 +7,9 @@ TagManager:
   - Enemy
   - WaveSpawner
   - Jetpack
-  - Points
-  - Gold
   - Boss
   - HealthUp
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

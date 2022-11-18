@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 public class Enemy : MonoBehaviour
 {
-    public int points; // Points gained when killed
+    public float points; // Points gained when killed
     public int cost; // Cost of wave in spawner
 
     public int collisionDamage;
@@ -17,8 +15,10 @@ public class Enemy : MonoBehaviour
 
     // Movement
     public float speed;
-    public bool trackSanta;
+    private bool trackSanta = true;
     public Vector2 santaPosition;
+    public float trackDistance;
+    public bool spawnTogether;
 
     // Spawn
     public int showInWave;
@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         santa = GameObject.FindGameObjectWithTag("Player");
-        santaPosition = santa.transform.position;
         cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
@@ -51,7 +50,21 @@ public class Enemy : MonoBehaviour
         }
         else if (trackSanta)
         {
-            transform.position = Vector3.MoveTowards(transform.position, santaPosition * new Vector2(0, 20f), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, santa.transform.position, speed * Time.deltaTime);
+            if (transform.position.y - santa.transform.position.y < trackDistance)
+            {
+                trackSanta = false;
+                float n = 40f;
+                float sx = transform.position.x;
+                float sy = transform.position.y;
+                float jx = santa.transform.position.x - sx;
+                float jy = santa.transform.position.y - sy;
+                santaPosition = new Vector2(n * jx + sx, n * jy + sy);
+            }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, santaPosition, speed * Time.deltaTime);
         }
 
         if (transform.position.y < -cameraPosition.y * 1.2f || transform.position.y > cameraPosition.y * 3 || transform.localScale.x <= 0)

@@ -8,6 +8,7 @@ public class WinScreen : MonoBehaviour
     public GameObject mapScreenManager;
     public TMP_Text congrats;
     private string upgradeMessage;
+    public GameObject santa;
 
     private void OnEnable()
     {
@@ -15,7 +16,7 @@ public class WinScreen : MonoBehaviour
         congrats.text = String.Format(@"Congratulations, you completed stage {0}. Continue to the next stage.{1}", (GameManager.currentWave).ToString(), upgradeMessage);
         Destroy(GameObject.FindGameObjectsWithTag("HealthUp").Where(x => x.activeSelf).FirstOrDefault());
         Destroy(GameObject.FindGameObjectsWithTag("PlayerBullet").Where(x => x.activeSelf).FirstOrDefault());
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().FlyToStart();
+        santa.GetComponent<PlayerController>().FlyToStart();
 
     }
 

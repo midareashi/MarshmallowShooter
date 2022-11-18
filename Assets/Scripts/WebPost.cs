@@ -13,7 +13,7 @@ public class WebPost : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("playerName", PlayerPrefs.GetString("Name"));
-        form.AddField("playerScore", GameManager.currentPoints);
+        form.AddField("playerScore", GameManager.currentPoints.ToString());
 
         using (UnityWebRequest www = UnityWebRequest.Post("https://meetandgreet.yourcreativepeople.com/pages/coffeepunch/updatescoreboard.aspx", form))
         {

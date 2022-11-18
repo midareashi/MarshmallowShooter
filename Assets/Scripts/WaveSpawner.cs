@@ -16,7 +16,7 @@ public class WaveSpawner : MonoBehaviour
     public int wavePointsAdder;
     public int bossWaveInterval;
 
-    public int waveGainedPoints;
+    public float waveGainedPoints;
 
     private Transform spawnLocation;
 
@@ -136,17 +136,34 @@ public class WaveSpawner : MonoBehaviour
     {
         if (Time.time > spawningEnemy.GetComponent<Enemy>().spawnSpeed + lastSpawn)
         {
-            if (spawningEnemyCount < spawningEnemy.GetComponent<Enemy>().spawnGroup)
-            {
-                enemy = Instantiate(spawningEnemy, spawnLocation.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
-                enemy.GetComponent<Enemy>().spawnTime = Time.time;
-                enemy.SetActive(true);
-                spawnedEnemies.Add(enemy);
-                spawningEnemyCount ++;
-                lastSpawn = Time.time;
+            if (spawningEnemy.GetComponent<Enemy>().spawnTogether) {
+                if (spawningEnemyCount < spawningEnemy.GetComponent<Enemy>().spawnGroup)
+                {
+                    enemy = Instantiate(spawningEnemy, spawnLocation.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
+                    enemy.GetComponent<Enemy>().spawnTime = Time.time;
+                    enemy.GetComponent<Enemy>().points = (enemy.GetComponent<Enemy>().cost * GameManager.pointMultiplier) / enemy.GetComponent<Enemy>().spawnGroup;
+                    enemy.SetActive(true);
+                    spawnedEnemies.Add(enemy);
+                    spawningEnemyCount ++;
+                    lastSpawn = Time.time;
+                }
+                else
+                {
+                    spawningEnemy = null;
+                    spawningEnemyCount = 0;
+                    lastSpawn = 0;
+                }
             }
             else
             {
+                foreach(Transform sp in spawningEnemy.GetComponent<Enemy>().spawnPoints) {
+                    enemy = Instantiate(spawningEnemy, sp.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
+                    enemy.GetComponent<Enemy>().points = (enemy.GetComponent<Enemy>().cost * GameManager.pointMultiplier) / spawningEnemy.GetComponent<Enemy>().spawnPoints.Count;
+                    enemy.GetComponent<Enemy>().spawnTime = Time.time;
+                    enemy.SetActive(true);
+                    spawnedEnemies.Add(enemy);
+                }
+
                 spawningEnemy = null;
                 spawningEnemyCount = 0;
                 lastSpawn = 0;
@@ -157,9 +174,11 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnBoss()
     {
         int bossCount = GameManager.allBosses.Count;
-        int bossSpawn = UnityEngine.Random.Range(0, bossCount);
-
-        var spawnBoss = GameManager.allBosses[bossSpawn];
+        if (GameManager.bossSpawnCount > bossCount - 1)
+        {
+            GameManager.bossSpawnCount = 0;
+        }
+        var spawnBoss = GameManager.allBosses[GameManager.bossSpawnCount];
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
         boss.SetActive(true);
@@ -167,6 +186,7 @@ public class WaveSpawner : MonoBehaviour
         boss.GetComponent<Boss>().zigzagRate = 0; 
         moveBossToStart = true;
         GameManager.canFire = false;
+        GameManager.bossSpawnCount ++;
     }
 
     public void EndWave(string outcome)

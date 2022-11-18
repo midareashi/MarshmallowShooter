@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
     public float zigzagRate; // How many zig-zags per second
     public float horizontalDistance; // Horizontal Distance 5
     public float verticalSpeed; // Vertical Speed
-    public int points; // Points gained when killed
+    public float points; // Points gained when killed
     public GameObject spawnLocation;
     public GameObject moveToLocation;
     public GameObject boss;

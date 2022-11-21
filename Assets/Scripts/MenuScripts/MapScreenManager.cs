@@ -8,6 +8,8 @@ public class MapScreenManager : MonoBehaviour
     public GameObject mainScreen;
     public GameObject scoreScreen;
     public GameObject waveSpawner;
+    public GameObject helpScreen;
+
     public GameObject santa;
     public GameObject dirtTile;
 
@@ -53,11 +55,18 @@ public class MapScreenManager : MonoBehaviour
         mainScreen.SetActive(true);
     }
 
+    public void ShowHelpScreen()
+    {
+        HideAllScreen();
+        helpScreen.SetActive(true);
+    }
+
     private void HideAllScreen()
     {
         gameScreen.SetActive(false);
         winScreen.SetActive(false);
         mainScreen.SetActive(false);
         scoreScreen.SetActive(false);
+        helpScreen.SetActive(false);
     }
 }

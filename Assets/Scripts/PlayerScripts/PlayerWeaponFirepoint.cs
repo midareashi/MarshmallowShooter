@@ -8,6 +8,7 @@ public class PlayerWeaponFirepoint : MonoBehaviour
     public int baseDamage;
     public float ROF;
     private float lastShot;
+    public GameObject playerBullet;
 
     private void Update()
     {
@@ -18,7 +19,7 @@ public class PlayerWeaponFirepoint : MonoBehaviour
     {
         if (Time.time > ROF + lastShot && GameManager.canFire)
         {
-            GameObject bullet = Instantiate(GameManager.currentBullet, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(playerBullet, transform.position, transform.rotation);
             bullet.SetActive(true);
             bullet.GetComponent<PlayerBullet>().GetComponent<Rigidbody2D>().velocity += baseSpeed;
             bullet.GetComponent<PlayerBullet>().damage += baseDamage + santa.GetComponent<PlayerController>().damageBonusTemp;

@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -11,6 +9,7 @@ public class Boss : MonoBehaviour
     public GameObject spawnLocation;
     public GameObject moveToLocation;
     public GameObject boss;
+    public GameObject waveSpawner;
 
     private Rigidbody2D rb;
 
@@ -22,6 +21,13 @@ public class Boss : MonoBehaviour
     private float objectPadding = 1f;
     private float objectWidth;
     public float moveSpeed;
+    
+    // Death
+    private Vector3 dieDirection = new Vector3(-1, 1, 0);
+    private float dieSpeed = 1f;
+    private Vector3 dieRotate = new Vector3(0, 0, 150);
+    private Vector3 dieScale = new Vector3(-0.3f, -0.3f, 0);
+    [SerializeField] private GameObject explosion;
 
     private void Start()
     {
@@ -55,7 +61,19 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (beginFight)
+        if (GetComponent<Vitals>().isDie)
+        {
+            transform.position += dieDirection * dieSpeed * Time.deltaTime;
+            transform.Rotate(dieRotate * Time.deltaTime);
+            transform.localScale += dieScale * Time.deltaTime;
+            explosion.SetActive(true);
+            if (transform.localScale.x <= 0)
+            {
+                waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
+                Destroy(gameObject);
+            }
+        }
+        else if (beginFight)
         {
             bossMovement();
             isBound = true;

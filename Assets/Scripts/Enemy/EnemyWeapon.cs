@@ -11,7 +11,6 @@ public class EnemyWeapon : MonoBehaviour
 
     private void Start()
     {
-        rof += GameManager.gameDifficulty;
         damage += GameManager.gameDifficulty;
     }
 

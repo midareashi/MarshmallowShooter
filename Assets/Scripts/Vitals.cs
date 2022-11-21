@@ -5,14 +5,10 @@ public class Vitals : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public GameObject waveSpawner;
-    private float dieTime;
-    public bool isDie;
-    private float startDieTime;
+    public bool isDie = false;
 
     public void Start()
     {
-        dieTime = 1f;
-        isDie = false;
         if (gameObject.tag == "Enemy")
         {
             SetEnemyHealth();
@@ -29,39 +25,30 @@ public class Vitals : MonoBehaviour
 
     private void Update()
     {
-        if (isDie)
-        {
-            if (startDieTime + dieTime < Time.time)
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
+        if (GameManager.canFire)
         {
-            if (gameObject.tag == "Enemy")
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
             {
-                GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
-                startDieTime = Time.time;
                 isDie = true;
-            }
-            if (gameObject.tag == "Boss")
-            {
-                GameManager.currentPoints += gameObject.GetComponent<Boss>().points;
-                Destroy(gameObject);
-                waveSpawner.GetComponent<WaveSpawner>().EndWave("boss");
-            }
+                if (gameObject.tag == "Enemy")
+                {
+                    GameManager.currentPoints += gameObject.GetComponent<Enemy>().points;
+                }
+                if (gameObject.tag == "Boss")
+                {
+                    GameManager.currentPoints += gameObject.GetComponent<Boss>().points;
+                }
 
-            if (gameObject.tag == "Player")
-            {
-                waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
-                Handheld.Vibrate();
-
+                if (gameObject.tag == "Player")
+                {
+                    waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
+                }
             }
         }
     }
@@ -73,6 +60,6 @@ public class Vitals : MonoBehaviour
 
     private void SetBossHealth()
     {
-        currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
+        currentHealth = maxHealth + (GameManager.gameDifficulty * 10);
     }
 }

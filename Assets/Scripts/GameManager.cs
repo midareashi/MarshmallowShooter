@@ -18,12 +18,10 @@ public class GameManager : MonoBehaviour
     // Equipment Manager
     public static List<GameObject> allWeapons;
     public static List<GameObject> allJetpacks;
-    public static List<GameObject> allBullets;
 
     public static GameObject currentBullet;
 
     public GameObject weaponsHolder;
-    public GameObject bulletsHolder;
     public GameObject jetpacksHolder;
 
     // Enemy Manager
@@ -44,7 +42,6 @@ public class GameManager : MonoBehaviour
     {
         BuildWeaponList();
         BuildJetpackList();
-        BuildBulletList();
         BuildEnemyList();
         BuildBossList();
         BuildBonusList();
@@ -73,19 +70,6 @@ public class GameManager : MonoBehaviour
         }
         allJetpacks = list;
         allJetpacks[0].SetActive(true);
-    }
-
-    private void BuildBulletList()
-    {
-        List<GameObject> list = new List<GameObject>();
-        foreach (PlayerBullet item in bulletsHolder.GetComponentsInChildren<PlayerBullet>(true))
-        {
-            list.Add(item.bullet);
-        }
-        allBullets = list;
-        currentBullet = list[0];
-
-        Instantiate(allBullets[0]);
     }
 
     private void BuildEnemyList()

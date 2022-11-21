@@ -73,7 +73,7 @@ public class WaveSpawner : MonoBehaviour
                     rndPosition = Random.Range(-5f, 5f);
                     int randomSpawn = UnityEngine.Random.Range(0,spawnPos);
                     spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn]; // Pick a random spawn point
-                    spawnTimer = spawnInterval;
+                    spawnTimer = spawnInterval - (GameManager.gameDifficulty * 0.1f);
                 }
             }
             else

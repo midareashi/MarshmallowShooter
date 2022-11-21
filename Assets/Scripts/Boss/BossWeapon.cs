@@ -16,7 +16,7 @@ public class BossWeapon : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time > rof + lastShot && GameManager.canFire)
+        if (Time.time > rof + lastShot && GameManager.canFire && !transform.parent.gameObject.GetComponent<Vitals>().isDie)
         {
             GameObject bullet = Instantiate(enemyBullet, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);

@@ -23,7 +23,6 @@ public class LoseScreen : MonoBehaviour
         Destroy(GameObject.FindGameObjectsWithTag("Enemy").Where(x => x.activeSelf).FirstOrDefault());
         GameManager.currentPoints = 0f;
         GameManager.currentWave = 0;
-        GameManager.currentBullet = GameManager.allBullets[0];
 
     }
 

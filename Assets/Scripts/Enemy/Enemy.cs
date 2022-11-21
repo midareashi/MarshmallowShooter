@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     private float dieSpeed = 1f;
     private Vector3 dieRotate = new Vector3(0, 0, 150);
     private Vector3 dieScale = new Vector3(-0.3f, -0.3f, 0);
+    [SerializeField] private GameObject explosion;
 
     private Vector2 cameraPosition;
     public int spawnGroup; // How many enemies spawn per wave
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
             transform.position += dieDirection * dieSpeed * Time.deltaTime;
             transform.Rotate(dieRotate * Time.deltaTime);
             transform.localScale += dieScale * Time.deltaTime;
+            explosion.SetActive(true);
         }
         else if (trackSanta)
         {

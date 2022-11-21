@@ -31,7 +31,7 @@ public class ScoreBoard : MonoBehaviour
         string bonus = "";
         if (santaPC.bonusText != "")
         {
-            bonus += santaPC.bonusText + " for " + (santaPC.bonusTimeDuration + santaPC.bonusStartTime - Time.time).ToString("0.0") + " more seconds!";
+            bonus += santaPC.bonusText;
         }
         return bonus;
     }

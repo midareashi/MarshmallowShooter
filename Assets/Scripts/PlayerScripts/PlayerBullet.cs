@@ -6,7 +6,6 @@ public class PlayerBullet : MonoBehaviour
     public Vector2 speed;
     public Vector2 CameraPosition;
     public GameObject bullet;
-    public int upgradeWave;
 
     public void Start()
     {

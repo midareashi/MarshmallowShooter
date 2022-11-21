@@ -19,7 +19,7 @@ public class BonusSpawner : MonoBehaviour
         if (Time.time >= lastBonusSpawn + bonusSpawnRate)
         {
             rndBonus = Random.Range(0, GameManager.allBonuses.Count);
-            rndPosition = Random.Range(-10f,10f);
+            rndPosition = Random.Range(-5f,5f);
             
             bonus = Instantiate(GameManager.allBonuses[rndBonus], bonusSpawnPoint.transform.position + new Vector3(rndPosition, 0, 0), GameManager.allBonuses[rndBonus].transform.rotation);
             bonus.SetActive(true);

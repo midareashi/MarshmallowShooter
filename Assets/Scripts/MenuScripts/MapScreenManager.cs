@@ -23,6 +23,9 @@ public class MapScreenManager : MonoBehaviour
         winScreen.SetActive(true);
         scoreScreen.SetActive(true);
         santa.GetComponent<PlayerController>().hasBonus = false;
+        santa.GetComponent<PlayerController>().bonusText = "";
+        santa.GetComponent<PlayerController>().speedBonusTemp = 0;
+        santa.GetComponent<PlayerController>().damageBonusTemp = 0;
     }
 
     public void ShowLoseScreen()
@@ -38,6 +41,9 @@ public class MapScreenManager : MonoBehaviour
         gameScreen.SetActive(true);
         scoreScreen.SetActive(true);
         santa.GetComponent<PlayerController>().hasBonus = false;
+        santa.GetComponent<PlayerController>().bonusText = "";
+        santa.GetComponent<PlayerController>().speedBonusTemp = 0;
+        santa.GetComponent<PlayerController>().damageBonusTemp = 0;
         waveSpawner.GetComponent<WaveSpawner>().NextWave();
     }
 

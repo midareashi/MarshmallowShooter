@@ -102,7 +102,6 @@ public class WaveSpawner : MonoBehaviour
                 moveBossToStart = false;
                 GameManager.canFire = true;
                 Boss.beginFight = true;
-                boss.GetComponent<Boss>().zigzagRate = bossZR;
             }
         }
     }
@@ -185,6 +184,7 @@ public class WaveSpawner : MonoBehaviour
         bossZR = boss.GetComponent<Boss>().zigzagRate;
         boss.GetComponent<Boss>().zigzagRate = 0; 
         moveBossToStart = true;
+        Boss.beginFight = false;
         GameManager.canFire = false;
         GameManager.bossSpawnCount ++;
     }

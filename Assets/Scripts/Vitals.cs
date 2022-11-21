@@ -5,7 +5,6 @@ public class Vitals : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public GameObject waveSpawner;
-    public GameObject enemy;
     private float dieTime;
     public bool isDie;
     private float startDieTime;

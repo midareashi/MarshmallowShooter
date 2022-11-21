@@ -9,6 +9,7 @@ public class Bonus : MonoBehaviour
     public GameObject bonus;
     private Vector2 cameraPosition;
     public Vector2 bonusSpeed;
+    public string bonusText;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class Bonus : MonoBehaviour
             santa.GetComponent<PlayerController>().damageBonusTemp = damageBonus;
             santa.GetComponent<PlayerController>().bonusStartTime = Time.time;
             santa.GetComponent<PlayerController>().hasBonus = true;
+            santa.GetComponent<PlayerController>().bonusText = bonusText;
             Destroy(gameObject);
         }
     }

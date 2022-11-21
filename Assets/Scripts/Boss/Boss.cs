@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -11,28 +12,53 @@ public class Boss : MonoBehaviour
     public GameObject moveToLocation;
     public GameObject boss;
 
+    private Rigidbody2D rb;
+
+    // Movement
+    private bool isBound = false;
+    private int moveDirection = 1;
     public static bool beginFight;
+    private Vector2 cameraPosition;
+    private float objectPadding = 1f;
+    private float objectWidth;
+    public float moveSpeed;
 
-    private Vector3 pos;
-    private Vector3 axis;
-
-    void Start()
+    private void Start()
     {
-        pos = moveToLocation.transform.position;
-        axis = moveToLocation.transform.right;
+        cameraPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        rb = GetComponent<Rigidbody2D>();
+        isBound = false;
     }
 
-    void ZigZagMovement()
+    void bossMovement()
     {
-        pos += Vector3.down * Time.deltaTime * verticalSpeed;
-        transform.position = pos + axis * MathF.Sin(Time.time * zigzagRate) * horizontalDistance;
+        if (isBound)
+        {
+            rb.velocity = new Vector2(moveSpeed * moveDirection,0);
+            if (moveDirection > 0)
+            {
+                if (transform.position.x > cameraPosition.x - objectWidth - objectPadding)
+                {
+                    moveDirection *= -1;
+                }
+            }
+            if (moveDirection < 0)
+            {
+                if (transform.position.x < -cameraPosition.x + objectWidth + objectPadding)
+                {
+                    moveDirection *= -1;
+                }
+            }
+        }
     }
 
     void Update()
     {
         if (beginFight)
         {
-            ZigZagMovement();
+            bossMovement();
+            isBound = true;
         }
     }
 }

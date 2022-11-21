@@ -21,29 +21,18 @@ public class ScoreBoard : MonoBehaviour
         {
             GameManager.highScore = GameManager.currentPoints;
         }
-        score.text = "Score: " + GameManager.currentPoints.ToString();
-        highScore.text = "High Score: " + GameManager.highScore.ToString();
-        bonus.text =  GetSantaBonus();
+        score.text = "Score: " + GameManager.currentPoints.ToString("0.0");
+        highScore.text = "High Score: " + GameManager.highScore.ToString("0.0");
+        bonus.text = GetSantaBonus();
     }
 
     private string GetSantaBonus()
     {
         string bonus = "";
-        if (santaPC.hasBonus)
+        if (santaPC.bonusText != "")
         {
-            if (santaPC.speedBonusTemp > 0)
-            {
-                bonus = santaPC.speedBonusTemp.ToString() + " Bonus Speed";
-            }
-            if (santaPC.damageBonusTemp > 0)
-            {
-                bonus = santaPC.damageBonusTemp.ToString() + " Bonus Damage";
-            }
-            if (bonus != "")
-            {
-                bonus += " for " + (santaPC.bonusTimeDuration + santaPC.bonusStartTime - Time.time).ToString("0.0") + " more seconds!";
-            }
-}
+            bonus += santaPC.bonusText + " for " + (santaPC.bonusTimeDuration + santaPC.bonusStartTime - Time.time).ToString("0.0") + " more seconds!";
+        }
         return bonus;
     }
 }

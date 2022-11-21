@@ -13,8 +13,11 @@ public class LoseScreen : MonoBehaviour
     {
         PlayerPrefs.SetFloat("highScore", GameManager.highScore);
         santa.GetComponent<PlayerController>().hasBonus = false;
+        santa.GetComponent<PlayerController>().bonusText = "";
+        santa.GetComponent<PlayerController>().speedBonusTemp = 0;
+        santa.GetComponent<PlayerController>().damageBonusTemp = 0;
 
-        sorry.text = String.Format(@"Sorry, I guess that baby penguin on stage {0} was just too tough for you :( Maybe next time you can get more than {1} points :)", (GameManager.currentWave).ToString(), GameManager.highScore.ToString());
+        sorry.text = "I guess that baby penguin was just too tough for you :(";
 
         Destroy(GameObject.FindGameObjectsWithTag("Boss").Where(x => x.activeSelf).FirstOrDefault());
         Destroy(GameObject.FindGameObjectsWithTag("Enemy").Where(x => x.activeSelf).FirstOrDefault());

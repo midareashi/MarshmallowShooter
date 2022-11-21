@@ -1,5 +1,3 @@
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float bonusTimeDuration;
     public float bonusStartTime;
     public bool hasBonus;
+    public string bonusText;
 
     private void Awake()
     {
@@ -58,6 +57,7 @@ public class PlayerController : MonoBehaviour
         if (Time.time > bonusStartTime + bonusTimeDuration)
         {
             hasBonus = false;
+            bonusText = "";
             speedBonusTemp = 0;
             damageBonusTemp = 0;
         }

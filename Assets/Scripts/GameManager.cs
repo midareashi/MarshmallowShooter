@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         BuildBossList();
         BuildBonusList();
 
-        highScore = PlayerPrefs.GetInt("highScore");
+        highScore = PlayerPrefs.GetFloat("highScore");
         pointMultiplier = 10f;
     }
 

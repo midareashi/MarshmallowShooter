@@ -35,7 +35,6 @@ public class TrackTarget : MonoBehaviour
         else
         {
             transform.position += finalTrackPos * Time.deltaTime;
-            transform.rotation = Quaternion.identity;
         }
     }
 }

@@ -176,11 +176,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
-        int bossCount = GameManager.allBosses.Count;
-        if (GameManager.bossSpawnCount > bossCount - 1)
-        {
-            GameManager.bossSpawnCount = 0;
-        }
         var spawnBoss = GameManager.allBosses[GameManager.bossSpawnCount];
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
@@ -208,7 +203,11 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "boss")
         {
-            GameManager.gameDifficulty ++;
+            if (GameManager.bossSpawnCount == GameManager.allBosses.Count)
+            {
+                GameManager.gameDifficulty++;
+                GameManager.bossSpawnCount = 0;
+            }
             WinScreen();
         }
 

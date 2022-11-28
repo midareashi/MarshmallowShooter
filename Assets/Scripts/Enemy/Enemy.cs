@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out PlayerController santa))
         {
             santa.GetComponent<Vitals>().TakeDamage(collisionDamage);
-            Destroy(gameObject);
+            animator.SetBool("IsDie", true);
         }
     }
 

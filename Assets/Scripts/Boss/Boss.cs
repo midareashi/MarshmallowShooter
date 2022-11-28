@@ -59,6 +59,7 @@ public class Boss : MonoBehaviour
     {
         if (GetComponent<Vitals>().isDie)
         {
+            GameManager.canFire = false;
             transform.position += dieDirection * dieSpeed * Time.deltaTime;
             transform.Rotate(dieRotate * Time.deltaTime);
             transform.localScale += dieScale * Time.deltaTime;

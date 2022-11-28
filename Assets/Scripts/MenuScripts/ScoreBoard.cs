@@ -21,8 +21,8 @@ public class ScoreBoard : MonoBehaviour
         {
             GameManager.highScore = GameManager.currentPoints;
         }
-        score.text = "Score: " + GameManager.currentPoints.ToString("0.0");
-        highScore.text = "High Score: " + GameManager.highScore.ToString("0.0");
+        score.text = "Score: " + GameManager.currentPoints.ToString("F0");
+        highScore.text = "High Score: " + GameManager.highScore.ToString("F0");
         bonus.text = GetSantaBonus();
     }
 

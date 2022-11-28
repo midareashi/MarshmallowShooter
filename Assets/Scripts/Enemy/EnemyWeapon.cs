@@ -7,7 +7,7 @@ public class EnemyWeapon : MonoBehaviour
     public int damage;
 
     public float rof;
-    private float lastShot = 0.0f;
+    private float lastShot = 0f;
 
     private void Start()
     {

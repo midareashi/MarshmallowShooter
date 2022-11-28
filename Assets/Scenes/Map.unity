@@ -4041,7 +4041,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2109727067}
-  - {fileID: 922922609}
   m_Father: {fileID: 353467154664560890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4784,37 +4783,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919121580}
   m_CullTransparentMesh: 1
---- !u!1 &922922608
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 922922609}
-  m_Layer: 9
-  m_Name: SpawnLocation2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &922922609
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922922608}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.4, y: 48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 836416971}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &957451361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,7 +4980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988477493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.4, y: 39.9, z: 0}
+  m_LocalPosition: {x: 5.9, y: 47.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5838,7 +5806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143234470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.4, y: 39.9, z: 0}
+  m_LocalPosition: {x: -9.9, y: 47.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6530,8 +6498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapScreenManager: {fileID: 77392321}
   enemiesToSpawn: []
-  wavePointsMultiplier: 0
-  wavePointsAdder: 0
+  wavePointsMultiplier: 5
+  wavePointsAdder: 15
   bossWaveInterval: 2
   waveGainedPoints: 20
   spawnInterval: 2.5
@@ -6649,7 +6617,7 @@ MonoBehaviour:
   iceDistribuition: 1
   mapWidth: 12
   mapHeight: 1200
-  magnification: 8
+  magnification: 6
 --- !u!1 &1357913127
 GameObject:
   m_ObjectHideFlags: 0
@@ -8469,7 +8437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630149051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.43, y: 26.14, z: 0}
+  m_LocalPosition: {x: -7.5, y: 30.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9478,7 +9446,7 @@ MonoBehaviour:
   playerWpn: {fileID: 1679221453}
   baseSpeed: {x: 0, y: 20}
   santa: {fileID: 6788270340717838656}
-  baseDamage: 1
+  baseDamage: 4
   ROF: 0.5
   playerBullet: {fileID: 6336173207458135917, guid: f496aab5456586548844cf05d266d607, type: 3}
 --- !u!1 &1842588522
@@ -9971,7 +9939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903423585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.78, y: 25.76, z: 0}
+  m_LocalPosition: {x: 3.3, y: 30.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11042,7 +11010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109727066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.8, y: 48, z: 0}
+  m_LocalPosition: {x: -0.1, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12315,7 +12283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6788270340717838656
 GameObject:
   m_ObjectHideFlags: 0
@@ -12599,7 +12567,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!224 &6980384411430955293
@@ -12795,7 +12763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb750b9b095c4a45bb75f0953e8eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 25
   jetpack: {fileID: 6628182862137615796}
   upgradeWave: 4
 --- !u!95 &8075564424567302211

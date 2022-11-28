@@ -6123,7 +6123,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6531,8 +6531,8 @@ MonoBehaviour:
   mapScreenManager: {fileID: 77392321}
   enemiesToSpawn: []
   wavePointsMultiplier: 5
-  wavePointsAdder: 10
-  bossWaveInterval: 1
+  wavePointsAdder: 15
+  bossWaveInterval: 2
   waveGainedPoints: 20
   spawnInterval: 2.5
   stageStartWaitTime: 2.5
@@ -7006,8 +7006,8 @@ RectTransform:
   m_Father: {fileID: 21396158}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9172,7 +9172,7 @@ MonoBehaviour:
   santaPosition: {x: 0, y: 0}
   trackDistance: 5
   spawnTogether: 0
-  showInWave: 3
+  showInWave: 5
   spawnTime: 0
   spawnGroup: 2
   spawnSpeed: 0
@@ -9330,7 +9330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812735511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9819,7 +9819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 60
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   isDie: 0
@@ -10756,7 +10756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 60
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   isDie: 0
@@ -12330,6 +12330,7 @@ GameObject:
   - component: {fileID: 5411493077240558865}
   - component: {fileID: 1578239427}
   - component: {fileID: 1578239440}
+  - component: {fileID: 6788270340717838672}
   m_Layer: 8
   m_Name: Santa
   m_TagString: Player
@@ -12351,6 +12352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Santa: {fileID: 6788270340717838656}
   winScreen: {fileID: 44014006}
+  waveSpawner: {fileID: 1282759122}
+  animator: {fileID: 6788270340717838672}
   speedBonusTemp: 0
   damageBonusTemp: 0
   bonusTimeDuration: 10
@@ -12473,6 +12476,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5, y: 7.5}
   m_EdgeRadius: 0
+--- !u!95 &6788270340717838672
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788270340717838656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30fe4fe20bd1058489d8d620634f02da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &6861618900332558283
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -39,11 +39,13 @@ public class Joystick : MonoBehaviour
             Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
             MovePlayer(direction);
             circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
+            santa.GetComponent<Animator>().SetBool("IsTurning", true);
         }
         else
         {
             circle.GetComponent<SpriteRenderer>().enabled = false;
             outerCircle.GetComponent<SpriteRenderer>().enabled = false;
+            santa.GetComponent<Animator>().SetBool("IsTurning",false);
         }
     }
 

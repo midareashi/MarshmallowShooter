@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     // Death
 
     private Vector2 cameraPosition;
-    private bool isExploding = false;
     public int spawnGroup; // How many enemies spawn per wave
     public float spawnSpeed; // Delay between enemies spawning 0.5f
 
@@ -43,7 +42,6 @@ public class Enemy : MonoBehaviour
         if (GetComponent<Vitals>().isDie)
         {
             animator.SetBool("IsDie", true);
-            isExploding = true;
         }
         else if (trackSanta)
         {

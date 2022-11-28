@@ -1,33 +1,37 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject Santa;
     public GameObject winScreen;
+    public GameObject waveSpawner;
+    public Animator animator;
     private bool moveSantaToStart = false;
-    private bool moveSantaOffScreen = false;
 
     public float speedBonusTemp;
     public int damageBonusTemp;
 
     public float bonusTimeDuration;
     public float bonusStartTime;
-    public bool hasBonus;
+    public bool hasBonus = false;
     public string bonusText;
-
-    private void Awake()
-    {
-        hasBonus = false;
-    }
 
     private void Update()
     {
-        if (moveSantaOffScreen)
+        if (GetComponent<Vitals>().isDie)
         {
-            Santa.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 30, 0), 0.3f);
-            if (Santa.transform.position == Vector3.MoveTowards(transform.position, new Vector3(0, 30, 0), 0.3f))
+            animator.SetBool("IsDie", true);
+
+
+            foreach (GameObject item in GameManager.allWeapons)
             {
-                moveSantaOffScreen = false;
+                item.SetActive(false);
+            }
+
+            foreach (GameObject item in GameManager.allJetpacks)
+            {
+                item.SetActive(false);
             }
         }
 
@@ -43,7 +47,13 @@ public class PlayerController : MonoBehaviour
 
         if (hasBonus)
         {
-            ApplyBonus();
+            if (Time.time > bonusStartTime + bonusTimeDuration)
+            {
+                hasBonus = false;
+                bonusText = "";
+                speedBonusTemp = 0;
+                damageBonusTemp = 0;
+            }
         }
     }
 
@@ -52,14 +62,8 @@ public class PlayerController : MonoBehaviour
         moveSantaToStart = true;
     }
 
-    private void ApplyBonus()
+    public void destroyPlayer()
     {
-        if (Time.time > bonusStartTime + bonusTimeDuration)
-        {
-            hasBonus = false;
-            bonusText = "";
-            speedBonusTemp = 0;
-            damageBonusTemp = 0;
-        }
+        waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
     }
 }

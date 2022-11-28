@@ -144,6 +144,7 @@ public class WaveSpawner : MonoBehaviour
                     enemy = Instantiate(spawningEnemy, spawnLocation.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
                     enemy.GetComponent<Enemy>().spawnTime = Time.time;
                     enemy.GetComponent<Enemy>().points = (enemy.GetComponent<Enemy>().cost * GameManager.pointMultiplier) / enemy.GetComponent<Enemy>().spawnGroup;
+                    enemy.GetComponent<Vitals>().currentHealth = enemy.GetComponent<Vitals>().maxHealth + (GameManager.gameDifficulty);
                     enemy.SetActive(true);
                     spawnedEnemies.Add(enemy);
                     spawningEnemyCount ++;
@@ -161,11 +162,11 @@ public class WaveSpawner : MonoBehaviour
                 foreach(Transform sp in spawningEnemy.GetComponent<Enemy>().spawnPoints) {
                     enemy = Instantiate(spawningEnemy, sp.position + new Vector3(rndPosition, 0, 0), Quaternion.identity);
                     enemy.GetComponent<Enemy>().points = (enemy.GetComponent<Enemy>().cost * GameManager.pointMultiplier) / spawningEnemy.GetComponent<Enemy>().spawnPoints.Count;
+                    enemy.GetComponent<Vitals>().currentHealth = enemy.GetComponent<Vitals>().maxHealth + (GameManager.gameDifficulty);
                     enemy.GetComponent<Enemy>().spawnTime = Time.time;
                     enemy.SetActive(true);
                     spawnedEnemies.Add(enemy);
                 }
-
                 spawningEnemy = null;
                 spawningEnemyCount = 0;
                 lastSpawn = 0;
@@ -184,6 +185,7 @@ public class WaveSpawner : MonoBehaviour
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
         boss.SetActive(true);
+        boss.GetComponent<Vitals>().currentHealth = boss.GetComponent<Vitals>().maxHealth + (GameManager.gameDifficulty * 5);
         moveBossToStart = true;
         Boss.beginFight = false;
         GameManager.canFire = false;
@@ -206,7 +208,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (outcome == "boss")
         {
-            GameManager.gameDifficulty ++;            
+            GameManager.gameDifficulty ++;
             WinScreen();
         }
 

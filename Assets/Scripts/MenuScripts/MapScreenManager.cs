@@ -67,6 +67,7 @@ public class MapScreenManager : MonoBehaviour
         winScreen.SetActive(false);
         mainScreen.SetActive(false);
         scoreScreen.SetActive(false);
+        loseScreen.SetActive(false);
         helpScreen.SetActive(false);
     }
 }

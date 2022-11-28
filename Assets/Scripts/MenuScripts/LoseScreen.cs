@@ -1,8 +1,7 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
-using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class LoseScreen : MonoBehaviour
 {

@@ -9,15 +9,7 @@ public class Vitals : MonoBehaviour
 
     public void Start()
     {
-        if (gameObject.tag == "Enemy")
-        {
-            SetEnemyHealth();
-        }
-        if (gameObject.tag == "Boss")
-        {
-            SetBossHealth();
-        }
-        else
+        if (gameObject.tag == "Player")
         {
             currentHealth = maxHealth;
         }
@@ -44,22 +36,7 @@ public class Vitals : MonoBehaviour
                 {
                     GameManager.currentPoints += gameObject.GetComponent<Boss>().points;
                 }
-
-                if (gameObject.tag == "Player")
-                {
-                    waveSpawner.GetComponent<WaveSpawner>().EndWave("lose");
-                }
             }
         }
-    }
-
-    private void SetEnemyHealth()
-    {
-        currentHealth = maxHealth + GameManager.gameDifficulty;
-    }
-
-    private void SetBossHealth()
-    {
-        currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
     }
 }

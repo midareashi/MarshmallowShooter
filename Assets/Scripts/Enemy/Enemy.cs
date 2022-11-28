@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public List<Transform> spawnPoints;
     public GameObject spawnHolder;
     public GameObject enemy;
+    public Animator animator;
 
     private GameObject santa;
 
@@ -25,13 +26,9 @@ public class Enemy : MonoBehaviour
     public float spawnTime;
 
     // Death
-    private Vector3 dieDirection = new Vector3(-1, 1, 0);
-    private float dieSpeed = 1f;
-    private Vector3 dieRotate = new Vector3(0, 0, 150);
-    private Vector3 dieScale = new Vector3(-0.3f, -0.3f, 0);
-    [SerializeField] private GameObject explosion;
 
     private Vector2 cameraPosition;
+    private bool isExploding = false;
     public int spawnGroup; // How many enemies spawn per wave
     public float spawnSpeed; // Delay between enemies spawning 0.5f
 
@@ -45,10 +42,8 @@ public class Enemy : MonoBehaviour
     {
         if (GetComponent<Vitals>().isDie)
         {
-            transform.position += dieDirection * dieSpeed * Time.deltaTime;
-            transform.Rotate(dieRotate * Time.deltaTime);
-            transform.localScale += dieScale * Time.deltaTime;
-            explosion.SetActive(true);
+            animator.SetBool("IsDie", true);
+            isExploding = true;
         }
         else if (trackSanta)
         {
@@ -82,5 +77,10 @@ public class Enemy : MonoBehaviour
             santa.GetComponent<Vitals>().TakeDamage(collisionDamage);
             Destroy(gameObject);
         }
+    }
+
+    public void destroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

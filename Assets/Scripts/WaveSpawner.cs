@@ -8,7 +8,6 @@ public class WaveSpawner : MonoBehaviour
 
     private GameObject enemy;
     private GameObject boss;
-    private float bossZR;
 
     private int waveValue;
     public List<GameObject> enemiesToSpawn;
@@ -74,6 +73,10 @@ public class WaveSpawner : MonoBehaviour
                     int randomSpawn = UnityEngine.Random.Range(0,spawnPos);
                     spawnLocation = spawningEnemy.GetComponent<Enemy>().spawnPoints[randomSpawn]; // Pick a random spawn point
                     spawnTimer = spawnInterval - (GameManager.gameDifficulty * 0.1f);
+                    if (spawnTimer < 0.5)
+                    {
+                        spawnTimer = 0.5f;
+                    }
                 }
             }
             else
@@ -181,8 +184,6 @@ public class WaveSpawner : MonoBehaviour
         var loc = spawnBoss.GetComponent<Boss>().spawnLocation.transform.position;
         boss = Instantiate(spawnBoss, loc, Quaternion.identity);
         boss.SetActive(true);
-        bossZR = boss.GetComponent<Boss>().zigzagRate;
-        boss.GetComponent<Boss>().zigzagRate = 0; 
         moveBossToStart = true;
         Boss.beginFight = false;
         GameManager.canFire = false;

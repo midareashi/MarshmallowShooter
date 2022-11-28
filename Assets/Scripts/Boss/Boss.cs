@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public float zigzagRate; // How many zig-zags per second
-    public float horizontalDistance; // Horizontal Distance 5
-    public float verticalSpeed; // Vertical Speed
     public float points; // Points gained when killed
     public GameObject spawnLocation;
     public GameObject moveToLocation;
@@ -14,13 +11,13 @@ public class Boss : MonoBehaviour
     private Rigidbody2D rb;
 
     // Movement
-    private bool isBound = false;
+    public float moveSpeed;
     private int moveDirection = 1;
+    private bool isBound = false;
     public static bool beginFight;
     private Vector2 cameraPosition;
     private float objectPadding = 1f;
     private float objectWidth;
-    public float moveSpeed;
     
     // Death
     private Vector3 dieDirection = new Vector3(-1, 1, 0);

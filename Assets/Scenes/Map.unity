@@ -25739,7 +25739,7 @@ MonoBehaviour:
   mapScreenManager: {fileID: 77392321}
   enemiesToSpawn: []
   wavePointsMultiplier: 5
-  wavePointsAdder: 10
+  wavePointsAdder: 0
   bossWaveInterval: 1
   waveGainedPoints: 20
   spawnInterval: 2.5
@@ -38635,7 +38635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 110
+  maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   isDie: 0
@@ -39573,7 +39573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d931f98d1bc164881e50d4e2a4365b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 120
+  maxHealth: 80
   currentHealth: 0
   waveSpawner: {fileID: 1282759122}
   isDie: 0
@@ -39589,8 +39589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b94e5dd7d74245a8c4e27d80dc6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zigzagRate: 0.2
-  horizontalDistance: 7
+  zigzagRate: 20
+  horizontalDistance: 5
   verticalSpeed: 0
   points: 100
   spawnLocation: {fileID: 143932334}

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static float highScore;
     public static int gameDifficulty;
 
-    public static float pointMultiplier;
+    public static float pointMultiplier = 12f;
     public static int bossSpawnCount;
 
     public static bool canFire;
@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
         BuildBonusList();
 
         highScore = PlayerPrefs.GetFloat("highScore");
-        pointMultiplier = 10f;
     }
 
     private void BuildWeaponList()

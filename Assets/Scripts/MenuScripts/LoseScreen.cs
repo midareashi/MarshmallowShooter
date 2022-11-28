@@ -21,9 +21,10 @@ public class LoseScreen : MonoBehaviour
 
         Destroy(GameObject.FindGameObjectsWithTag("Boss").Where(x => x.activeSelf).FirstOrDefault());
         Destroy(GameObject.FindGameObjectsWithTag("Enemy").Where(x => x.activeSelf).FirstOrDefault());
-        GameManager.currentPoints = 0f;
+        GameManager.currentPoints = 0;
         GameManager.currentWave = 0;
-
+        GameManager.bossSpawnCount = 0;
+        GameManager.gameDifficulty = 0;
     }
 
     public void RestartGame()

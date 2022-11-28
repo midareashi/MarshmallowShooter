@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     public static List<GameObject> allWeapons;
     public static List<GameObject> allJetpacks;
 
-    public static GameObject currentBullet;
-
     public GameObject weaponsHolder;
     public GameObject jetpacksHolder;
 

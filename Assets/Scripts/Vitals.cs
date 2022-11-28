@@ -60,6 +60,6 @@ public class Vitals : MonoBehaviour
 
     private void SetBossHealth()
     {
-        currentHealth = maxHealth + (GameManager.gameDifficulty * 10);
+        currentHealth = maxHealth + (GameManager.gameDifficulty * 5);
     }
 }
